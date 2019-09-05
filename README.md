@@ -37,28 +37,50 @@ This project uses two API routes :
 
 https://www.lucidchart.com/documents/edit/eb05650b-90f3-4c57-8031-a5dc8dc917da/0eqBfotfVGlV
 
-# Project steps
 
-* prepare design mock up of what the app will look like
-* outline project iterations
-* basic react app setup, use create react app
-* find a graph library: build a list with pros and cons, then make a choice (and make sure we can change our mind)
-* first PoC of view at instance level
+# Project management (jira)
+
+https://synthesio.atlassian.net/jira/software/projects/DEN/boards/186
+
+# API Format
+## Graph endpoint
+```js
+{
+  "data": {
+    "data-facebook": {
+      "id": "data-facebook",
+      "type": "mysql",
+      "dependents": [
+        "spyridon-blink-processv3",
+        "spyridon-blink-ongoingv2",
+        "spyridon-blink-ongoingv1",
+        "spyridon-blink-process",
+        "spyridon-blink-indexerv1",
+        "spyridon-blackhole-ongoing"
+      ]
+    },
+    ...
+  }
+}
+```
 
 # Feature list
 ## graph features
 * instance level view with dependencies
 * entity type (datastore/kafka queue/work unit with different shape)
 * "central" nodes declustering, by hiding them or something (everybody connects to data, it's going to visually mess up the graph)
+* zoom feature (to be defined more clearly)
 * status at process level
 * instance detail (list of processes of the instance, with their status)
 * status at instance level
 * color coding by service
+* image export
 * chain grouping (needs API update)
 * status at chain level
 * in/out dependency links (needs API update)
 * text search to find and filter entities
 * graph & status history
+* integrate prometheus metrics (lag, rate, etc.)
 
 ## tooling & project features
 * easy install + `just tell me what to do` style doc
