@@ -26,7 +26,20 @@ https://www.youtube.com/watch?v=jWpI8qzqNHk
 * instance : set of config to deploy a service code base
 * process : thread of instance in a server
 
-## API
+# End user distribution
+To use the project as an end user
+
+* download the `dist` zip
+* unzip it in the deploy folder
+* create a `config.json` file from `config.json.dist`
+* complete the info in `config.json` according to your setup
+* open the `index.html` in your browser
+
+## config file format
+
+For the moment we have chosen json, but we can add yml support if the info stored in the config file grows.
+
+# API
 
 This project uses two API routes :
 
@@ -66,19 +79,19 @@ https://synthesio.atlassian.net/jira/software/projects/DEN/boards/186
 
 # Feature list
 ## graph features
-* instance level view with dependencies
+* ~~instance level view with dependencies~~
 * entity type (datastore/kafka queue/work unit with different shape)
 * "central" nodes declustering, by hiding them or something (everybody connects to data, it's going to visually mess up the graph)
-* zoom feature (to be defined more clearly)
-* status at process level
-* instance detail (list of processes of the instance, with their status)
-* status at instance level
-* color coding by service
+* ~~zoom feature (to be defined more clearly)~~
+* ~~status at process level~~
+* ~~instance detail (list of processes of the instance, with their status)~~
+* ~~status at instance level~~
+* ~~color coding by service~~
 * image export
 * chain grouping (needs API update)
-* status at chain level
+* ~~status at chain level~~
 * in/out dependency links (needs API update)
-* text search to find and filter entities
+* ~~text search to find and filter entities~~
 * graph & status history
 * integrate prometheus metrics (lag, rate, etc.)
 
@@ -95,3 +108,7 @@ https://synthesio.atlassian.net/jira/software/projects/DEN/boards/186
 * define how the application will be deployed and used
 * spotless commit message history (we could use the angular commit convention cf. https://gist.github.com/stephenparish/9941e89d80e2bc58a153 )
 * describe interfaces and provide mocks
+
+# Documentation
+
+- You can change the settings in `config.json.dist`. If this file is changed, you need to update the config in the deploy config.

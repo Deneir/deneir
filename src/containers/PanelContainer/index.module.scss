@@ -1,0 +1,75 @@
+.panel {
+  height: 100%;
+  width: 466px;
+  background: #ece9e9;
+  position: fixed;
+  right: 0;
+  overflow: auto;
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+
+    h1 {
+      font-size: 30px;
+      padding-left: 20px;
+    }
+
+    button {
+      border: none;
+      background: none;
+      font-size: 25px;
+      margin-right: 10px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+  }
+
+  .titleSection > p {
+    padding-left: 20px;
+  }
+
+  h2 {
+    font-size: 19px;
+    border-top: 1px solid #ccc;
+    padding-top: 20px;
+    padding-left: 20px;
+  }
+
+  ul {
+    padding-left: 0;
+  }
+
+  .details {
+    padding: 0;
+    margin: 0 0 20px 0;
+    font-size: 13px;
+
+    p:first-child {
+      margin-top: 0;
+    }
+
+    > li {
+      font-weight: 500;
+      background-color: #ece9e9;
+    }
+  }
+
+  .innerContent {
+    border-left: 5px solid #ccc;
+    margin-top: 10px;
+
+    p {
+      padding-left: 10px;
+    }
+  }
+
+  .mapList:not(:last-child) {
+    border-bottom: 1px dotted #ccc;
+    margin-bottom: 15px;
+  }
+
+  .listContent {
+    background: #ece9e9;
+  }
+}
