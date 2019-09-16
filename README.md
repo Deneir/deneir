@@ -46,8 +46,8 @@ https://synthesio.atlassian.net/jira/software/projects/DEN/boards/186
 ## Graph endpoint
 ```js
 {
-  "data": {
-    "data-facebook": {
+  "data": [
+    {
       "id": "data-facebook",
       "type": "mysql",
       "dependents": [
@@ -60,7 +60,7 @@ https://synthesio.atlassian.net/jira/software/projects/DEN/boards/186
       ]
     },
     ...
-  }
+  ]
 }
 ```
 
