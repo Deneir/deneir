@@ -77,6 +77,64 @@ https://synthesio.atlassian.net/jira/software/projects/DEN/boards/186
 }
 ```
 
+## Required metadata/tags
+* chain: to know on which chain this instance belongs to, example: crawling, instagram, etc.
+* flow: r/w/rw, to know for each dependency if it's receiving or emitting or both, example with a kafka topic which can be read and written
+* status: each instance agent regularly check their dependency health and assign a status code and label. These are the supported statuses:
+
+```
+  // StatusOK is when resource is up and running
+  code:   0
+  label: "ok"
+  // StatusWarnings is when resource has some errors
+  code:   1
+  label:  "warnings"
+  // StatusCritical is when resource has many errors
+  code:   2
+  label:  "critical"
+  // StatusEmergency is when resource is dead
+  code:   3
+  label:  "emergency"
+  // StatusUnknown is when resource is in unknown status (timeout for instance)
+  code:   4
+  label:  "unknown"
+```
+
+proposal for new format:
+```js
+{
+  "data": [
+    {
+      "id": "usager",
+      "type": "kafka",
+      "tags": {
+        "chain": "instagram"
+      },
+      "dependents": [
+        {
+          "instance": "sheridan",
+          "flow": "r",
+          "status": 0,
+          "metadata": {
+            "topic": "usager-sheridan"
+          }
+        },
+        {
+          "instance": "sybil",
+          "flow": "w",
+          "status": 2,
+          "metadata": {
+            "group_id": "grolsch-sheridan",
+            "topics": ["usager-sheridan"]
+          }
+        }
+      ]
+    },
+    ...
+  ]
+}
+```
+
 # Feature list
 ## graph features
 * ~~instance level view with dependencies~~
