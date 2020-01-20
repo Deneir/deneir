@@ -24,21 +24,3 @@ export default function readGraphData(radius, fontSize) {
       });
   };
 }
-
-/**
- * Returns the canvas informations
- *
- * @param {Object} canvas canvas informations
- * @param {Object} setZoom zoom init
- * @param {Object} size size of the canvas (without retina)
- *
- * @return {Object}
- */
-export function getCanvas(canvas, setZoom, size) {
-  return {
-    type: types.GET_CANVAS,
-    canvas,
-    setZoom,
-    size,
-  };
-}

@@ -22,16 +22,3 @@ export default function graph(state = initialState, action) {
       return state;
   }
 }
-
-export function canvas(state = {}, action) {
-  switch (action.type) {
-    case types.GET_CANVAS:
-      return {
-        canvas: action.canvas,
-        setZoom: action.setZoom,
-        size: action.size,
-      };
-    default:
-      return state;
-  }
-}

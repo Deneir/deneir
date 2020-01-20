@@ -1,7 +1,7 @@
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import * as types from '../constants/action-types';
-import readGraphData, { getCanvas } from './graph';
+import readGraphData from './graph';
 import callApi from '../services/api-client';
 
 const middlewares = [thunk];
@@ -57,35 +57,6 @@ describe('readGraphData', () => {
 
       expect(dispatchedActions[0].type).toEqual(expectedActions[0].type);
       expect(dispatchedActions[1].type).toEqual(expectedActions[1].type);
-    });
-  });
-});
-
-describe('getCanvas', () => {
-  it('should return an action with type GET_CANVAS', () => {
-    const setZoom = () => ({});
-
-    expect(
-      getCanvas(
-        {},
-        {
-          transform: setZoom,
-        },
-        {
-          width: 1905,
-          height: 729,
-        },
-      ),
-    ).toEqual({
-      type: types.GET_CANVAS,
-      canvas: {},
-      setZoom: {
-        transform: setZoom,
-      },
-      size: {
-        width: 1905,
-        height: 729,
-      },
     });
   });
 });

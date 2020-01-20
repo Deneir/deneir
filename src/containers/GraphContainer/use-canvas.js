@@ -84,8 +84,6 @@ export default function useCanvas(settings, data, actions) {
       transform: setZoom.transform,
     };
 
-    actions.getCanvas(canvas, initZoom, { width, height });
-
     d3.select(canvas)
       .on('click', () => {
         const node = select(transform, data.nodes, true);
