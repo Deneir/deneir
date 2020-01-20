@@ -3,8 +3,8 @@ import * as d3 from 'd3';
 import drawAll from './Draw';
 import {
   onDragStart, onDrag, onDragEnd,
-} from './Drag';
-import select, { setProgrammaticZoom } from './Select';
+} from './drag';
+import select, { setProgrammaticZoom } from './select';
 
 export default function useCanvas(settings, data, actions) {
   const canvasRef = useRef(null);

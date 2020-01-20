@@ -1,5 +1,4 @@
 import drawNodeArrow from './node-arrow';
-import nodeConfig from './node-config';
 import { getConfig } from '../../../services/read-config';
 
 // Show links
@@ -15,7 +14,7 @@ function drawNode(context, {
   const newContext = context;
   const types = getConfig('types');
   const { status } = getConfig('node');
-  const { color } = nodeConfig(types, type);
+  const { color } = types[type] || types.default;
 
   // node
   context.beginPath();

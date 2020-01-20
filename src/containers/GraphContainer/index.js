@@ -6,8 +6,8 @@ import readGraphData, { getCanvas } from '../../actions/graph';
 import selectNode from '../../actions/nodes';
 import readStatusData from '../../actions/status';
 import togglePanel from '../../actions/panel';
-import Search from './search';
-import Status from './status';
+import Search from './Search';
+import Status from './Status';
 
 import styles from './index.module.scss';
 
