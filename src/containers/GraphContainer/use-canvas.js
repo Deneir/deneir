@@ -80,7 +80,7 @@ export default function useCanvas(settings, data, actions) {
       .zoom()
       .on('zoom', null);
 
-    const initZoom = {
+    canvas.setZoom = {
       transform: setZoom.transform,
     };
 
@@ -89,7 +89,7 @@ export default function useCanvas(settings, data, actions) {
         const node = select(transform, data.nodes, true);
 
         if (node && node.id) {
-          setProgrammaticZoom(canvas, initZoom, node, { width, height });
+          setProgrammaticZoom(canvas, node, { width, height });
 
           actions.clickNode(node.id);
           actions.getStatus(node.id);

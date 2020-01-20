@@ -50,7 +50,7 @@ export default function Search({ nodes, className, canvas }) {
 Search.propTypes = {
   nodes: PropTypes.instanceOf(Array).isRequired,
   className: PropTypes.string.isRequired,
-  canvas: PropTypes.instanceOf(Element),
+  canvas: PropTypes.instanceOf(Object),
 };
 
 Search.defaultProps = {
