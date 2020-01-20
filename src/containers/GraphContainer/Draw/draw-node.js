@@ -1,28 +1,28 @@
+/* eslint-disable no-param-reassign */
 import { getConfig } from '../../../services/read-config';
 
-// Show Nodes
 export default function drawNode(context, {
-  x, y, radius, type, status: statusCode,
+  x, y, type, status: statusCode,
 }) {
-  const newContext = context;
   const types = getConfig('entityTypes');
   const settings = getConfig('canvasSettings');
-  const { statusColors } = settings;
+  const { statusColors, nodes } = settings;
+  const { lineWidth, radius } = nodes;
   const { color } = types[type] || types.default;
 
   // node
   context.beginPath();
-  newContext.lineWidth = settings.lineWidth;
-  newContext.fillStyle = color;
+  context.lineWidth = lineWidth;
+  context.fillStyle = color;
   context.arc(x, y, radius, 0, 2 * Math.PI);
   context.fill();
   context.stroke();
-  newContext.strokeStyle = settings.backgroundColor;
+  context.strokeStyle = settings.backgroundColor;
 
   // outer circle
   context.beginPath();
   context.arc(x, y, radius - radius / 6, 0, 2 * Math.PI);
-  newContext.lineWidth = settings.lineWidth;
+  context.lineWidth = lineWidth;
   context.fill();
   context.stroke();
 
@@ -32,7 +32,7 @@ export default function drawNode(context, {
     2: statusColors.ko,
   };
 
-  newContext.strokeStyle = strokeStyles[statusCode] || strokeStyles[0];
+  context.strokeStyle = strokeStyles[statusCode] || strokeStyles[0];
 }
 
 // TODO: fix the positions

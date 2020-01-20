@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 import { getConfig } from '../../../services/read-config';
 
 /**
@@ -12,10 +13,10 @@ import { getConfig } from '../../../services/read-config';
 function drawAngle(links, radius, arcX, arcY) {
   const { x: sourceX, y: sourceY } = links.source;
   const { x: targetX, y: targetY } = links.target;
-  const config = getConfig('canvasSettings');
+  const settings = getConfig('canvasSettings');
   const {
     bend, arrowLength, startArrow, endArrow, startRadius, endRadius,
-  } = config.links;
+  } = settings.links;
 
   const circumference = Math.PI * 2;
   let drawStartArrow = startArrow;
@@ -102,22 +103,20 @@ function drawArrow(context, angle, finalAngle, arrowWidth, angles) {
 }
 
 function drawArc(context, angles) {
-  const newContext = context;
-
-  const config = getConfig('canvasSettings');
+  const settings = getConfig('canvasSettings');
   const {
     bend, startArrow, endArrow, vectorColor, arrowWidth,
-  } = config.links;
+  } = settings.links;
   const {
     firstAngle, secondAngle, finalFirstAngle, finalSecondAngle, radius, arcX, arcY,
   } = angles;
 
   context.beginPath();
   context.arc(arcX, arcY, radius, finalFirstAngle, finalSecondAngle, bend < 0);
-  newContext.fillStyle = vectorColor;
-  newContext.lineWidth = 20;
+  context.fillStyle = vectorColor;
+  context.lineWidth = 20;
   context.stroke();
-  newContext.strokeStyle = vectorColor;
+  context.strokeStyle = vectorColor;
 
   // draw start arrow if needed
   context.beginPath();
@@ -140,7 +139,7 @@ function drawArc(context, angles) {
  *
  */
 export default function drawNodeArrow(context, links) {
-  const config = getConfig('canvasSettings');
+  const settings = getConfig('canvasSettings');
   const { x: sourceX, y: sourceY } = links.source;
   const { x: targetX, y: targetY } = links.target;
 
@@ -163,7 +162,7 @@ export default function drawNodeArrow(context, links) {
   vectorX /= distance;
   vectorY /= distance;
 
-  const bendDistance = config.links.bend * distance;
+  const bendDistance = settings.links.bend * distance;
 
   // Arc amount bend more at distance
   const arcAmountX = horizontalMidPoint + vectorY * bendDistance;

@@ -1,15 +1,15 @@
+/* eslint-disable no-param-reassign */
+
 import drawLink from './draw-link';
 import { getConfig } from '../../../services/read-config';
 import drawNode from './draw-node';
 import drawLabel from './draw-label';
 
-// Draw /redraw  all elements
-export default function drawAll(context, transform, { nodes, links }, canvas) {
+export default function drawGraph(context, transform, { nodes, links }, canvas) {
   const settings = getConfig('canvasSettings');
 
-  const newContext = context;
   context.save();
-  newContext.fillStyle = settings.backgroundColor;
+  context.fillStyle = settings.backgroundColor;
   context.fillRect(0, 0, canvas.width, canvas.height);
   context.translate(transform.x, transform.y);
   context.scale(transform.k, transform.k);
