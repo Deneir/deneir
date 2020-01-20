@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { getConfig } from '../../services/read-config';
 
 export default function Status({ className }) {
-  const types = getConfig('types');
+  const types = getConfig('entityTypes');
 
   return (
     <div className={`${className}`}>

@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import useCanvas from './use-canvas';
 import readGraphData from '../../actions/graph';
@@ -11,7 +10,7 @@ import Status from './Status';
 
 import styles from './index.module.scss';
 
-export default function GraphContainer(props) {
+export default function GraphContainer() {
   const dispatch = useDispatch();
 
   const actions = {
@@ -20,14 +19,12 @@ export default function GraphContainer(props) {
     togglePanel: () => dispatch(togglePanel(true)),
   };
 
-  const { settings } = props;
-
   const graphData = useSelector((state) => state.graph);
-  const canvasRef = useCanvas(settings, graphData, actions);
+  const canvasRef = useCanvas(graphData, actions);
 
   useEffect(() => {
-    dispatch(readGraphData(settings.radius, settings.fontSize));
-  }, [canvasRef, dispatch, settings]);
+    dispatch(readGraphData());
+  }, [canvasRef, dispatch]);
 
   if (graphData.loading) {
     return <p>Loading ...</p>;
@@ -41,10 +38,3 @@ export default function GraphContainer(props) {
     </>
   );
 }
-
-GraphContainer.propTypes = {
-  settings: PropTypes.shape({
-    radius: PropTypes.number,
-    fontSize: PropTypes.number,
-  }).isRequired,
-};

@@ -3,30 +3,36 @@
   "statusUrl": "instances",
   "apiBaseUrl": "https://frag.int.synthesio.net",
   "authToken": "test",
-  "settings": {
+  "canvasSettings": {
+    "zoom": {
+      "scale": 0.12,
+      "duration": 750
+    },
     "backgroundColor": "#131212",
-    "nodeColor": "lightskyblue",
-    "nodeStrokeColor": "#fff",
-    "vectorColor": "#ddd",
     "lineWidth": 160,
     "fontSize": 120,
-    "radius": 600,
     "minimumScale": 0.003,
-    "maximumScale": "Infinity"
-  },
-  "meta": {
-    "subtitle": "Details",
-    "processName": "processes"
-  },
-  "search": {
-    "maxResults": 10
-  },
-  "zoom": {
-    "scale": 0.12,
-    "duration": 750
-  },
-  "node": {
-    "config": {
+    "maximumScale": "Infinity",
+    "nodes": {
+      "color": "lightskyblue",
+      "strokeColor": "#fff",
+      "radius": 600,
+      "label": {
+        "backgroundColor": "rgba(255, 255, 255, 0)",
+        "shadowColor": "rgba(0,0,0,0.8)",
+        "shadowBlur": 4,
+        "fillStyle": "#fff",
+        "textAlign": "center",
+        "fontType": "bold",
+        "fontName": "Lucida Grande, Lucida Sans Unicode, Arial, Helvetica, sans-serif"
+      }
+    },
+    "statusColors": {
+      "ok": "#2dd42d",
+      "warning": "orange",
+      "ko": "red"
+    },
+    "links": {
       "bend": 0.1,
       "arrowLength": 300,
       "arrowWidth": 300,
@@ -35,23 +41,16 @@
       "startRadius": "600",
       "endRadius": "600",
       "vectorColor": "#ddd"
-    },
-    "label": {
-      "backgroundColor": "rgba(255, 255, 255, 0)",
-      "shadowColor": "rgba(0,0,0,0.8)",
-      "shadowBlur": 4,
-      "fillStyle": "#fff",
-      "textAlign": "center",
-      "fontType": "bold",
-      "fontName": "Lucida Grande, Lucida Sans Unicode, Arial, Helvetica, sans-serif"
-    },
-    "status": {
-      "ok": "#2dd42d",
-      "warning": "orange",
-      "ko": "red"
     }
   },
-  "types": {
+  "meta": {
+    "subtitle": "Details",
+    "processName": "processes"
+  },
+  "search": {
+    "maxResults": 10
+  },
+  "entityTypes": {
     "default": {
       "name": "default",
       "shape": "circle",

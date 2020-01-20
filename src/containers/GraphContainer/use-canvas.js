@@ -5,8 +5,10 @@ import {
   onDragStart, onDrag, onDragEnd,
 } from './drag';
 import select, { setProgrammaticZoom } from './select';
+import { getConfig } from '../../services/read-config';
 
-export default function useCanvas(settings, data, actions) {
+export default function useCanvas(data, actions) {
+  const settings = getConfig('canvasSettings');
   const canvasRef = useRef(null);
 
   useEffect(() => {
@@ -50,7 +52,7 @@ export default function useCanvas(settings, data, actions) {
     simulation
       .nodes(data.nodes)
       .on('tick', () => {
-        drawAll(context, transform, data, canvas, settings);
+        drawAll(context, transform, data, canvas);
       })
       .force('link').links(data.links);
 

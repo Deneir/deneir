@@ -3,17 +3,17 @@ import { getConfig } from '../../../services/read-config';
 
 // Show links
 function drawLink(context, { source, target }) {
-  const { config } = getConfig('node');
-  drawNodeArrow(context, { source, target }, config);
+  drawNodeArrow(context, { source, target });
 }
 
 // Show Nodes
 function drawNode(context, {
   x, y, radius, type, status: statusCode,
-}, settings) {
+}) {
   const newContext = context;
-  const types = getConfig('types');
-  const { status } = getConfig('node');
+  const types = getConfig('entityTypes');
+  const settings = getConfig('canvasSettings');
+  const { statusColors } = settings;
   const { color } = types[type] || types.default;
 
   // node
@@ -27,15 +27,15 @@ function drawNode(context, {
 
   // outer circle
   context.beginPath();
-  context.arc(x, y, radius - (radius / 6), 0, 2 * Math.PI);
+  context.arc(x, y, radius - radius / 6, 0, 2 * Math.PI);
   newContext.lineWidth = settings.lineWidth;
   context.fill();
   context.stroke();
 
   const strokeStyles = {
-    0: status.ok,
-    1: status.warning,
-    2: status.ko,
+    0: statusColors.ok,
+    1: statusColors.warning,
+    2: statusColors.ko,
   };
 
   newContext.strokeStyle = strokeStyles[statusCode] || strokeStyles[0];
@@ -45,8 +45,8 @@ function drawNode(context, {
 function drawLabel(context, {
   x, y, id, fontSize,
 }) {
-  const { label } = getConfig('node');
-
+  const { nodes } = getConfig('canvasSettings');
+  const { label } = nodes;
   const textWidth = context.measureText(id).width;
   const newContext = context;
 
@@ -62,13 +62,8 @@ function drawLabel(context, {
 }
 
 // Draw /redraw  all elements
-export default function drawAll(
-  context,
-  transform,
-  { nodes, links },
-  canvas,
-) {
-  const settings = getConfig('settings');
+export default function drawAll(context, transform, { nodes, links }, canvas) {
+  const settings = getConfig('canvasSettings');
 
   const newContext = context;
   context.save();
@@ -78,7 +73,7 @@ export default function drawAll(
   context.scale(transform.k, transform.k);
 
   links.forEach((link) => drawLink(context, link));
-  nodes.forEach((node) => drawNode(context, node, settings));
+  nodes.forEach((node) => drawNode(context, node));
   nodes.forEach((node) => drawLabel(context, node));
   context.restore();
 }

@@ -1,25 +1,21 @@
+import { getConfig } from '../../../services/read-config';
+
 /**
  * Create angles for the arrow
  *
  * @param {Object} links get the source and the target
- * @param {Object} config config for the arrows
  * @param {Number} radius radius of the node
  * @param {Number} arcX arcX
  * @param {Number} arcY arcY
  *
  */
-
-function drawAngle(links, config, radius, arcX, arcY) {
+function drawAngle(links, radius, arcX, arcY) {
   const { x: sourceX, y: sourceY } = links.source;
   const { x: targetX, y: targetY } = links.target;
+  const config = getConfig('canvasSettings');
   const {
-    bend,
-    arrowLength,
-    startArrow,
-    endArrow,
-    startRadius,
-    endRadius,
-  } = config;
+    bend, arrowLength, startArrow, endArrow, startRadius, endRadius,
+  } = config.links;
 
   const circumference = Math.PI * 2;
   let drawStartArrow = startArrow;
@@ -56,10 +52,7 @@ function drawAngle(links, config, radius, arcX, arcY) {
   finalSecondAngle = secondAngle;
 
   // check for too close and no room for arc
-  if (
-    (bend < 0 && firstAngle < secondAngle)
-    || (bend > 0 && secondAngle < firstAngle)
-  ) {
+  if ((bend < 0 && firstAngle < secondAngle) || (bend > 0 && secondAngle < firstAngle)) {
     return;
   }
   // is there a start arrow
@@ -94,13 +87,9 @@ function drawAngle(links, config, radius, arcX, arcY) {
   };
 }
 
-
 function drawArrow(context, angle, finalAngle, arrowWidth, angles) {
   const { radius, arcX, arcY } = angles;
-  context.moveTo(
-    Math.cos(angle) * radius + arcX,
-    Math.sin(angle) * radius + arcY,
-  );
+  context.moveTo(Math.cos(angle) * radius + arcX, Math.sin(angle) * radius + arcY);
   context.lineTo(
     Math.cos(finalAngle) * (radius - arrowWidth / 2) + arcX,
     Math.sin(finalAngle) * (radius - arrowWidth / 2) + arcY,
@@ -112,23 +101,15 @@ function drawArrow(context, angle, finalAngle, arrowWidth, angles) {
   context.closePath();
 }
 
-function drawArc(context, angles, config) {
+function drawArc(context, angles) {
   const newContext = context;
+
+  const config = getConfig('canvasSettings');
   const {
-    bend,
-    arrowWidth,
-    startArrow,
-    endArrow,
-    vectorColor,
-  } = config;
+    bend, startArrow, endArrow, vectorColor, arrowWidth,
+  } = config.links;
   const {
-    firstAngle,
-    secondAngle,
-    finalFirstAngle,
-    finalSecondAngle,
-    radius,
-    arcX,
-    arcY,
+    firstAngle, secondAngle, finalFirstAngle, finalSecondAngle, radius, arcX, arcY,
   } = angles;
 
   context.beginPath();
@@ -156,18 +137,10 @@ function drawArc(context, angles, config) {
  *
  * @param {Object} context context of the canvas
  * @param {Object} links get the source and the target
- * @param {Number} bend negative bends up for, positive bends down.
- * @param {Number} config.arrowLength arrow head length in pixels
- * @param {Number} config.arrowWidth arrow head width in pixels
- * @param {Boolean} config.startArrow if true draw start arrow
- * @param {Boolean} config.endArrow if true draw end  arrow
- * @param {Number} config.startRadius radius of a circle if start attached to circle
- * @param {Number} config.endRadius radius of a circle if end attached to circle
- * @param {String} config.vectorColor color of the vectors
  *
  */
-
-export default function drawNodeArrow(context, links, config) {
+export default function drawNodeArrow(context, links) {
+  const config = getConfig('canvasSettings');
   const { x: sourceX, y: sourceY } = links.source;
   const { x: targetX, y: targetY } = links.target;
 
@@ -190,7 +163,7 @@ export default function drawNodeArrow(context, links, config) {
   vectorX /= distance;
   vectorY /= distance;
 
-  const bendDistance = config.bend * distance;
+  const bendDistance = config.links.bend * distance;
 
   // Arc amount bend more at distance
   const arcAmountX = horizontalMidPoint + vectorY * bendDistance;
@@ -198,10 +171,8 @@ export default function drawNodeArrow(context, links, config) {
 
   // get the radius
   radius = (0.5
-    * ((sourceX - arcAmountX)
-    * (sourceX - arcAmountX)
-    + (sourceY - arcAmountY)
-    * (sourceY - arcAmountY)))
+      * ((sourceX - arcAmountX) * (sourceX - arcAmountX)
+        + (sourceY - arcAmountY) * (sourceY - arcAmountY)))
     / bendDistance;
 
   // use radius to get arc center
@@ -211,8 +182,7 @@ export default function drawNodeArrow(context, links, config) {
   // radius needs to be positive for the rest of the code
   radius = Math.abs(radius);
 
-  const angles = drawAngle(links, config, radius, arcX, arcY)
-    || {};
+  const angles = drawAngle(links, radius, arcX, arcY) || {};
 
-  drawArc(context, angles, config);
+  drawArc(context, angles);
 }

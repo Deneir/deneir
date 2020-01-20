@@ -7,12 +7,10 @@
  * @return {Object} nodes and links
  */
 
-export default function graphFormatter(data, radius = 300, fontSize = 60) {
+export default function graphFormatter(data) {
   if (data && data.nodes) {
     const newNodes = data.nodes.map((node) => ({
       ...node,
-      fontSize,
-      radius,
     }));
     return {
       nodes: newNodes,
