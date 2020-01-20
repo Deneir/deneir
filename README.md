@@ -137,25 +137,32 @@ proposal for new format:
 
 # Feature list
 ## graph features
-* ~~instance level view with dependencies~~
-* entity type (datastore/kafka queue/work unit with different shape)
-* "central" nodes declustering, by hiding them or something (everybody connects to data, it's going to visually mess up the graph)
-* ~~zoom feature (to be defined more clearly)~~
-* ~~status at process level~~
-* ~~instance detail (list of processes of the instance, with their status)~~
-* ~~status at instance level~~
-* ~~color coding by service~~
-* image export
-* chain grouping (needs API update)
-* ~~status at chain level~~
-* in/out dependency links (needs API update)
-* ~~text search to find and filter entities~~
-* graph & status history
-* integrate prometheus metrics (lag, rate, etc.)
+* [x] instance level view with dependencies
+* [x] zoom feature (to be defined more clearly)
+* [x] status at process level
+* [x] instance detail (list of processes of the instance, with their status)
+* [x] status at instance level
+* [x] color coding by service
+* [x] status at chain level
+* [x] text search to find and filter entities
+* [ ] entity type (datastore / Kafka queue/work unit with different shape)
+* [ ] "central" nodes de-clustering, by hiding them or something (everybody connects to data, it's going to visually mess up the graph)
+* [ ] image export (whole canvas)
+* [ ] chain grouping (needs API update)
+* [ ] in/out dependency links (needs API update)
+* [ ] graph & status history
+* [ ] integrate Prometheus metrics (lag, rate, etc.)
+* [ ] pseudo entities
+* [ ] dependents and dependencies list with links
+* [ ] see only dependents in Graph
+* [ ] add URL for instances
+* [ ] auto refresh for status update
+* [ ] Firefox compatibility
+
 
 ## tooling & project features
 * easy install + `just tell me what to do` style doc
-* api contract documentation + examples
+* API contract documentation + examples
 * define what config file we need, with what info, to run the app
 * have a system that allows us to write the config file in json or yml (or maybe just yml, whatever)
 
