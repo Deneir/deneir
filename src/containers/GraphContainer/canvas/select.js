@@ -1,5 +1,5 @@
 import * as d3 from 'd3';
-import { getConfig } from '../../services/read-config';
+import { getConfig } from '../../../services/read-config';
 
 /**
  * Find the position of the selected node

@@ -1,11 +1,11 @@
 import { useRef, useEffect } from 'react';
 import * as d3 from 'd3';
-import drawAll from './Draw';
+import drawAll from './draw-graph';
 import {
   onDragStart, onDrag, onDragEnd,
 } from './drag';
 import select, { setProgrammaticZoom } from './select';
-import { getConfig } from '../../services/read-config';
+import { getConfig } from '../../../services/read-config';
 
 export default function useCanvas(data, actions) {
   const settings = getConfig('canvasSettings');

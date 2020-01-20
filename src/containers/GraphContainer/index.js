@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import useCanvas from './use-canvas';
+import useCanvas from './canvas/index';
 import readGraphData from '../../actions/graph';
 import selectNode from '../../actions/nodes';
 import readStatusData from '../../actions/status';
