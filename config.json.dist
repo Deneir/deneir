@@ -9,15 +9,15 @@
       "duration": 750
     },
     "backgroundColor": "#131212",
-    "lineWidth": 160,
-    "fontSize": 120,
     "minimumScale": 0.003,
     "maximumScale": "Infinity",
     "nodes": {
+      "lineWidth": 160,
       "color": "lightskyblue",
       "strokeColor": "#fff",
       "radius": 600,
       "label": {
+        "fontSize": 120,
         "backgroundColor": "rgba(255, 255, 255, 0)",
         "shadowColor": "rgba(0,0,0,0.8)",
         "shadowBlur": 4,
@@ -73,7 +73,7 @@
     },
     "mysql": {
       "name": "mysql",
-      "shape": "diamond",
+      "shape": "database",
       "color": "lightskyblue"
     },
     "kafka": {
@@ -83,22 +83,22 @@
     },
     "blink": {
       "name": "blink",
-      "shape": "ovale",
+      "shape": "database",
       "color": "green"
     },
     "scylladb": {
       "name": "scylladb",
-      "shape": "circle",
+      "shape": "database",
       "color": "purple"
     },
     "redis": {
       "name": "redis",
-      "shape": "circle",
+      "shape": "database",
       "color": "brown"
     },
     "elasticsearch": {
       "name": "elasticsearch",
-      "shape": "circle",
+      "shape": "database",
       "color": "teal"
     }
   }

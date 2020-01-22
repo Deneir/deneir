@@ -115,8 +115,8 @@ function drawArc(context, angles) {
   context.arc(arcX, arcY, radius, finalFirstAngle, finalSecondAngle, bend < 0);
   context.fillStyle = vectorColor;
   context.lineWidth = 20;
-  context.stroke();
   context.strokeStyle = vectorColor;
+  context.stroke();
 
   // draw start arrow if needed
   context.beginPath();

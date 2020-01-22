@@ -50,7 +50,8 @@ export default function select(transform, nodes, isClicked = false) {
 
 export function setProgrammaticZoom(canvas, filtered, size) {
   if (filtered && filtered.x && filtered.y) {
-    const { scale, duration } = getConfig('zoom');
+    const settings = getConfig('canvasSettings');
+    const { scale, duration } = settings;
 
     d3.select(canvas).transition().duration(duration).call(
       canvas.setZoom.transform,
