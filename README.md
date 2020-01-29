@@ -148,7 +148,7 @@ proposal for new format:
 * [x] entity type (datastore / Kafka queue/work unit with different shape)
   * [x] circles, squares and databases shapes
   * [ ] hexagons, triangles and whatnot
-* [ ] "central" nodes de-clustering, by hiding them or something (everybody connects to data, it's going to visually mess up the graph)
+* [ ] hide nodes & save hidden nodes settings
 * [ ] image export (whole canvas)
 * [ ] chain grouping (needs API update)
 * [ ] in/out dependency links (needs API update)
