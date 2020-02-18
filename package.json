@@ -33,7 +33,12 @@
       "plugin:react/recommended"
     ],
     "rules": {
-      "no-use-before-define": ["error", { "functions": false }],
+      "no-use-before-define": [
+        "error",
+        {
+          "functions": false
+        }
+      ],
       "react/jsx-filename-extension": [
         1,
         {

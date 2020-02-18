@@ -4,7 +4,7 @@ import drawAll from './draw-graph';
 import {
   onDragStart, onDrag, onDragEnd,
 } from './drag';
-import select, { setProgrammaticZoom } from './select';
+import getNodeFromCanvasClick, { setProgrammaticZoom } from './handle-canvas-click';
 import { getConfig } from '../../../services/read-config';
 
 export default function useCanvas(data, actions) {
@@ -59,7 +59,7 @@ export default function useCanvas(data, actions) {
     // Draw / Zoom
     const setDrag = d3
       .drag()
-      .subject(() => select(transform, data.nodes))
+      .subject(() => getNodeFromCanvasClick(transform, data.nodes))
       .on('start', () => onDragStart(simulation, transform))
       .on('drag', () => onDrag(transform))
       .on('end', () => onDragEnd(simulation));
@@ -69,6 +69,7 @@ export default function useCanvas(data, actions) {
       .scaleExtent([settings.minimumScale, settings.maximumScale])
       .on('zoom', () => {
         transform = d3.event.transform;
+
         drawAll(context, transform, data, canvas, settings);
       });
 
@@ -88,7 +89,7 @@ export default function useCanvas(data, actions) {
 
     d3.select(canvas)
       .on('click', () => {
-        const node = select(transform, data.nodes, true);
+        const node = getNodeFromCanvasClick(transform, data.nodes, true);
 
         if (node && node.id) {
           setProgrammaticZoom(canvas, node, { width, height });
