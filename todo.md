@@ -1,14 +1,11 @@
 # Current
 
-* [ ] clean up canvas drawing code
 * [ ] add default values for each settings in the config file
 * [ ] add hexagon and triangle shape
-* [ ] fix search zoom on node
-* [ ] fix click on node
-* [ ] clean up config file and access
 * [ ] define where we save metadata and pseudo nodes info
 * [ ] fix firefox render issue
 * [ ] add dependents and dependencies list
+* [ ] rework details panel to make more sense
 * [ ] rewrite feature list as an actual feature list in readme
 
 
