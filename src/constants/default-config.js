@@ -13,10 +13,8 @@ export default {
       strokeColor: '#fff',
       radius: 600,
       label: {
-        fontSize: 120,
+        fontSize: 160,
         backgroundColor: 'rgba(255, 255, 255, 0)',
-        shadowColor: 'rgba(0,0,0,0.8)',
-        shadowBlur: 4,
         fillStyle: '#fff',
         textAlign: 'center',
         fontType: 'bold',

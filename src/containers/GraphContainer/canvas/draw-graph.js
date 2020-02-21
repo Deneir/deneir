@@ -16,6 +16,13 @@ export default function drawGraph(context, transform, { nodes, links }, canvas) 
 
   links.forEach((link) => drawLink(context, link));
   nodes.forEach((node) => drawNode(context, node));
+
+  const { label } = settings.nodes;
+
+  context.fillStyle = label.fillStyle;
+  context.textAlign = label.textAlign;
+  context.font = `${label.fontType} ${label.fontSize}px ${label.fontName}`;
   nodes.forEach((node) => drawLabel(context, node));
+
   context.restore();
 }
