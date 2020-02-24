@@ -7,8 +7,8 @@ import * as types from '../constants/action-types';
  *
  * @return {Object}
  */
-
-export default function selectNode(nodeId) {
+/* eslint-disable import/prefer-default-export */
+export function selectNode(nodeId) {
   return {
     type: types.SELECT_NODE,
     nodeId,

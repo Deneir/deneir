@@ -1,10 +1,9 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import useCanvas from './canvas/index';
+import Graph from './canvas/index';
 import readGraphData from '../../actions/graph';
-import selectNode from '../../actions/nodes';
+import { selectNode } from '../../actions/nodes';
 import readStatusData from '../../actions/status';
-import togglePanel from '../../actions/panel';
 import Search from './Search';
 import Status from './Status';
 
@@ -12,29 +11,28 @@ import styles from './index.module.scss';
 
 export default function GraphContainer() {
   const dispatch = useDispatch();
-
   const actions = {
     clickNode: (nodeId) => dispatch(selectNode(nodeId)),
     getStatus: (nodeId) => dispatch(readStatusData(nodeId)),
-    togglePanel: () => dispatch(togglePanel(true)),
+    togglePanel: () => dispatch(selectNode(null)),
   };
 
-  const graphData = useSelector((state) => state.graph);
-  const canvasRef = useCanvas(graphData, actions);
+  const nodes = useSelector((state) => state.nodes);
+  const selectedNode = useSelector((state) => state.selectedNode);
 
   useEffect(() => {
     dispatch(readGraphData());
-  }, [canvasRef, dispatch]);
+  }, [dispatch]);
 
-  if (graphData.loading) {
+  if (!Object.keys(nodes).length) {
     return <p>Loading ...</p>;
   }
 
   return (
     <>
-      <Search nodes={graphData.nodes} className={styles.search} canvas={canvasRef} />
+      <Search nodes={nodes} className={styles.search} />
       <Status className={styles.status} />
-      <canvas id="graph" ref={canvasRef} className={styles.canvas} />
+      <Graph nodes={nodes} actions={actions} selectedNode={selectedNode} />
     </>
   );
 }

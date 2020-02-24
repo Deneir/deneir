@@ -1,4 +1,3 @@
-import graphFormatter from './graph-formatter';
 import * as types from '../constants/action-types';
 import callApi from '../services/api-client';
 import { getConfig } from '../services/read-config';
@@ -10,17 +9,44 @@ import { getConfig } from '../services/read-config';
  *
  * @return {Promise}
  */
-export default function readGraphData(radius, fontSize) {
+export default function readGraphData() {
   return (dispatch) => {
     dispatch({ type: types.GET_GRAPH_REQUEST });
 
     return callApi('GET', getConfig('graphUrl'))
-      .then(({ data = [] }) => dispatch({
-        type: types.GET_GRAPH_SUCCESS,
-        payload: graphFormatter(data, radius, fontSize),
-      }))
+      .then(({ data = {} }) => {
+        const nodeDictionary = smartFormatter(data.nodes, data.edges);
+
+        dispatch({
+          type: types.GET_GRAPH_SUCCESS,
+          nodes: nodeDictionary,
+        });
+      })
       .catch((error) => {
         dispatch({ type: types.GET_GRAPH_FAILURE, error });
       });
   };
+}
+
+function smartFormatter(nodes, links) {
+  const nodeDictionary = nodes.reduce(
+    (prev, node) => ({
+      ...prev,
+      [node.id]: {
+        ...node,
+        dependents: [],
+        dependencies: [],
+      },
+    }),
+    {},
+  );
+
+  links.forEach((link) => {
+    const { source, target, type } = link;
+
+    nodeDictionary[source].dependencies.push({ id: target, type });
+    nodeDictionary[target].dependents.push({ id: source, type });
+  });
+
+  return nodeDictionary;
 }

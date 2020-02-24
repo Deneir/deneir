@@ -9,7 +9,7 @@ import { getConfig } from '../services/read-config';
  *
  * @return {Promise}
  */
-export default function readStatusData(nodeId) {
+export default function readNodeStatusData(nodeId) {
   const statusUrl = getConfig('statusUrl');
 
   return (dispatch) => {

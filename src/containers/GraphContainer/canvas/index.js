@@ -1,18 +1,27 @@
-import { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import * as d3 from 'd3';
 import drawAll from './draw-graph';
-import {
-  onDragStart, onDrag, onDragEnd,
-} from './drag';
+import { onDragStart, onDrag, onDragEnd } from './drag';
 import getNodeFromCanvasClick, { setProgrammaticZoom } from './handle-canvas-click';
 import { getConfig } from '../../../services/read-config';
+import styles from './index.module.scss';
 
-export default function useCanvas(data, actions) {
+export default function Graph(props) {
   const settings = getConfig('canvasSettings');
   const canvasRef = useRef(null);
+  const { actions, selectedNode, nodes } = props;
+  const [data, setData] = useState(graphFormatter(nodes));
+  useEffect(() => setData(graphFormatter(nodes)), [nodes]);
 
   useEffect(() => {
-    if (!data.nodes) {
+    // todo handle zoom when selectedNode changes
+    /* eslint-disable no-console */
+    console.log(selectedNode);
+  }, [selectedNode]);
+
+  useEffect(() => {
+    if (!canvasRef.current) {
       return;
     }
 
@@ -29,9 +38,7 @@ export default function useCanvas(data, actions) {
     context.setTransform(ratio, 0, 0, ratio, 0, 0);
 
     // Initial zoom
-    let transform = d3.zoomIdentity
-      .translate(width / 2, height / 2)
-      .scale(settings.minimumScale);
+    let transform = d3.zoomIdentity.translate(width / 2, height / 2).scale(settings.minimumScale);
 
     // Create force simulation
     const simulation = d3
@@ -41,12 +48,14 @@ export default function useCanvas(data, actions) {
       .force('x', d3.forceX(width / 2).strength(0.1))
       .force('y', d3.forceY(height / 2).strength(0.1))
       .force('charge', d3.forceManyBody().strength(-3000000))
-      .force('link',
+      .force(
+        'link',
         d3
           .forceLink()
           .distance(200)
           .strength(1)
-          .id((d) => d.id))
+          .id((d) => d.id),
+      )
       .force('center', d3.forceCenter(width / 2, height / 2));
 
     simulation
@@ -54,7 +63,8 @@ export default function useCanvas(data, actions) {
       .on('tick', () => {
         drawAll(context, transform, data, canvas);
       })
-      .force('link').links(data.links);
+      .force('link')
+      .links(data.links);
 
     // Draw / Zoom
     const setDrag = d3
@@ -79,26 +89,23 @@ export default function useCanvas(data, actions) {
       .on('drag', null)
       .on('end', null);
 
-    const removeZoom = d3
-      .zoom()
-      .on('zoom', null);
+    const removeZoom = d3.zoom().on('zoom', null);
 
     canvas.setZoom = {
       transform: setZoom.transform,
     };
 
-    d3.select(canvas)
-      .on('click', () => {
-        const node = getNodeFromCanvasClick(transform, data.nodes, true);
+    d3.select(canvas).on('click', () => {
+      const node = getNodeFromCanvasClick(transform, data.nodes, true);
 
-        if (node && node.id) {
-          setProgrammaticZoom(canvas, node, { width, height });
+      if (node && node.id) {
+        setProgrammaticZoom(canvas, node, { width, height });
 
-          actions.clickNode(node.id);
-          actions.getStatus(node.id);
-          actions.togglePanel();
-        }
-      });
+        actions.clickNode(node.id);
+        actions.getStatus(node.id);
+        actions.togglePanel();
+      }
+    });
 
     d3.select(canvas)
       .call(setDrag)
@@ -111,7 +118,37 @@ export default function useCanvas(data, actions) {
         .call(removeDrag)
         .call(removeZoom);
     };
-  }, [data, settings, actions]);
+  }, [actions, data, settings]);
 
-  return canvasRef;
+  return <canvas id="graph" ref={canvasRef} className={styles.canvas} />;
+}
+
+Graph.propTypes = {
+  actions: PropTypes.instanceOf(Object).isRequired,
+  nodes: PropTypes.instanceOf(Object).isRequired,
+  selectedNode: PropTypes.func.isRequired,
+};
+
+export function graphFormatter(nodeDictionary) {
+  const nodes = Object.values(nodeDictionary).map((node) => {
+    const {
+      id, type, status, tags,
+    } = node;
+
+    return {
+      id,
+      type,
+      status,
+      tags,
+    };
+  });
+  const links = Object.values(nodeDictionary)
+    .map((node) => node.dependents.map((dependent) => ({
+      source: node.id,
+      target: dependent.id,
+      type: dependent.type,
+    })))
+    .flat();
+
+  return { nodes, links };
 }
