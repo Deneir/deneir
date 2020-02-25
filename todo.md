@@ -1,10 +1,12 @@
 # Current
 
-* [ ] add hexagon and triangle shape
+* [ ] node border colors
+* [ ] fix eslint rules
 * [ ] add dependents and dependencies list with links to zoom/select them
 * [ ] rework details panel to make more sense
 * [ ] rewrite feature list as an actual feature list in readme
 * [ ] clarify in the code and the interface the words used (service/instance/process)
+* [ ] fix chart legend
 
 # Backlog
 * [ ] hide nodes & save hidden nodes settings

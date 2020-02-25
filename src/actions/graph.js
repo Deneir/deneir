@@ -17,14 +17,12 @@ export default function readGraphData() {
       .then(({ data = {} }) => {
         const nodeDictionary = smartFormatter(data.nodes, data.edges);
 
-        dispatch({
+        return dispatch({
           type: types.GET_GRAPH_SUCCESS,
           nodes: nodeDictionary,
         });
       })
-      .catch((error) => {
-        dispatch({ type: types.GET_GRAPH_FAILURE, error });
-      });
+      .catch((error) => dispatch({ type: types.GET_GRAPH_FAILURE, error }));
   };
 }
 

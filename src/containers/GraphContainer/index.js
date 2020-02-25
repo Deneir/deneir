@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import Graph from './canvas/index';
 import readGraphData from '../../actions/graph';
 import { selectNode } from '../../actions/nodes';
-import readStatusData from '../../actions/status';
 import Search from './Search';
 import Status from './Status';
 
@@ -13,8 +12,6 @@ export default function GraphContainer() {
   const dispatch = useDispatch();
   const actions = {
     clickNode: (nodeId) => dispatch(selectNode(nodeId)),
-    getStatus: (nodeId) => dispatch(readStatusData(nodeId)),
-    togglePanel: () => dispatch(selectNode(null)),
   };
 
   const nodes = useSelector((state) => state.nodes);

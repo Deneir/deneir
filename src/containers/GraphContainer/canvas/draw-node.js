@@ -8,15 +8,15 @@ export default function drawNode(context, {
   const settings = getConfig('canvasSettings');
   const { statusColors, nodes } = settings;
   const { lineWidth, radius } = nodes;
-  const { shape, color } = types[type] || types.default;
-  const strokeStyles = {
+  const { shape, strokeColor } = types[type] || types.default;
+  const fillStyles = {
     0: statusColors.ok,
     1: statusColors.warning,
     2: statusColors.ko,
   };
 
-  context.fillStyle = strokeStyles[statusCode] || strokeStyles[0];
-  context.strokeStyle = color;
+  context.fillStyle = fillStyles[statusCode] || fillStyles[0];
+  context.strokeStyle = strokeColor || types.default.strokeColor;
   context.lineWidth = lineWidth;
 
   renderShape(shape, context, { x, y, radius });
@@ -27,6 +27,9 @@ function renderShape(shape, context, props) {
     square,
     circle,
     database,
+    hexagon,
+    triangle,
+    pentagon,
   };
   const nodeShape = (shapes[shape] && shape) || 'circle';
 
@@ -64,20 +67,36 @@ function database(context, { x, y, radius }) {
   context.stroke();
 }
 
-//     'diamond':
-//       // context.translate(x, y);
-//       // context.rotate(Math.PI / 4);
-//       // context.translate(-(850 / 2), -(850 / 2));
-//       // context.fillRect(0, 0, 850, 850);
+function pentagon(context, { x, y, radius }) {
+  drawPolygon(context, {
+    x, y, radius, sides: 5, size: radius * 1.1,
+  });
+}
+function hexagon(context, { x, y, radius }) {
+  drawPolygon(context, {
+    x, y, radius, sides: 6, size: radius * 1.1,
+  });
+}
+function triangle(context, { x, y, radius }) {
+  drawPolygon(context, {
+    x, y, radius, sides: 3, size: radius * 1.3,
+  });
+}
 
-//     'triangle':
-//       context.moveTo(x + radius, y);
-//       // context.moveTo(600, 0);
-//       // context.lineTo(500, 200);
-//       // context.lineTo(700, 200);
-//       context.lineTo(x, y);
-//       context.lineTo(x, y);
+function drawPolygon(context, {
+  x, y, sides, size,
+}) {
+  context.lineWidth /= 2;
+  context.beginPath();
+  context.moveTo(x + size * Math.cos(0), y + size * Math.sin(0));
 
-//     'oval':
-//       context.scale(2, 1);
-//       context.arc(x, y, radius, 0, 2 * Math.PI);
+  for (let side = 0; side <= sides + 1; side += 1) {
+    context.lineTo(
+      x + size * Math.cos(side * 2 * (Math.PI / sides)),
+      y + size * Math.sin(side * 2 * (Math.PI / sides)),
+    );
+  }
+
+  context.fill();
+  context.stroke();
+}

@@ -14,7 +14,7 @@ export default function PanelContainer() {
       {selectedNode && (
         <section className={styles.panel}>
           <div className={styles.header}>
-            <h1>{selectNode}</h1>
+            <h1>{selectedNode}</h1>
             <button type="button" onClick={() => dispatch(selectNode(null))}>
               X
             </button>

@@ -9,8 +9,6 @@ export default {
     maximumScale: 'Infinity',
     nodes: {
       lineWidth: 160,
-      color: 'lightskyblue',
-      strokeColor: '#fff',
       radius: 600,
       label: {
         fontSize: 160,
@@ -22,9 +20,9 @@ export default {
       },
     },
     statusColors: {
-      ok: '#2dd42d',
-      warning: 'orange',
-      ko: 'red',
+      ok: '#6fcc47', // #4e992e
+      warning: '#F5C21B', // #c2970a
+      ko: '#FF5D55', // #d93a32
     },
     links: {
       bend: 0.1,
@@ -48,7 +46,7 @@ export default {
     default: {
       name: 'default',
       shape: 'circle',
-      color: 'white',
+      strokeColor: '#',
     },
   },
 };

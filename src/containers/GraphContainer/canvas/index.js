@@ -11,13 +11,14 @@ export default function Graph(props) {
   const settings = getConfig('canvasSettings');
   const canvasRef = useRef(null);
   const { actions, selectedNode, nodes } = props;
-  const [data, setData] = useState(graphFormatter(nodes));
-  useEffect(() => setData(graphFormatter(nodes)), [nodes]);
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    setData(graphFormatter(nodes));
+  }, [nodes]);
 
   useEffect(() => {
     // todo handle zoom when selectedNode changes
-    /* eslint-disable no-console */
-    console.log(selectedNode);
   }, [selectedNode]);
 
   useEffect(() => {
@@ -102,8 +103,6 @@ export default function Graph(props) {
         setProgrammaticZoom(canvas, node, { width, height });
 
         actions.clickNode(node.id);
-        actions.getStatus(node.id);
-        actions.togglePanel();
       }
     });
 
@@ -120,13 +119,20 @@ export default function Graph(props) {
     };
   }, [actions, data, settings]);
 
+  if (!data) {
+    return null;
+  }
   return <canvas id="graph" ref={canvasRef} className={styles.canvas} />;
 }
 
 Graph.propTypes = {
   actions: PropTypes.instanceOf(Object).isRequired,
   nodes: PropTypes.instanceOf(Object).isRequired,
-  selectedNode: PropTypes.func.isRequired,
+  selectedNode: PropTypes.string,
+};
+
+Graph.defaultProps = {
+  selectedNode: null,
 };
 
 export function graphFormatter(nodeDictionary) {

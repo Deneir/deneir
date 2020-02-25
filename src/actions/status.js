@@ -18,7 +18,8 @@ export default function readNodeStatusData(nodeId) {
     return callApi('GET', `${statusUrl}?instance=${nodeId}`)
       .then(({ data = [] }) => dispatch({
         type: types.GET_STATUS_SUCCESS,
-        payload: data,
+        processes: data,
+        nodeId,
       }))
       .catch((error) => {
         dispatch({
