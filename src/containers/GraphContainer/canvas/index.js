@@ -46,9 +46,9 @@ export default function Graph(props) {
       .forceSimulation()
       .alphaTarget(0)
       .alphaDecay(0.05)
-      .force('x', d3.forceX(width / 2).strength(0.1))
-      .force('y', d3.forceY(height / 2).strength(0.1))
-      .force('charge', d3.forceManyBody().strength(-3000000))
+      .force('x', d3.forceX(width / 2).strength(0.1)) // center horizontally
+      .force('y', d3.forceY(height / 2).strength(0.1)) // center vertically
+      .force('charge', d3.forceManyBody().strength(-3000000)) // every node pushes other nodes
       .force(
         'link',
         d3
@@ -97,7 +97,7 @@ export default function Graph(props) {
     };
 
     d3.select(canvas).on('click', () => {
-      const node = getNodeFromCanvasClick(transform, data.nodes, true);
+      const node = getNodeFromCanvasClick(transform, data.nodes);
 
       if (node && node.id) {
         setProgrammaticZoom(canvas, node, { width, height });

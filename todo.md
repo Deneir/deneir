@@ -1,5 +1,7 @@
 # Current
 
+* [ ] zoom on clickNode
+* [ ] zoom on search
 * [ ] node border colors
 * [ ] fix eslint rules
 * [ ] add dependents and dependencies list with links to zoom/select them

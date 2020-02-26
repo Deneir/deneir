@@ -2,10 +2,9 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { setProgrammaticZoom } from './canvas/handle-canvas-click';
 import { getConfig } from '../../services/read-config';
 
-export default function Search({ nodes, className, canvas }) {
+export default function Search({ nodes, className }) {
   const { maxResults } = getConfig('search');
 
   const [searchTerm, setSearchTerm] = useState('');
@@ -22,10 +21,7 @@ export default function Search({ nodes, className, canvas }) {
     if (event) {
       event.preventDefault();
     }
-    const { current: canvasElt } = canvas;
-    const { width, height } = canvasElt;
-
-    setProgrammaticZoom(canvasElt, results[0], { width, height });
+    // console.log('should be selecting the node we clicked enter on or something');
   };
 
   return (
@@ -50,9 +46,4 @@ export default function Search({ nodes, className, canvas }) {
 Search.propTypes = {
   nodes: PropTypes.instanceOf(Object).isRequired,
   className: PropTypes.string.isRequired,
-  canvas: PropTypes.instanceOf(Object),
-};
-
-Search.defaultProps = {
-  canvas: {},
 };
