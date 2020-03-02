@@ -24,12 +24,13 @@ export default function drawNode(context, {
 
 function renderShape(shape, context, props) {
   const shapes = {
-    square,
     circle,
     database,
     hexagon,
-    triangle,
     pentagon,
+    rectangle,
+    square,
+    triangle,
   };
   const nodeShape = (shapes[shape] && shape) || 'circle';
 
@@ -39,6 +40,12 @@ function renderShape(shape, context, props) {
 function square(context, { x, y }) {
   context.beginPath();
   context.rect(x - 1000 / 2, y - 1000 / 2, 1000, 1000);
+  context.stroke();
+  context.fill();
+}
+function rectangle(context, { x, y }) {
+  context.beginPath();
+  context.rect(x - 1400 / 2, y - 600 / 2, 1400, 600);
   context.stroke();
   context.fill();
 }
