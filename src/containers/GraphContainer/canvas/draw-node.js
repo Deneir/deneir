@@ -1,22 +1,30 @@
 /* eslint-disable no-param-reassign */
 import { getConfig } from '../../../services/read-config';
 
+const statusCodes = {
+  0: 'ok',
+  1: 'warning',
+  2: 'critical',
+  3: 'emergency',
+  4: 'unknown',
+};
+
 export default function drawNode(context, {
-  x, y, type, status: statusCode,
+  x, y, type, status,
 }) {
   const types = getConfig('entityTypes');
   const settings = getConfig('canvasSettings');
-  const { statusColors, nodes } = settings;
+  const {
+    defaultStatus, statusColors, statusStrokes, nodes,
+  } = settings;
   const { lineWidth, radius } = nodes;
   const { shape, strokeColor } = types[type] || types.default;
-  const fillStyles = {
-    0: statusColors.ok,
-    1: statusColors.warning,
-    2: statusColors.ko,
-  };
+  const statusCode = statusCodes[status] || defaultStatus;
+  const fillStyle = statusColors[statusCode];
+  const strokeStyle = statusStrokes[statusCode];
 
-  context.fillStyle = fillStyles[statusCode] || fillStyles[0];
-  context.strokeStyle = strokeColor || types.default.strokeColor;
+  context.fillStyle = fillStyle;
+  context.strokeStyle = strokeColor || strokeStyle;
   context.lineWidth = lineWidth;
 
   renderShape(shape, context, { x, y, radius });
@@ -76,17 +84,29 @@ function database(context, { x, y, radius }) {
 
 function pentagon(context, { x, y, radius }) {
   drawPolygon(context, {
-    x, y, radius, sides: 5, size: radius * 1.1,
+    x,
+    y,
+    radius,
+    sides: 5,
+    size: radius * 1.1,
   });
 }
 function hexagon(context, { x, y, radius }) {
   drawPolygon(context, {
-    x, y, radius, sides: 6, size: radius * 1.1,
+    x,
+    y,
+    radius,
+    sides: 6,
+    size: radius * 1.1,
   });
 }
 function triangle(context, { x, y, radius }) {
   drawPolygon(context, {
-    x, y, radius, sides: 3, size: radius * 1.3,
+    x,
+    y,
+    radius,
+    sides: 3,
+    size: radius * 1.3,
   });
 }
 
