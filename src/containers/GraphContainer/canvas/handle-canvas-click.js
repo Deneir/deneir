@@ -14,7 +14,6 @@ import { getConfig } from '../../../services/read-config';
  * @return {Object} the clicked node
  */
 
-// eslint-disable-next-line consistent-return
 export default function getNodeFromCanvasClick(transform, nodes) {
   const x = d3.event ? transform.invertX(d3.event.x) : null;
   const y = d3.event ? transform.invertY(d3.event.y) : null;
@@ -33,6 +32,8 @@ export default function getNodeFromCanvasClick(transform, nodes) {
       return node;
     }
   }
+
+  return undefined;
 }
 
 /**

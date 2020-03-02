@@ -70,7 +70,17 @@ export default function Graph(props) {
     // Draw / Zoom
     const setDrag = d3
       .drag()
-      .subject(() => getNodeFromCanvasClick(transform, data.nodes))
+      .subject(() => {
+        const node = getNodeFromCanvasClick(transform, data.nodes);
+
+        if (!node) {
+          return undefined;
+        }
+
+        node.x = transform.applyX(node.x);
+        node.y = transform.applyY(node.y);
+        return node;
+      })
       .on('start', () => onDragStart(simulation, transform))
       .on('drag', () => onDrag(transform))
       .on('end', () => onDragEnd(simulation));
