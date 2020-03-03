@@ -44,16 +44,15 @@ export default function Graph(props) {
     // Create force simulation
     const simulation = d3
       .forceSimulation()
-      .alphaTarget(0)
-      .alphaDecay(0.05)
+
       .force('x', d3.forceX(width / 2).strength(0.1)) // center horizontally
       .force('y', d3.forceY(height / 2).strength(0.1)) // center vertically
-      .force('charge', d3.forceManyBody().strength(-3000000)) // every node pushes other nodes
+      .force('charge', d3.forceManyBody().strength(-1500000)) // every node pushes other nodes
       .force(
         'link',
         d3
           .forceLink()
-          .distance(200)
+          .distance(2000)
           .strength(1)
           .id((d) => d.id),
       )
