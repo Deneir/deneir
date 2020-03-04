@@ -1,18 +1,14 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import Graph from './canvas/index';
-import readGraphData from '../../actions/graph';
-import { selectNode } from '../../actions/nodes';
-import Search from './Search';
-import Status from './Status';
+import Graph from '../components/canvas/index';
+import readGraphData from '../actions/graph';
+import Search from '../components/Search';
+import Status from '../components/Status';
 
-import styles from './index.module.scss';
+import styles from './GraphContainer.module.scss';
 
 export default function GraphContainer() {
   const dispatch = useDispatch();
-  const actions = {
-    clickNode: (nodeId) => dispatch(selectNode(nodeId)),
-  };
 
   const nodes = useSelector((state) => state.nodes);
   const selectedNode = useSelector((state) => state.selectedNode);
@@ -24,12 +20,11 @@ export default function GraphContainer() {
   if (!Object.keys(nodes).length) {
     return <p>Loading ...</p>;
   }
-
   return (
     <>
       <Search nodes={nodes} className={styles.search} />
       <Status className={styles.status} />
-      <Graph nodes={nodes} actions={actions} selectedNode={selectedNode} />
+      <Graph nodes={nodes} selectedNode={selectedNode} />
     </>
   );
 }

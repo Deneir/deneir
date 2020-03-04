@@ -1,8 +1,8 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { selectNode } from '../../actions/nodes';
+import { selectNode } from '../actions/nodes';
 
-import styles from './index.module.scss';
+import styles from './PanelContainer.module.scss';
 
 export default function PanelContainer() {
   const dispatch = useDispatch();

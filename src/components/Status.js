@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { getConfig } from '../../services/read-config';
+import { getConfig } from '../services/read-config';
 
 export default function Status({ className }) {
   const types = getConfig('entityTypes');

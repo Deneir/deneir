@@ -5,7 +5,7 @@ export default {
       duration: 750,
     },
     backgroundColor: '#131212',
-    minimumScale: 0.003,
+    minimumScale: 0.006,
     maximumScale: 0.1,
     nodes: {
       lineWidth: 160,

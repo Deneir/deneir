@@ -2,7 +2,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { getConfig } from '../../services/read-config';
+import { getConfig } from '../services/read-config';
 
 export default function Search({ nodes, className }) {
   const { maxResults } = getConfig('search');

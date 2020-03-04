@@ -1,5 +1,5 @@
 /* eslint-disable no-param-reassign */
-import { getConfig } from '../../../services/read-config';
+import { getConfig } from '../../services/read-config';
 
 /**
  * Create angles for the arrow

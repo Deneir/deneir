@@ -1,5 +1,5 @@
 import * as d3 from 'd3';
-import { getConfig } from '../../../services/read-config';
+import { getConfig } from '../../services/read-config';
 
 /**
  * Find a node from a click
@@ -34,31 +34,4 @@ export default function getNodeFromCanvasClick(transform, nodes) {
   }
 
   return undefined;
-}
-
-/**
- * Create a programmatic zoom
- *
- * @param {Object} canvas canvas object
- * @param {Function} setZoom the zoom fn created initially
- * @param {Object} filtered the coordinates of the filtered node
- * @param {Object} size width and height of the canvas (without retina)
- */
-
-export function setProgrammaticZoom(canvas, filtered, size) {
-  if (filtered && filtered.x && filtered.y) {
-    const settings = getConfig('canvasSettings');
-    const { scale, duration } = settings.zoom;
-
-    d3.select(canvas)
-      .transition()
-      .duration(duration)
-      .call(
-        canvas.setZoom.transform,
-        d3.zoomIdentity
-          .translate(size.width / 2, size.height / 2)
-          .scale(scale)
-          .translate(-filtered.x, -filtered.y),
-      );
-  }
 }

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import moment from 'moment';
 import Tabs from './Tab/Tabs';
 import Collapsible from './Collapsible';
-import styles from './index.module.scss';
+import styles from './ListContent.module.scss';
 
 function setDate(date) {
   return moment(date).format('YYYY-MM-DD');
