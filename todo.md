@@ -1,6 +1,5 @@
 # Current
 
-* [ ] zoom on clickNode
 * [ ] zoom on search
 * [ ] fix eslint rules
 * [ ] add dependents and dependencies list with links to zoom/select them
