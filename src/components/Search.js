@@ -27,7 +27,7 @@ export default function Search({ nodes, onSearch }) {
   };
   const handleSuggestionClick = (suggestionIdx) => {
     setActiveSuggestion(suggestionIdx);
-    handleSubmit(suggestionIdx);
+    handleSubmit(filteredSuggestions[suggestionIdx]);
   };
   const handleKeyDown = (event) => {
     // User pressed the enter key
