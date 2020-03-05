@@ -6,7 +6,7 @@
 * [ ] rework details panel to make more sense
 * [ ] rewrite feature list as an actual feature list in readme
 * [ ] clarify in the code and the interface the words used (service/instance/process)
-* [ ] fix chart legend
+* [ ] add shapes legend
 
 # Backlog
 * [ ] hide nodes & save hidden nodes settings

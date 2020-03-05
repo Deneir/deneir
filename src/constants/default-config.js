@@ -48,9 +48,6 @@ export default {
     subtitle: 'Details',
     processName: 'processes',
   },
-  search: {
-    maxResults: 10,
-  },
   entityTypes: {
     default: {
       name: 'default',

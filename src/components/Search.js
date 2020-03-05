@@ -2,39 +2,77 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { getConfig } from '../services/read-config';
+import styles from './Search.module.scss';
 
-export default function Search({ nodes, className }) {
-  const { maxResults } = getConfig('search');
-
+export default function Search({ nodes, onSearch }) {
   const [searchTerm, setSearchTerm] = useState('');
+  const [activeSuggestion, setActiveSuggestion] = useState(0);
+  const [showSuggestions, setShowSuggestions] = useState(false);
 
-  const results = !searchTerm
-    ? []
-    : nodes.filter((term) => term && term.id.includes(searchTerm.toLowerCase().trim()));
+  const filteredSuggestions = (searchTerm && findNodeMatches(nodes, searchTerm)) || [];
 
-  const handleChange = (event) => {
-    setSearchTerm(event.target.value);
-  };
-
-  const handleSubmit = (event) => {
-    if (event) {
-      event.preventDefault();
+  const handleSubmit = (search) => {
+    if (!nodes[search]) {
+      return;
     }
-    // console.log('should be selecting the node we clicked enter on or something');
+
+    setSearchTerm(search);
+    setShowSuggestions(false);
+    onSearch(search);
+  };
+  const handleChange = (event) => {
+    setActiveSuggestion(0);
+    setSearchTerm(event.target.value);
+    setShowSuggestions(true);
+  };
+  const handleSuggestionClick = (suggestionIdx) => {
+    setActiveSuggestion(suggestionIdx);
+    handleSubmit(suggestionIdx);
+  };
+  const handleKeyDown = (event) => {
+    // User pressed the enter key
+    if (event.keyCode === 13) {
+      handleSubmit(filteredSuggestions[activeSuggestion]);
+    }
+    // User pressed the up arrow, decrement the index
+    if (event.keyCode === 38) {
+      setActiveSuggestion(Math.max(activeSuggestion - 1, 0));
+    }
+    // User pressed the down arrow, increment the index
+    if (event.keyCode === 40) {
+      setActiveSuggestion(Math.min(activeSuggestion + 1, filteredSuggestions.length - 1));
+    }
+  };
+  const handleBlur = () => {
+    setShowSuggestions(false);
+  };
+  const handleFocus = () => {
+    setShowSuggestions(true);
   };
 
   return (
-    <div className={`${className}`}>
-      <form onSubmit={handleSubmit}>
-        <input type="text" placeholder="Search" value={searchTerm} onChange={handleChange} />
-        <button type="submit">Locate</button>
-      </form>
-      {results.length > 0 && results.length < maxResults && (
+    <div className={styles.search}>
+      <input
+        type="text"
+        placeholder="Search"
+        value={searchTerm}
+        onChange={handleChange}
+        onKeyDown={handleKeyDown}
+        onBlur={handleBlur}
+        onFocus={handleFocus}
+      />
+      <button onClick={() => handleSubmit(searchTerm)} type="button">
+        Locate
+      </button>
+      {showSuggestions && filteredSuggestions.length > 0 && (
         <ul>
-          {results.map((list) => (
-            <li key={list.id} onClick={() => setSearchTerm(list.id)}>
-              {list.id}
+          {filteredSuggestions.slice(0, 10).map((id, idx) => (
+            <li
+              key={id}
+              className={(idx === activeSuggestion && styles.activeSuggestion) || null}
+              onMouseDown={() => handleSuggestionClick(idx)}
+            >
+              {id}
             </li>
           ))}
         </ul>
@@ -45,5 +83,11 @@ export default function Search({ nodes, className }) {
 
 Search.propTypes = {
   nodes: PropTypes.instanceOf(Object).isRequired,
-  className: PropTypes.string.isRequired,
+  onSearch: PropTypes.func.isRequired,
 };
+
+function findNodeMatches(nodes, searchTerm) {
+  const cleanSearch = searchTerm.toLowerCase().trim();
+
+  return Object.keys(nodes).filter((id) => id.includes(cleanSearch));
+}
