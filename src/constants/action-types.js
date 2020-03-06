@@ -8,3 +8,5 @@ export const GET_STATUS_FAILURE = 'GET_STATUS_FAILURE';
 
 export const SELECT_NODE = 'SELECT_NODE';
 export const TOGGLE_PANEL = 'TOGGLE_PANEL';
+
+export const SET_FILTER = 'SET_FILTER';
