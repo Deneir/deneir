@@ -45,3 +45,15 @@ export function graphFormatter(nodeDictionary) {
 
   return { nodes, links };
 }
+
+export function getNodeDetails(nodeDictionary, nodeId) {
+  const selectedNode = nodeDictionary[nodeId];
+  return {
+    ...selectedNode,
+    dependents: selectedNode.dependents.map((link) => ({ ...link, ...nodeDictionary[link.id] })),
+    dependencies: selectedNode.dependencies.map((link) => ({
+      ...link,
+      ...nodeDictionary[link.id],
+    })),
+  };
+}

@@ -1,13 +1,6 @@
 /* eslint-disable no-param-reassign */
 import { getConfig } from '../../services/read-config';
-
-const statusCodes = {
-  0: 'ok',
-  1: 'warning',
-  2: 'critical',
-  3: 'emergency',
-  4: 'unknown',
-};
+import { statusCodesToLabels } from '../../constants/status-codes';
 
 export default function drawNode(context, {
   x, y, type, status,
@@ -19,7 +12,7 @@ export default function drawNode(context, {
   } = settings;
   const { lineWidth, radius } = nodes;
   const { shape, strokeColor } = types[type] || types.default;
-  const statusCode = statusCodes[status] || defaultStatus;
+  const statusCode = statusCodesToLabels[status] || defaultStatus;
   const fillStyle = statusColors[statusCode];
   const strokeStyle = statusStrokes[statusCode];
 
