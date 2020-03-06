@@ -5,11 +5,12 @@ import readGraphData from '../actions/graph';
 import Search from '../components/Search';
 import Legend from '../components/Legend';
 import * as actions from '../actions/nodes';
+import { getFilteredNodes } from '../reducers/nodes-selector';
 
 export default function GraphContainer() {
   const dispatch = useDispatch();
 
-  const nodes = useSelector((state) => state.nodes);
+  const nodes = useSelector((state) => getFilteredNodes(state));
   const selectedNode = useSelector((state) => state.selectedNode);
 
   useEffect(() => {

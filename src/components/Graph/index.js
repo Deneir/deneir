@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import styles from './index.module.scss';
 import graphFunctions from './graph-functions';
 import { selectNode } from '../../actions/nodes';
-import graphFormatter from '../../formatters/graph-formatter';
+import { graphFormatter } from '../../reducers/nodes-selector';
 
 export default function Graph(props) {
   const canvasRef = useRef(null);
