@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectNode } from '../actions/nodes';
 import { getNodeDetails } from '../reducers/nodes-selector';
-import { statusCodesToLabels } from '../constants/status-codes';
+import DependencyList from '../components/DependencyList';
 
 import styles from './PanelContainer.module.scss';
 
@@ -28,25 +28,15 @@ export default function PanelContainer() {
           </div>
           <div>
             <h2>Dependencies</h2>
-            <ul>
-              {selectedNode.dependencies.map((dependency) => (
-                <li key={dependency.id}>
-                  <a onClick={() => dispatch(selectNode(dependency.id))}>
-                    {dependency.id} ({statusCodesToLabels[dependency.status]})
-                  </a>
-                </li>
-              ))}
-            </ul>
+            <DependencyList
+              selectNode={(id) => dispatch(selectNode(id))}
+              items={selectedNode.dependencies}
+            />
             <h2>Dependents</h2>
-            <ul>
-              {selectedNode.dependents.map((dependent) => (
-                <li key={dependent.id}>
-                  <a onClick={() => dispatch(selectNode(dependent.id))}>
-                    {dependent.id} ({statusCodesToLabels[dependent.status]})
-                  </a>
-                </li>
-              ))}
-            </ul>
+            <DependencyList
+              selectNode={(id) => dispatch(selectNode(id))}
+              items={selectedNode.dependents}
+            />
           </div>
         </section>
       )}

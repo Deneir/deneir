@@ -1,7 +1,5 @@
 # Current
 
-* [ ] fix eslint rules
-* [ ] add dependents and dependencies list with links to zoom/select them
 * [ ] rework details panel to make more sense
 * [ ] clarify in the code and the interface the words used (service/instance/process)
 * [ ] rewrite feature list as an actual feature list in readme
