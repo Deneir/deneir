@@ -21,7 +21,10 @@ export function readConfig() {
       config = mergeDeep(defaultConfig, res);
     })
     .catch((error) => {
-      throw new Error('Could not parse config file, are you sure it is correctly formatted?', error);
+      throw new Error(
+        'Could not parse config file, are you sure it is correctly formatted?',
+        error,
+      );
     });
 }
 

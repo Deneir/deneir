@@ -1,5 +1,4 @@
 /* eslint-disable no-param-reassign */
-
 import drawLink from './draw-link';
 import { getConfig } from '../../services/read-config';
 import drawNode from './draw-node';

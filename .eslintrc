@@ -1,0 +1,19 @@
+{
+  "extends": [
+    "react-app",
+    "airbnb-base",
+    "airbnb/hooks",
+    "eslint:recommended",
+    "plugin:import/recommended",
+    "plugin:react/recommended"
+  ],
+  "rules": {
+    "no-use-before-define": [
+      "error",
+      {
+        "functions": false
+      }
+    ],
+    "import/prefer-default-export": "off"
+  }
+}

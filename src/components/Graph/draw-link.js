@@ -54,7 +54,7 @@ function drawAngle(links, radius, arcX, arcY) {
 
   // check for too close and no room for arc
   if ((bend < 0 && firstAngle < secondAngle) || (bend > 0 && secondAngle < firstAngle)) {
-    return;
+    return undefined;
   }
   // is there a start arrow
   if (drawStartArrow) {
@@ -76,7 +76,6 @@ function drawAngle(links, radius, arcX, arcY) {
     finalSecondAngle = secondAngle;
   }
 
-  // eslint-disable-next-line consistent-return
   return {
     firstAngle,
     secondAngle,

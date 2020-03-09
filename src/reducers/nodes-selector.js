@@ -4,6 +4,7 @@ export function getFilteredNodes({ nodes, filters }) {
   }
 
   return Object.values(nodes).reduce((filteredNodes, node) => {
+    /* eslint-disable no-restricted-syntax */
     for (const filter in filters) {
       if (!filters[filter].includes(node[filter])) {
         return filteredNodes;

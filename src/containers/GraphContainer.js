@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Graph from '../components/Graph/index';
 import readGraphData from '../actions/graph';
@@ -21,10 +21,10 @@ export default function GraphContainer() {
     return <p>Loading ...</p>;
   }
   return (
-    <>
+    <Fragment>
       <Search nodes={nodes} onSearch={(search) => dispatch(actions.selectNode(search))} />
       <Legend />
       <Graph nodes={nodes} selectedNode={selectedNode} />
-    </>
+    </Fragment>
   );
 }

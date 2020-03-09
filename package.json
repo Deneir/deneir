@@ -23,33 +23,6 @@
     "lint": "eslint src",
     "eject": "react-scripts eject"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "airbnb",
-      "airbnb/hooks",
-      "eslint:recommended",
-      "plugin:import/recommended",
-      "plugin:react/recommended"
-    ],
-    "rules": {
-      "no-use-before-define": [
-        "error",
-        {
-          "functions": false
-        }
-      ],
-      "react/jsx-filename-extension": [
-        1,
-        {
-          "extensions": [
-            ".js",
-            ".jsx"
-          ]
-        }
-      ]
-    }
-  },
   "browserslist": {
     "production": [
       ">0.2%",

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectNode } from '../actions/nodes';
 import { getNodeDetails } from '../reducers/nodes-selector';
@@ -17,7 +17,7 @@ export default function PanelContainer() {
   });
 
   return (
-    <>
+    <Fragment>
       {selectedNode && (
         <section className={styles.panel}>
           <div className={styles.header}>
@@ -32,9 +32,7 @@ export default function PanelContainer() {
               {selectedNode.dependencies.map((dependency) => (
                 <li key={dependency.id}>
                   <a onClick={() => dispatch(selectNode(dependency.id))}>
-                    {dependency.id}
-                    {' '}
-                    ({statusCodesToLabels[dependency.status]})
+                    {dependency.id} ({statusCodesToLabels[dependency.status]})
                   </a>
                 </li>
               ))}
@@ -44,9 +42,7 @@ export default function PanelContainer() {
               {selectedNode.dependents.map((dependent) => (
                 <li key={dependent.id}>
                   <a onClick={() => dispatch(selectNode(dependent.id))}>
-                    {dependent.id}
-                    {' '}
-                    ({statusCodesToLabels[dependent.status]})
+                    {dependent.id} ({statusCodesToLabels[dependent.status]})
                   </a>
                 </li>
               ))}
@@ -54,6 +50,6 @@ export default function PanelContainer() {
           </div>
         </section>
       )}
-    </>
+    </Fragment>
   );
 }
