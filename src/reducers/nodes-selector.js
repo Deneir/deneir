@@ -58,3 +58,27 @@ export function getNodeDetails(nodeDictionary, nodeId) {
     })),
   };
 }
+
+export function getNodesGroupedByTag(nodeDictionary, tagId) {
+  if (tagId === 'node') {
+    return nodeDictionary;
+  }
+  return Object.values(nodeDictionary).reduce((nodes, node) => {
+    const tagValue = node.tags[tagId];
+
+    if (nodes[tagValue]) {
+      return nodes;
+    }
+
+    return {
+      ...nodes,
+      [tagValue]: {
+        id: tagValue,
+        group: true,
+        type: 'group',
+        dependents: [],
+        dependencies: [],
+      },
+    };
+  }, {});
+}

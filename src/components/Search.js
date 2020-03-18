@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import styles from './Search.module.scss';
+import LegendBlock from './LegendBlock';
 
 export default function Search({ nodes, onSearch }) {
   const [searchTerm, setSearchTerm] = useState('');
@@ -49,7 +50,7 @@ export default function Search({ nodes, onSearch }) {
   };
 
   return (
-    <div className={styles.search}>
+    <LegendBlock>
       <input
         type="text"
         placeholder="Search"
@@ -75,7 +76,7 @@ export default function Search({ nodes, onSearch }) {
           ))}
         </ul>
       )}
-    </div>
+    </LegendBlock>
   );
 }
 

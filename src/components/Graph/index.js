@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import styles from './index.module.scss';
 import graphFunctions from './graph-functions';
 import { selectNode } from '../../actions/nodes';
+import { selectGroup } from '../../actions/filters';
 import { graphFormatter } from '../../reducers/nodes-selector';
 
 export default function Graph(props) {
@@ -12,7 +13,12 @@ export default function Graph(props) {
   const dispatch = useDispatch();
   useEffect(() => {
     const actions = {
-      clickNode: (nodeId) => dispatch(selectNode(nodeId)),
+      clickNode: (nodeId) => {
+        if (nodes[nodeId].group) {
+          return dispatch(selectGroup(nodeId));
+        }
+        return dispatch(selectNode(nodeId));
+      },
     };
     //  d3 setup
     const canvas = canvasRef.current;

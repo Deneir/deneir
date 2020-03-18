@@ -10,3 +10,4 @@ export const SELECT_NODE = 'SELECT_NODE';
 export const TOGGLE_PANEL = 'TOGGLE_PANEL';
 
 export const SET_FILTER = 'SET_FILTER';
+export const SET_GROUP_LEVEL = 'SET_GROUP_LEVEL';

@@ -1,5 +1,6 @@
 import React from 'react';
 import GraphContainer from './containers/GraphContainer';
+import LegendContainer from './containers/LegendContainer';
 import PanelContainer from './containers/PanelContainer';
 
 import styles from './index.module.scss';
@@ -11,6 +12,7 @@ function App() {
   return (
     <div className={styles.app}>
       <GraphContainer />
+      <LegendContainer />
       <PanelContainer meta={meta} />
     </div>
   );
