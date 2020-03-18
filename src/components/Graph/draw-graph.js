@@ -12,11 +12,9 @@ export default function drawGraph(canvas, cameraPosition, { nodes, links }) {
   const { width } = canvas.getBoundingClientRect();
   const height = window.innerHeight;
 
-  // Ensure it isn't blurry for retina display
-  const ratio = window.devicePixelRatio || 1;
-  canvas.width = width * ratio;
-  canvas.height = height * ratio;
-  context.setTransform(ratio, 0, 0, ratio, 0, 0);
+  canvas.width = width;
+  canvas.height = height;
+
   const settings = getConfig('canvasSettings');
 
   context.save();
