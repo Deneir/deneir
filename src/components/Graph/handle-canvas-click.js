@@ -15,8 +15,10 @@ import { getConfig } from '../../services/read-config';
  */
 
 export default function getNodeFromCanvasClick(transform, nodes) {
-  const x = d3.event ? transform.invertX(d3.event.x) : null;
-  const y = d3.event ? transform.invertY(d3.event.y) : null;
+  const layerX = (d3.event.sourceEvent && d3.event.sourceEvent.layerX) || d3.event.layerX;
+  const layerY = (d3.event.sourceEvent && d3.event.sourceEvent.layerY) || d3.event.layerY;
+  const x = d3.event ? transform.invertX(layerX) : null;
+  const y = d3.event ? transform.invertY(layerY) : null;
   const { nodes: nodesConfig } = getConfig('canvasSettings');
   const { radius } = nodesConfig;
 

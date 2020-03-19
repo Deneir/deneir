@@ -11,8 +11,8 @@ function App() {
 
   return (
     <div className={styles.app}>
-      <GraphContainer />
       <LegendContainer />
+      <GraphContainer />
       <PanelContainer meta={meta} />
     </div>
   );

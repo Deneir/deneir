@@ -9,12 +9,6 @@ export default function drawGraph(canvas, cameraPosition, { nodes, links }) {
     return;
   }
   const context = canvas.getContext('2d');
-  const { width } = canvas.getBoundingClientRect();
-  const height = window.innerHeight;
-
-  canvas.width = width;
-  canvas.height = height;
-
   const settings = getConfig('canvasSettings');
 
   context.save();

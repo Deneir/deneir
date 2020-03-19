@@ -10,8 +10,11 @@ export default graphFunctions;
 
 graphFunctions.initGraph = function initGraph(canvas, { data: { nodes, links }, actions }) {
   const settings = getConfig('canvasSettings');
-  const { width } = canvas.getBoundingClientRect();
-  const height = window.innerHeight;
+  const { width, height } = canvas.getBoundingClientRect();
+
+  /* eslint-disable no-param-reassign */
+  canvas.width = width;
+  canvas.height = height;
 
   let cameraPosition = d3.zoomIdentity
     .translate(width / 2, height / 2)
@@ -37,6 +40,7 @@ graphFunctions.initGraph = function initGraph(canvas, { data: { nodes, links }, 
     .nodes(nodes)
     .on('tick', () => {
       drawAll(canvas, cameraPosition, { nodes, links });
+      zoomFit(canvas, cameraPosition, { nodes });
     })
     .force('link')
     .links(links);
@@ -97,14 +101,39 @@ graphFunctions.initGraph = function initGraph(canvas, { data: { nodes, links }, 
           .translate(-nodeToZoom.x, -nodeToZoom.y),
       );
   }
+  function zoomFit() {
+    const { topLeft, bottomRight, center } = getGraphBounds();
+    const paddingPercent = 0.85;
+    const widthRatio = (bottomRight.x - topLeft.x) / canvas.width;
+    const heightRatio = (topLeft.y - bottomRight.y) / canvas.height;
+    const idealScale = paddingPercent / Math.max(widthRatio, heightRatio);
+
+    d3.select(canvas)
+      .transition()
+      .duration(20)
+      .call(
+        setCameraPosition,
+        d3.zoomIdentity
+          .translate(canvas.width / 2, canvas.height / 2)
+          .scale(idealScale)
+          .translate(-center.x, -center.y),
+      );
+  }
+  function getGraphBounds() {
+    const nodeXs = nodes.map((node) => node.x);
+    const nodeYs = nodes.map((node) => node.y);
+    const topLeft = { x: Math.min(...nodeXs), y: Math.max(...nodeYs) };
+    const bottomRight = { x: Math.max(...nodeXs), y: Math.min(...nodeYs) };
+    return {
+      topLeft,
+      bottomRight,
+      center: {
+        x: topLeft.x + (bottomRight.x - topLeft.x) / 2,
+        y: topLeft.y - (topLeft.y - bottomRight.y) / 2,
+      },
+    };
+  }
 
   graphFunctions.updateGraph = updateGraph;
   graphFunctions.setCameraToNode = setCameraToNode;
 };
-
-function graphNodeExtremes(nodes) {
-  const nodeXs = nodes.map((node) => node.x);
-  const nodeYs = nodes.map((node) => node.y);
-
-  return [Math.max(...nodeXs), Math.max(...nodeYs), Math.min(...nodeXs), Math.min(...nodeYs)];
-}
