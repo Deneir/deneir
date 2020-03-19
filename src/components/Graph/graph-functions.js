@@ -101,3 +101,10 @@ graphFunctions.initGraph = function initGraph(canvas, { data: { nodes, links }, 
   graphFunctions.updateGraph = updateGraph;
   graphFunctions.setCameraToNode = setCameraToNode;
 };
+
+function graphNodeExtremes(nodes) {
+  const nodeXs = nodes.map((node) => node.x);
+  const nodeYs = nodes.map((node) => node.y);
+
+  return [Math.max(...nodeXs), Math.max(...nodeYs), Math.min(...nodeXs), Math.min(...nodeYs)];
+}

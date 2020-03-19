@@ -6,12 +6,12 @@ export default {
     },
     backgroundColor: '#131212',
     minimumScale: 0.006,
-    maximumScale: 0.1,
+    maximumScale: 1,
     nodes: {
       lineWidth: 160,
       radius: 600,
       label: {
-        fontSize: 160,
+        fontSize: 200,
         fillStyle: '#fff',
         textAlign: 'center',
         fontType: 'bold',

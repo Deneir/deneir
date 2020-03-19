@@ -3,10 +3,32 @@ import * as types from '../constants/action-types';
 export default function filters(state = {}, action) {
   switch (action.type) {
     case types.SET_FILTER:
-      return { ...state, [action.filter]: action.value };
+      return setFilterReducer(state, action);
     default:
       return state;
   }
+}
+
+function setFilterReducer(state, action) {
+  const newState = { ...state };
+  const previousFilter = state[action.filter] || [];
+
+  if (!previousFilter.includes(action.value)) {
+    newState[action.filter] = [...previousFilter, action.value];
+    return newState;
+  }
+  const valueIndex = previousFilter.indexOf(action.value);
+  const newFilter = [
+    ...previousFilter.slice(0, valueIndex),
+    ...previousFilter.slice(valueIndex + 1),
+  ];
+
+  newState[action.filter] = newFilter;
+
+  if (!newFilter.length) {
+    delete newState[action.filter];
+  }
+  return newState;
 }
 
 export function getAvailableFilters(state) {

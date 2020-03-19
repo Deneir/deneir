@@ -16,8 +16,7 @@ export default function GraphContainer() {
   const dispatch = useDispatch();
   const nodes = useSelector((state) => state.nodes);
   const availableFilters = getAvailableFilters({ nodes });
-  const selectedNode = useSelector((state) => state.selectedNode);
-  const groupedNodes = getNodesGroupedByTag(nodes, 'order');
+  const groupLevel = useSelector((state) => state.groupLevel);
 
   if (!Object.keys(nodes).length) {
     return <p>Loading ...</p>;
@@ -35,7 +34,8 @@ export default function GraphContainer() {
       {hierarchy && (
         <Hierarchy
           hierarchy={hierarchy}
-          setGroupLevel={(groupLevel) => dispatch(setGroupLevel(groupLevel))}
+          groupLevel={groupLevel}
+          setGroupLevel={(newGroupLevel) => dispatch(setGroupLevel(newGroupLevel))}
         />
       )}
       {Object.keys(availableFilters).map((filterId) => (
