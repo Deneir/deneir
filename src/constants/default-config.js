@@ -1,17 +1,17 @@
 export default {
   canvasSettings: {
     zoom: {
-      scale: 0.1,
+      scale: 1,
       duration: 750,
     },
     backgroundColor: '#131212',
-    minimumScale: 0.006,
+    minimumScale: 0.05,
     maximumScale: 1,
     nodes: {
-      lineWidth: 160,
-      radius: 600,
+      lineWidth: 10,
+      radius: 50,
       label: {
-        fontSize: 200,
+        fontSize: 20,
         fillStyle: '#fff',
         textAlign: 'center',
         fontType: 'bold',
@@ -35,12 +35,12 @@ export default {
     },
     links: {
       bend: 0.1,
-      arrowLength: 300,
-      arrowWidth: 300,
+      arrowheadLength: 30,
+      arrowWidth: 5,
+      arrowheadWidth: 40,
       startArrow: false,
       endArrow: true,
-      startRadius: '600',
-      endRadius: '600',
+
       vectorColor: '#ddd',
     },
   },

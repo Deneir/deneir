@@ -9,7 +9,11 @@
       "order": "carnivora",
       "class": "mammalia"
     },
-    "dependents": [],
+    "dependents": [
+      {
+          "id": "Tiger"
+      }
+    ],
     "dependencies": []
   },
   "Tiger": {
@@ -23,7 +27,11 @@
       "class": "mammalia"
     },
     "dependents": [],
-    "dependencies": []
+    "dependencies": [
+      {
+          "id": "Lion"
+      }
+    ]
   },
   "Jaguar": {
     "id": "Jaguar",
@@ -126,7 +134,11 @@
       "order": "carnivora",
       "class": "mammalia"
     },
-    "dependents": [],
+    "dependents": [
+      {
+          "id": "Chinese mountain cat"
+      }
+    ],
     "dependencies": []
   },
   "Chinese mountain cat": {
@@ -140,7 +152,11 @@
       "class": "mammalia"
     },
     "dependents": [],
-    "dependencies": []
+    "dependencies": [
+      {
+          "id": "Sand cat"
+      }
+    ]
   },
   "Bobcat": {
     "id": "Bobcat",

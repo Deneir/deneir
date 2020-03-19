@@ -14,8 +14,9 @@ function drawAngle(links, radius, arcX, arcY) {
   const { x: sourceX, y: sourceY } = links.source;
   const { x: targetX, y: targetY } = links.target;
   const settings = getConfig('canvasSettings');
+  const { nodes } = settings;
   const {
-    bend, arrowLength, startArrow, endArrow, startRadius, endRadius,
+    bend, arrowheadLength, startArrow, endArrow,
   } = settings.links;
 
   const circumference = Math.PI * 2;
@@ -44,11 +45,11 @@ function drawAngle(links, radius, arcX, arcY) {
   }
 
   // convert arrow length to angular length
-  const arrowAng = (arrowLength / radius) * Math.sign(bend);
-
+  const arrowAng = (arrowheadLength / radius) * Math.sign(bend);
+  const angle = (nodes.radius / radius) * Math.sign(bend);
   // get angular length of start and end circles and move arc start and ends
-  firstAngle += (startRadius / radius) * Math.sign(bend);
-  secondAngle -= (endRadius / radius) * Math.sign(bend);
+  firstAngle += angle;
+  secondAngle -= angle;
   finalFirstAngle = firstAngle;
   finalSecondAngle = secondAngle;
 
@@ -104,7 +105,7 @@ function drawArrow(context, angle, finalAngle, arrowWidth, angles) {
 function drawArc(context, angles) {
   const settings = getConfig('canvasSettings');
   const {
-    bend, startArrow, endArrow, vectorColor, arrowWidth,
+    bend, startArrow, endArrow, vectorColor, arrowWidth, arrowheadWidth,
   } = settings.links;
   const {
     firstAngle, secondAngle, finalFirstAngle, finalSecondAngle, radius, arcX, arcY,
@@ -113,19 +114,19 @@ function drawArc(context, angles) {
   context.beginPath();
   context.arc(arcX, arcY, radius, finalFirstAngle, finalSecondAngle, bend < 0);
   context.fillStyle = vectorColor;
-  context.lineWidth = 20;
+  context.lineWidth = arrowWidth;
   context.strokeStyle = vectorColor;
   context.stroke();
 
   // draw start arrow if needed
   context.beginPath();
   if (startArrow) {
-    drawArrow(context, firstAngle, finalFirstAngle, arrowWidth, angles);
+    drawArrow(context, firstAngle, finalFirstAngle, arrowheadWidth, angles);
   }
 
   // draw end arrow if needed
   if (endArrow) {
-    drawArrow(context, secondAngle, finalSecondAngle, arrowWidth, angles);
+    drawArrow(context, secondAngle, finalSecondAngle, arrowheadWidth, angles);
   }
   context.fill();
 }
