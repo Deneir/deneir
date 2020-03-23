@@ -8,21 +8,20 @@
 * [ ] add the chain tags for all components
 
 ## details panel
+* [ ] fix details panel layout
 * [ ] add info from the details api to the details panel
 * [ ] make sure Deneir works smooth without a `details` API
 
-## filtering
-* [ ] allow filtering by tag
-* [ ] allow filtering by tag from the details panel
-* [ ] allow filtering by status (?)
+## zoom to fit page
+* [ ] polish zoom to fit page feature (after changing hierarchy level, filtering, etc.)
+* [ ] zoom to fit should not be applied on drag or click
+* [ ] zoom to fit should not continue ticking after zoomed
 
 ## zooming/grouping
-* [ ] allow grouping/zooming by tags: represent all entities with a same tag value as a single node
+* [ ] search should be updated according to grouping
 * [ ] define the status of a grouped node with the sum of the nodes it contains
-
-## zoom levels
-* [ ] define in configuration the hierarchy between tags to define a zoom level feature
-* [ ] add breadcrumbs that tell the user where they are in terms of zoom
+* [ ] define the links between groups based on the links between the nodes they contain
+* [ ] when clicking on a group node, we should move down a level in the hierarchy and filter by the value of the group we clicked
 
 ## status auto refresh
 * [ ] basic autorefresh using graph API endpoint + frontend patching

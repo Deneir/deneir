@@ -2,6 +2,7 @@ import * as types from '../constants/action-types';
 
 export default function filters(state = {}, action) {
   switch (action.type) {
+    case types.SELECT_GROUP:
     case types.SET_FILTER:
       return setFilterReducer(state, action);
     default:

@@ -21,7 +21,7 @@ export default function GraphContainer() {
   }
   return (
     <Fragment>
-      <Graph nodes={groupedNodes} selectedNode={selectedNode} />
+      <Graph nodes={groupedNodes} selectedNode={selectedNode} groupLevel={groupLevel} />
     </Fragment>
   );
 }

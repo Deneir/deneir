@@ -9,13 +9,13 @@ import { graphFormatter } from '../../reducers/nodes-selector';
 
 export default function Graph(props) {
   const canvasRef = useRef(null);
-  const { selectedNode, nodes } = props;
+  const { selectedNode, nodes, groupLevel } = props;
   const dispatch = useDispatch();
   useEffect(() => {
     const actions = {
       clickNode: (nodeId) => {
         if (nodes[nodeId].group) {
-          return dispatch(selectGroup(nodeId));
+          return dispatch(selectGroup(groupLevel, nodeId));
         }
         return dispatch(selectNode(nodeId));
       },
@@ -23,7 +23,7 @@ export default function Graph(props) {
     //  d3 setup
     const canvas = canvasRef.current;
     graphFunctions.initGraph(canvas, { data: graphFormatter(nodes), actions });
-  }, [nodes, dispatch]);
+  }, [nodes, dispatch, groupLevel]);
 
   useEffect(() => {
     // select node zoom handler

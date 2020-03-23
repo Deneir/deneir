@@ -1,8 +1,7 @@
-import React, { Fragment, useEffect } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setFilter, setGroupLevel } from '../actions/filters';
 import { getAvailableFilters } from '../reducers/filters';
-import { getNodesGroupedByTag } from '../reducers/nodes-selector';
 import StatusLegend from '../components/StatusLegend';
 import Filter from '../components/Filter';
 import { selectNode } from '../actions/nodes';
