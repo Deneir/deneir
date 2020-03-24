@@ -5,7 +5,21 @@
   ul {
     padding: 0;
   }
+
+  :global(.medieval) & {
+    border-width: 3px;
+    border-radius: 2px;
+    border-style: solid;
+    border-left-color: #000;
+    border-top-color: #000;
+    border-bottom-color: #fff;
+    border-right-color: #fff;
+    background-image: url('../assets/legend-block.png');
+    background-size: cover;
+    color: #fff;
+  }
 }
+
 .title {
   font-weight: bold;
   cursor: pointer;
@@ -13,10 +27,10 @@
   padding-bottom: 5px;
 }
 .contentPanel {
-    max-height: 0;
+  max-height: 0;
   transition: max-height 0.5s ease-in-out;
   overflow: hidden;
 }
 .open {
-  max-height:500px;
+  max-height: 500px;
 }

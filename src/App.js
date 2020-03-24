@@ -8,9 +8,10 @@ import { getConfig } from './services/read-config';
 
 function App() {
   const meta = getConfig('meta');
+  const specialDisplay = document.location.hash === '#rpg';
 
   return (
-    <div className={styles.app}>
+    <div className={`${styles.app} ${specialDisplay && 'medieval'}`}>
       <LegendContainer />
       <GraphContainer />
       <PanelContainer meta={meta} />

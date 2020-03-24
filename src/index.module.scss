@@ -1,8 +1,18 @@
+@font-face {
+  font-family: 'medieval';
+  src: url('./assets/irish.ttf')
+}
+
 .app {
   display: flex;
   flex-direction: row;
-}
+  height: 100vh;
 
+  &:global(.medieval) {
+    font-family: medieval;
+    font-size: 18px;
+  }
+}
 li {
   list-style: none;
 }

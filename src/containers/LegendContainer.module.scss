@@ -1,5 +1,10 @@
 .LegendContainer {
-  height: 100vh;
+  min-width: 250px;
   max-width: 250px;
-  overflow-y: scroll;
+  overflow-y: auto;
+
+  :global(.medieval) & {
+    background-image: url('../assets/marble.png');
+    background-size: cover;
+  }
 }
