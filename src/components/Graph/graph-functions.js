@@ -12,10 +12,6 @@ graphFunctions.initGraph = function initGraph(canvas, { data: { nodes, links }, 
   const settings = getConfig('canvasSettings');
   const { width, height } = canvas.getBoundingClientRect();
 
-  /* eslint-disable no-param-reassign */
-  canvas.width = width;
-  canvas.height = height;
-
   let cameraPosition = d3.zoomIdentity
     .translate(width / 2, height / 2)
     .scale(settings.minimumScale);
@@ -96,7 +92,7 @@ graphFunctions.initGraph = function initGraph(canvas, { data: { nodes, links }, 
       .call(
         setCameraPosition,
         d3.zoomIdentity
-          .translate(canvas.width / 2, canvas.height / 2)
+          .translate(width / 2, height / 2)
           .scale(scale)
           .translate(-nodeToZoom.x, -nodeToZoom.y),
       );
@@ -104,8 +100,8 @@ graphFunctions.initGraph = function initGraph(canvas, { data: { nodes, links }, 
   function zoomFit() {
     const { topLeft, bottomRight, center } = getGraphBounds();
     const paddingPercent = 0.85;
-    const widthRatio = (bottomRight.x - topLeft.x) / canvas.width;
-    const heightRatio = (topLeft.y - bottomRight.y) / canvas.height;
+    const widthRatio = (bottomRight.x - topLeft.x) / width;
+    const heightRatio = (topLeft.y - bottomRight.y) / height;
     const idealScale = paddingPercent / Math.max(widthRatio, heightRatio, 1);
 
     d3.select(canvas)
@@ -114,7 +110,7 @@ graphFunctions.initGraph = function initGraph(canvas, { data: { nodes, links }, 
       .call(
         setCameraPosition,
         d3.zoomIdentity
-          .translate(canvas.width / 2, canvas.height / 2)
+          .translate(width / 2, height / 2)
           .scale(idealScale)
           .translate(-center.x, -center.y),
       );

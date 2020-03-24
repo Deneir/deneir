@@ -1,8 +1,10 @@
-import React, { Fragment, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Graph from '../components/Graph/index';
 import readGraphData from '../actions/graph';
 import { getFilteredNodes, getNodesGroupedByTag } from '../reducers/nodes-selector';
+
+import styles from './GraphContainer.module.scss';
 
 export default function GraphContainer() {
   const dispatch = useDispatch();
@@ -21,13 +23,13 @@ export default function GraphContainer() {
     return <p>Loading ...</p>;
   }
   return (
-    <Fragment>
+    <div className={styles.GraphContainer}>
       <Graph
         nodes={groupedNodes}
         selectedNode={selectedNode}
         groupLevel={groupLevel}
         filters={filters}
       />
-    </Fragment>
+    </div>
   );
 }

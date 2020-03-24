@@ -10,10 +10,14 @@ export default function drawGraph(canvas, cameraPosition, { nodes, links }) {
   }
   const context = canvas.getContext('2d');
   const settings = getConfig('canvasSettings');
+  const { width, height } = canvas.getBoundingClientRect();
+
+  canvas.width = width;
+  canvas.height = height;
 
   context.save();
   context.fillStyle = settings.backgroundColor;
-  context.fillRect(0, 0, canvas.width, canvas.height);
+  context.fillRect(0, 0, width, height);
   context.translate(cameraPosition.x, cameraPosition.y);
   context.scale(cameraPosition.k, cameraPosition.k);
 

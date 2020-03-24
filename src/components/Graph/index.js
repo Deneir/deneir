@@ -41,7 +41,7 @@ export default function Graph(props) {
     }, 600);
   }, [filters, groupLevel]);
 
-  return <canvas id="graph" ref={canvasRef} className={styles.canvas} />;
+  return <canvas id="graph" ref={canvasRef} className={styles.canvas}/>;
 }
 
 Graph.propTypes = {

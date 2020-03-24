@@ -19,7 +19,7 @@ export default function GraphContainer() {
   const filters = useSelector((state) => state.filters);
 
   if (!Object.keys(nodes).length) {
-    return <p>Loading ...</p>;
+    return null;
   }
 
   const actions = {

@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import { selectNode } from '../actions/nodes';
 import { getNodeDetails } from '../reducers/nodes-selector';
 import DependencyList from '../components/DependencyList';
-
 import styles from './PanelContainer.module.scss';
 
 export default function PanelContainer() {
@@ -17,9 +16,9 @@ export default function PanelContainer() {
   });
 
   return (
-    <Fragment>
+    <section className={styles.panel}>
       {selectedNode && (
-        <section className={styles.panel}>
+        <Fragment>
           <div className={styles.header}>
             <h1>{selectedNode.id}</h1>
             <button type="button" onClick={() => dispatch(selectNode(null))}>
@@ -38,8 +37,11 @@ export default function PanelContainer() {
               items={selectedNode.dependents}
             />
           </div>
-        </section>
+          </Fragment>
       )}
-    </Fragment>
+      {!selectedNode && <div className={styles.generalInfoPanel}>
+        informations générales sur le graph (hyper interessant)
+      </div>}
+      </section>
   );
 }
