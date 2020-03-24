@@ -9,7 +9,9 @@ import { graphFormatter } from '../../reducers/nodes-selector';
 
 export default function Graph(props) {
   const canvasRef = useRef(null);
-  const { selectedNode, nodes, groupLevel } = props;
+  const {
+    selectedNode, nodes, groupLevel, filters,
+  } = props;
   const dispatch = useDispatch();
   useEffect(() => {
     const actions = {
@@ -33,12 +35,20 @@ export default function Graph(props) {
     graphFunctions.setCameraToNode(selectedNode);
   }, [selectedNode]);
 
+  useEffect(() => {
+    setTimeout(() => {
+      graphFunctions.zoomFit();
+    }, 600);
+  }, [filters, groupLevel]);
+
   return <canvas id="graph" ref={canvasRef} className={styles.canvas} />;
 }
 
 Graph.propTypes = {
   nodes: PropTypes.instanceOf(Object).isRequired,
   selectedNode: PropTypes.string,
+  filters: PropTypes.instanceOf(Object),
+  groupLevel: PropTypes.string,
 };
 
 Graph.defaultProps = {

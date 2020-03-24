@@ -10,6 +10,7 @@ export default function GraphContainer() {
   const nodes = useSelector((state) => getFilteredNodes(state));
   const selectedNode = useSelector((state) => state.selectedNode);
   const groupLevel = useSelector((state) => state.groupLevel);
+  const filters = useSelector((state) => state.filters);
   const groupedNodes = getNodesGroupedByTag(nodes, groupLevel);
 
   useEffect(() => {
@@ -21,7 +22,12 @@ export default function GraphContainer() {
   }
   return (
     <Fragment>
-      <Graph nodes={groupedNodes} selectedNode={selectedNode} groupLevel={groupLevel} />
+      <Graph
+        nodes={groupedNodes}
+        selectedNode={selectedNode}
+        groupLevel={groupLevel}
+        filters={filters}
+      />
     </Fragment>
   );
 }

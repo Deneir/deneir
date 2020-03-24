@@ -38,12 +38,12 @@ graphFunctions.initGraph = function initGraph(canvas, { data: { nodes, links }, 
 
   simulation
     .nodes(nodes)
-    .on('tick', () => {
-      drawAll(canvas, cameraPosition, { nodes, links });
-      zoomFit(canvas, cameraPosition, { nodes });
-    })
     .force('link')
     .links(links);
+
+  simulation.on('tick', () => {
+    drawAll(canvas, cameraPosition, { nodes, links });
+  });
 
   d3.select(canvas).on('click', () => {
     const node = getNodeFromCanvasClick(cameraPosition, nodes);
@@ -106,11 +106,11 @@ graphFunctions.initGraph = function initGraph(canvas, { data: { nodes, links }, 
     const paddingPercent = 0.85;
     const widthRatio = (bottomRight.x - topLeft.x) / canvas.width;
     const heightRatio = (topLeft.y - bottomRight.y) / canvas.height;
-    const idealScale = paddingPercent / Math.max(widthRatio, heightRatio);
+    const idealScale = paddingPercent / Math.max(widthRatio, heightRatio, 1);
 
     d3.select(canvas)
       .transition()
-      .duration(20)
+      .duration(200)
       .call(
         setCameraPosition,
         d3.zoomIdentity
@@ -135,5 +135,6 @@ graphFunctions.initGraph = function initGraph(canvas, { data: { nodes, links }, 
   }
 
   graphFunctions.updateGraph = updateGraph;
+  graphFunctions.zoomFit = zoomFit;
   graphFunctions.setCameraToNode = setCameraToNode;
 };

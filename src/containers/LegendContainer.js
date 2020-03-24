@@ -16,6 +16,7 @@ export default function GraphContainer() {
   const nodes = useSelector((state) => state.nodes);
   const availableFilters = getAvailableFilters({ nodes });
   const groupLevel = useSelector((state) => state.groupLevel);
+  const filters = useSelector((state) => state.filters);
 
   if (!Object.keys(nodes).length) {
     return <p>Loading ...</p>;
@@ -40,6 +41,7 @@ export default function GraphContainer() {
       {Object.keys(availableFilters).map((filterId) => (
         <Filter
           key={filterId}
+          filters={filters[filterId]}
           filterId={filterId}
           values={availableFilters[filterId]}
           onChange={actions.handleFilterChange}
