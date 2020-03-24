@@ -8,7 +8,7 @@
   * [ ] add the chain tags for all components
 
 ## details panel
-  * [ ] fix details panel layout
+  * [ ] add general graph info in the default panel
   * [ ] add info from the details api to the details panel
   * [ ] make sure Deneir works smooth without a `details` API
 

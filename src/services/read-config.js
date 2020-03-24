@@ -5,7 +5,12 @@ let config = {};
 // We force getting config info key by key, rather than giving the entire config object,
 // so that the errors can be as explicit as possible
 export function getConfig(key) {
-  if (!config[key] && !defaultConfig[key]) {
+  if (
+    !config[key]
+    && config[key] !== false
+    && !defaultConfig[key]
+    && defaultConfig[key] !== false
+  ) {
     throw new Error(
       `Could not find config key "${key}", maybe you forgot to set it in your config file?`,
     );

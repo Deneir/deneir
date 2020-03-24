@@ -44,6 +44,7 @@ export default {
       vectorColor: '#ddd',
     },
   },
+  hierarchy: false,
   meta: {
     subtitle: 'Details',
     processName: 'processes',
