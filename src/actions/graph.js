@@ -15,10 +15,11 @@ export default function readGraphData() {
 
     return callApi('GET', getConfig('graphUrl'))
       .then(({ data = {} }) => {
-        return dispatch({
-          type: types.GET_GRAPH_SUCCESS,
-          nodes: data,
-        });
+        // code to replace once the api uses the correct format
+        // return dispatch({
+        //   type: types.GET_GRAPH_SUCCESS,
+        //   nodes: data,
+        // });
         const nodeDictionary = smartFormatter(data.nodes, data.edges);
 
         return dispatch({
