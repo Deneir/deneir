@@ -38,15 +38,20 @@ function renderShape(shape, context, props) {
   return shapes[nodeShape](context, props);
 }
 
-function square(context, { x, y }) {
+function square(context, { x, y, radius }) {
+  const height = radius * 2;
+
   context.beginPath();
-  context.rect(x - 1000 / 2, y - 1000 / 2, 1000, 1000);
+  context.rect(x - height / 2, y - height / 2, height, height);
   context.stroke();
   context.fill();
 }
-function rectangle(context, { x, y }) {
+function rectangle(context, { x, y, radius }) {
+  const height = radius * 1.5;
+  const width = radius * 3;
+
   context.beginPath();
-  context.rect(x - 1400 / 2, y - 600 / 2, 1400, 600);
+  context.rect(x - width / 2, y - height / 2, width, height);
   context.stroke();
   context.fill();
 }
@@ -60,9 +65,10 @@ function database(context, { x, y, radius }) {
   const xRadius = radius / 1.2;
   const yRadius = radius / 2;
   context.lineWidth /= 2;
+  const ellipsisOffset = radius / 2.5;
 
   context.beginPath();
-  context.ellipse(x, y + 200, xRadius, yRadius, Math.PI, 0, Math.PI * 2);
+  context.ellipse(x, y + ellipsisOffset, xRadius, yRadius, Math.PI, 0, Math.PI * 2);
   context.fill();
   context.stroke();
   context.beginPath();
@@ -70,7 +76,7 @@ function database(context, { x, y, radius }) {
   context.fill();
   context.stroke();
   context.beginPath();
-  context.ellipse(x, y - 200, xRadius, yRadius, Math.PI, 0, Math.PI * 2);
+  context.ellipse(x, y - ellipsisOffset, xRadius, yRadius, Math.PI, 0, Math.PI * 2);
   context.fill();
   context.stroke();
 }
