@@ -19,7 +19,7 @@
   "Tiger": {
     "id": "Tiger",
     "type": "animal",
-    "status": 0,
+    "status": 1,
     "tags": {
       "genus": "panthera",
       "family": "felidae",
@@ -49,7 +49,7 @@
   "Leopard": {
     "id": "Leopard",
     "type": "animal",
-    "status": 0,
+    "status": 3,
     "tags": {
       "genus": "panthera",
       "family": "felidae",
@@ -224,7 +224,7 @@
     "dependencies": []
   },
   "Giant panda": {
-    "id": "Red panda",
+    "id": "Giant panda",
     "type": "animal",
     "status": 0,
     "tags": {

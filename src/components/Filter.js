@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import LegendBlock from './LegendBlock';
 
 export default function Filter(props) {
@@ -19,3 +20,10 @@ export default function Filter(props) {
     </LegendBlock>
   );
 }
+
+Filter.propTypes = {
+  filters: PropTypes.array,
+  values: PropTypes.array.isRequired,
+  filterId: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+};

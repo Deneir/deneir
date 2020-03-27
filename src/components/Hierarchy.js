@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import LegendBlock from './LegendBlock';
 
 export default function Hierarchy(props) {
@@ -25,3 +26,9 @@ export default function Hierarchy(props) {
     </LegendBlock>
   );
 }
+
+Hierarchy.propTypes = {
+  hierarchy: PropTypes.array.isRequired,
+  groupLevel: PropTypes.string.isRequired,
+  setGroupLevel: PropTypes.func.isRequired,
+};

@@ -1,7 +1,10 @@
-.dependencyLink {
+.nodeLink {
   color: blue;
   text-decoration: underline;
   border: none;
   background: none;
   cursor:pointer;
+}
+.closed {
+  display: none;
 }

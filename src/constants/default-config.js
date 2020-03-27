@@ -11,7 +11,7 @@ export default {
       lineWidth: 10,
       radius: 50,
       label: {
-        fontSize: 20,
+        fontSize: 24,
         fillStyle: '#fff',
         textAlign: 'center',
         fontType: 'bold',

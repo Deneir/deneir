@@ -9,7 +9,6 @@ export function setGroupLevel(groupLevel) {
   return { type: types.SET_GROUP_LEVEL, groupLevel };
 }
 export function selectGroup(groupLevel, groupId) {
-  console.log('select group');
   const hierarchy = [...getConfig('hierarchy'), 'node'];
   const filter = groupLevel;
   const value = groupId;

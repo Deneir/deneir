@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import styles from './LegendBlock.module.scss';
 
 export default function LegendBlock(props) {
@@ -18,3 +19,9 @@ export default function LegendBlock(props) {
     </div>
   );
 }
+
+LegendBlock.propTypes = {
+  initialOpen: PropTypes.bool,
+  title: PropTypes.string.isRequired,
+  children: PropTypes.array.isRequired,
+};

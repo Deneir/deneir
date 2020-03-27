@@ -1,47 +1,31 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectNode } from '../actions/nodes';
 import { getNodeDetails } from '../reducers/nodes-selector';
-import DependencyList from '../components/DependencyList';
+import NodeDetails from '../components/NodeDetails';
+import GeneralInfoPanel from '../components/GeneralInfoPanel';
 import styles from './PanelContainer.module.scss';
 
 export default function PanelContainer() {
   const dispatch = useDispatch();
 
+  const nodes = useSelector((state) => state.nodes);
   const selectedNode = useSelector((state) => {
     if (!state.selectedNode) {
       return null;
     }
     return getNodeDetails(state.nodes, state.selectedNode);
   });
+  const actions = {
+    selectNode: (id) => dispatch(selectNode(id)),
+  };
 
   return (
     <section className={styles.panel}>
       {selectedNode && (
-        <Fragment>
-          <div className={styles.header}>
-            <h1>{selectedNode.id}</h1>
-            <button type="button" onClick={() => dispatch(selectNode(null))}>
-              X
-            </button>
-          </div>
-          <div>
-            <h2>Dependencies</h2>
-            <DependencyList
-              selectNode={(id) => dispatch(selectNode(id))}
-              items={selectedNode.dependencies}
-            />
-            <h2>Dependents</h2>
-            <DependencyList
-              selectNode={(id) => dispatch(selectNode(id))}
-              items={selectedNode.dependents}
-            />
-          </div>
-          </Fragment>
+        <NodeDetails selectedNode={selectedNode} actions={actions} />
       )}
-      {!selectedNode && <div className={styles.generalInfoPanel}>
-        informations générales sur le graph (hyper interessant)
-      </div>}
+      {!selectedNode && <GeneralInfoPanel nodes={nodes} actions={actions} />}
       </section>
   );
 }
