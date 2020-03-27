@@ -5,7 +5,7 @@ import styles from './NodeList.module.scss';
 
 export default function NodeList(props) {
   const {
-    title, nodes, selectNode, defaultOpen,
+    title, nodes, selectNode, defaultOpen = true,
   } = props;
   const [open, setOpen] = useState(defaultOpen);
 
