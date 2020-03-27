@@ -63,22 +63,41 @@ export function getNodesGroupedByTag(nodeDictionary, tagId) {
   if (tagId === 'node') {
     return nodeDictionary;
   }
-  return Object.values(nodeDictionary).reduce((nodes, node) => {
+  const groupNodes = Object.values(nodeDictionary).reduce((nodes, node) => {
     const tagValue = node.tags[tagId];
 
     if (nodes[tagValue]) {
       return nodes;
     }
 
+    const relatedNodes = Object.values(nodeDictionary).filter((n) => n.tags[tagId] === tagValue);
+    const status = Math.max(
+      ...relatedNodes.map((n) => n.status),
+    );
+    const dependents = new Set();
+    const dependencies = new Set();
+
+    relatedNodes.forEach((n) => {
+      n.dependents.forEach((dependent) => {
+        dependents.add(nodeDictionary[dependent.id].tags[tagId]);
+      });
+      n.dependencies.forEach((dependency) => {
+        dependencies.add(nodeDictionary[dependency.id].tags[tagId]);
+      });
+    });
+
     return {
       ...nodes,
       [tagValue]: {
         id: tagValue,
         group: true,
+        status,
         type: 'group',
-        dependents: [],
-        dependencies: [],
+        dependents: [...dependents].map((d) => ({ id: d })),
+        dependencies: [...dependencies].map((d) => ({ id: d })),
       },
     };
   }, {});
+
+  return groupNodes;
 }

@@ -8,9 +8,8 @@
   * [ ] add the chain tags for all components
 
 ## details panel
-  * [ ] add general graph info in the default panel
   * [ ] add info from the details api to the details panel
-  * [ ] make sure Deneir works smooth without a `details` API
+  * [ ] make sure Deneir works smooth either with or without a `details` API
 
 ## graph animations
   * [ ] when rendering the graph, or rerendering after a filter or a group level change, we should animate only once (not bounce twice)
