@@ -16,8 +16,6 @@
 
 ## zooming/grouping
   * [ ] search should be updated according to grouping
-  * [ ] define the status of a grouped node with the sum of the nodes it contains
-  * [ ] define the links between groups based on the links between the nodes they contain
 
 ## status auto refresh
   * [ ] basic autorefresh using graph API endpoint + frontend patching
