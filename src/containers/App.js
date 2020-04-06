@@ -30,6 +30,12 @@ function App() {
   const filteredNodes = useSelector((state) => getFilteredNodes(state));
   const groupedNodes = getNodesGroupedByTag(filteredNodes, groupLevel);
   const availableFilters = getAvailableFilters({ nodes: filteredNodes });
+  const selectedNodeId = useSelector((state) => {
+    if (!state.selectedNode) {
+      return null;
+    }
+    return state.selectedNode;
+  });
   const selectedNode = useSelector((state) => {
     if (!state.selectedNode) {
       return null;
@@ -76,16 +82,16 @@ function App() {
       <div className={styles.GraphContainer}>
         <Graph
           nodes={groupedNodes}
-          selectedNode={selectedNode}
+          selectedNode={selectedNodeId}
           groupLevel={groupLevel}
           filters={filters}
         />
       </div>
       <section className={styles.panel}>
-        {selectedNode && (
+        {selectedNodeId && (
           <NodeDetails selectedNode={selectedNode} actions={actions} />
         )}
-        {!selectedNode && <GeneralInfoPanel nodes={groupedNodes} actions={actions} />}
+        {!selectedNodeId && <GeneralInfoPanel nodes={groupedNodes} actions={actions} />}
         </section>
     </div>
   );
