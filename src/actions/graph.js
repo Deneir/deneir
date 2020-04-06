@@ -16,40 +16,11 @@ export default function readGraphData() {
     return callApi('GET', getConfig('graphUrl'))
       .then(({ data = {} }) => {
         // code to replace once the api uses the correct format
-        // return dispatch({
-        //   type: types.GET_GRAPH_SUCCESS,
-        //   nodes: data,
-        // });
-        const nodeDictionary = smartFormatter(data.nodes, data.edges);
-
         return dispatch({
           type: types.GET_GRAPH_SUCCESS,
-          nodes: nodeDictionary,
+          nodes: data,
         });
       })
       .catch((error) => dispatch({ type: types.GET_GRAPH_FAILURE, error }));
   };
-}
-
-function smartFormatter(nodes, links) {
-  const nodeDictionary = nodes.reduce(
-    (prev, node) => ({
-      ...prev,
-      [node.id]: {
-        ...node,
-        dependents: [],
-        dependencies: [],
-      },
-    }),
-    {},
-  );
-
-  links.forEach((link) => {
-    const { source, target, type } = link;
-
-    nodeDictionary[source].dependencies.push({ id: target, type });
-    nodeDictionary[target].dependents.push({ id: source, type });
-  });
-
-  return nodeDictionary;
 }
