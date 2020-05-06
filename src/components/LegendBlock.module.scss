@@ -2,6 +2,7 @@
   background-color: #ddd;
   margin: 10px;
   padding: 10px;
+
   ul {
     padding: 0;
   }
@@ -29,8 +30,8 @@
 .contentPanel {
   max-height: 0;
   transition: max-height 0.5s ease-in-out;
-  overflow: hidden;
+  overflow: auto;
 }
 .open {
-  max-height: 500px;
+  max-height: 400px;
 }
