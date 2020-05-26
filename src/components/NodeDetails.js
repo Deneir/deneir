@@ -14,6 +14,13 @@ export default function PanelContainer(props) {
           X
         </button>
       </div>
+      <div className={styles.textBlock}>
+        {
+          Object.keys(selectedNode.tags).map((tagName) => {
+            return <p key={tagName}><b>{tagName}:</b> {selectedNode.tags[tagName]}</p>;
+          })
+        }
+      </div>
       <div>
         <NodeList
         title="Dependencies"

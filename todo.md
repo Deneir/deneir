@@ -14,6 +14,9 @@
 ## graph animations
   * [ ] when rendering the graph, or rerendering after a filter or a group level change, we should animate only once (not bounce twice)
 
+## filters
+ * [ ] when selecting a node hidden by the filters, the app crashes
+
 ## zooming/grouping
   * [ ] search should be updated according to grouping
 
