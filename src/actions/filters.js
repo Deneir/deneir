@@ -8,6 +8,7 @@ export function setFilter(filter, value) {
 export function setGroupLevel(groupLevel) {
   return { type: types.SET_GROUP_LEVEL, groupLevel };
 }
+
 export function selectGroup(groupLevel, groupId) {
   const hierarchy = [...getConfig('hierarchy'), 'node'];
   const filter = groupLevel;
@@ -15,6 +16,9 @@ export function selectGroup(groupLevel, groupId) {
   const newGroupLevel = hierarchy[hierarchy.indexOf(groupLevel) + 1];
 
   return {
-    type: types.SELECT_GROUP, groupLevel: newGroupLevel, filter, value,
+    type: types.SELECT_GROUP,
+    groupLevel: newGroupLevel,
+    filter,
+    value,
   };
 }

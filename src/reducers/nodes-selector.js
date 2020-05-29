@@ -4,11 +4,18 @@ export function getFilteredNodes({ nodes, filters }) {
   }
 
   return Object.values(nodes).reduce((filteredNodes, node) => {
-    /* eslint-disable no-restricted-syntax */
-    for (const filter in filters) {
-      if (!filters[filter].includes(node.tags[filter])) {
-        return filteredNodes;
+    const doesNodeMatchFilters = Object.keys(filters).every((filter) => {
+      if (!node.tags[filter]) {
+        return false;
       }
+      if (!filters[filter].some((item) => node.tags[filter].includes(item))) {
+        return false;
+      }
+      return true;
+    });
+
+    if (!doesNodeMatchFilters) {
+      return filteredNodes;
     }
 
     return { ...filteredNodes, [node.id]: node };
@@ -71,9 +78,7 @@ export function getNodesGroupedByTag(nodeDictionary, tagId) {
     }
 
     const relatedNodes = Object.values(nodeDictionary).filter((n) => n.tags[tagId] === tagValue);
-    const status = Math.max(
-      ...relatedNodes.map((n) => n.status),
-    );
+    const status = Math.max(...relatedNodes.map((n) => n.status));
     const dependents = new Set();
     const dependencies = new Set();
 

@@ -29,7 +29,7 @@ function App() {
   const nodeDictionary = useSelector((state) => state.nodes);
   const filteredNodes = useSelector((state) => getFilteredNodes(state));
   const groupedNodes = getNodesGroupedByTag(filteredNodes, groupLevel);
-  const availableFilters = getAvailableFilters({ nodes: filteredNodes });
+  const availableFilters = getAvailableFilters({ nodes: nodeDictionary });
   const selectedNodeId = useSelector((state) => {
     if (!state.selectedNode) {
       return null;
@@ -59,26 +59,26 @@ function App() {
   }
   return (
     <div className={`${styles.app} ${specialDisplay && 'medieval'}`}>
-    <div className={styles.LegendContainer}>
-      <Search nodes={groupedNodes} onSearch={(search) => dispatch(selectNode(search))} />
-      <StatusLegend />
-      {hierarchy && (
-        <Hierarchy
-          hierarchy={hierarchy}
-          groupLevel={groupLevel}
-          setGroupLevel={(newGroupLevel) => dispatch(setGroupLevel(newGroupLevel))}
-        />
-      )}
-      {Object.keys(availableFilters).map((filterId) => (
-        <Filter
-          key={filterId}
-          filters={filters[filterId]}
-          filterId={filterId}
-          values={availableFilters[filterId]}
-          onChange={actions.handleFilterChange}
-        />
-      ))}
-    </div>
+      <div className={styles.LegendContainer}>
+        <Search nodes={groupedNodes} onSearch={(search) => dispatch(selectNode(search))} />
+        <StatusLegend />
+        {hierarchy && (
+          <Hierarchy
+            hierarchy={hierarchy}
+            groupLevel={groupLevel}
+            setGroupLevel={(newGroupLevel) => dispatch(setGroupLevel(newGroupLevel))}
+          />
+        )}
+        {Object.keys(availableFilters).map((filterId) => (
+          <Filter
+            key={filterId}
+            filters={filters[filterId]}
+            filterId={filterId}
+            values={availableFilters[filterId]}
+            onChange={actions.handleFilterChange}
+          />
+        ))}
+      </div>
       <div className={styles.GraphContainer}>
         <Graph
           nodes={groupedNodes}
@@ -88,11 +88,9 @@ function App() {
         />
       </div>
       <section className={styles.panel}>
-        {selectedNodeId && (
-          <NodeDetails selectedNode={selectedNode} actions={actions} />
-        )}
+        {selectedNodeId && <NodeDetails selectedNode={selectedNode} actions={actions} />}
         {!selectedNodeId && <GeneralInfoPanel nodes={groupedNodes} actions={actions} />}
-        </section>
+      </section>
     </div>
   );
 }

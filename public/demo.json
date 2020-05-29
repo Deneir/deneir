@@ -5,10 +5,10 @@
       "type": "animal",
       "status": 0,
       "tags": {
-        "genus": "panthera",
-        "family": "felidae",
-        "order": "carnivora",
-        "class": "mammalia"
+        "genus": ["panthera"],
+        "family": ["felidae"],
+        "order": ["carnivora"],
+        "class": ["mammalia"]
       },
       "dependents": [
         {
@@ -22,10 +22,10 @@
       "type": "animal",
       "status": 1,
       "tags": {
-        "genus": "panthera",
-        "family": "felidae",
-        "order": "carnivora",
-        "class": "mammalia"
+        "genus": ["panthera"],
+        "family": ["felidae"],
+        "order": ["carnivora"],
+        "class": ["mammalia"]
       },
       "dependents": [],
       "dependencies": [
@@ -39,10 +39,10 @@
       "type": "animal",
       "status": 0,
       "tags": {
-        "genus": "panthera",
-        "family": "felidae",
-        "order": "carnivora",
-        "class": "mammalia"
+        "genus": ["panthera"],
+        "family": ["felidae"],
+        "order": ["carnivora"],
+        "class": ["mammalia"]
       },
       "dependents": [],
       "dependencies": []
@@ -52,10 +52,10 @@
       "type": "animal",
       "status": 3,
       "tags": {
-        "genus": "panthera",
-        "family": "felidae",
-        "order": "carnivora",
-        "class": "mammalia"
+        "genus": ["panthera"],
+        "family": ["felidae"],
+        "order": ["carnivora"],
+        "class": ["mammalia"]
       },
       "dependents": [],
       "dependencies": []
@@ -65,10 +65,10 @@
       "type": "animal",
       "status": 0,
       "tags": {
-        "genus": "felis",
-        "family": "felidae",
-        "order": "carnivora",
-        "class": "mammalia"
+        "genus": ["felis"],
+        "family": ["felidae"],
+        "order": ["carnivora"],
+        "class": ["mammalia"]
       },
       "dependents": [],
       "dependencies": []
@@ -78,10 +78,10 @@
       "type": "animal",
       "status": 1,
       "tags": {
-        "genus": "felis",
-        "family": "felidae",
-        "order": "carnivora",
-        "class": "mammalia"
+        "genus": ["felis"],
+        "family": ["felidae"],
+        "order": ["carnivora"],
+        "class": ["mammalia"]
       },
       "dependents": [],
       "dependencies": []
@@ -91,10 +91,10 @@
       "type": "animal",
       "status": 0,
       "tags": {
-        "genus": "felis",
-        "family": "felidae",
-        "order": "carnivora",
-        "class": "mammalia"
+        "genus": ["felis"],
+        "family": ["felidae"],
+        "order": ["carnivora"],
+        "class": ["mammalia"]
       },
       "dependents": [],
       "dependencies": []
@@ -104,10 +104,10 @@
       "type": "animal",
       "status": 0,
       "tags": {
-        "genus": "felis",
-        "family": "felidae",
-        "order": "carnivora",
-        "class": "mammalia"
+        "genus": ["felis"],
+        "family": ["felidae"],
+        "order": ["carnivora"],
+        "class": ["mammalia"]
       },
       "dependents": [],
       "dependencies": []
@@ -117,10 +117,10 @@
       "type": "animal",
       "status": 0,
       "tags": {
-        "genus": "felis",
-        "family": "felidae",
-        "order": "carnivora",
-        "class": "mammalia"
+        "genus": ["felis"],
+        "family": ["felidae"],
+        "order": ["carnivora"],
+        "class": ["mammalia"]
       },
       "dependents": [],
       "dependencies": []
@@ -130,10 +130,10 @@
       "type": "animal",
       "status": 0,
       "tags": {
-        "genus": "felis",
-        "family": "felidae",
-        "order": "carnivora",
-        "class": "mammalia"
+        "genus": ["felis"],
+        "family": ["felidae"],
+        "order": ["carnivora"],
+        "class": ["mammalia"]
       },
       "dependents": [
         {
@@ -151,10 +151,10 @@
       "type": "animal",
       "status": 0,
       "tags": {
-        "genus": "felis",
-        "family": "felidae",
-        "order": "carnivora",
-        "class": "mammalia"
+        "genus": ["felis"],
+        "family": ["felidae"],
+        "order": ["carnivora"],
+        "class": ["mammalia"]
       },
       "dependents": [],
       "dependencies": [
@@ -168,10 +168,10 @@
       "type": "animal",
       "status": 2,
       "tags": {
-        "genus": "lynx",
-        "family": "felidae",
-        "order": "carnivora",
-        "class": "mammalia"
+        "genus": ["lynx"],
+        "family": ["felidae"],
+        "order": ["carnivora"],
+        "class": ["mammalia"]
       },
       "dependents": [
         {
@@ -189,10 +189,10 @@
       "type": "animal",
       "status": 0,
       "tags": {
-        "genus": "lynx",
-        "family": "felidae",
-        "order": "carnivora",
-        "class": "mammalia"
+        "genus": ["lynx"],
+        "family": ["felidae"],
+        "order": ["carnivora"],
+        "class": ["mammalia"]
       },
       "dependents": [],
       "dependencies": []
@@ -202,10 +202,10 @@
       "type": "animal",
       "status": 0,
       "tags": {
-        "genus": "lynx",
-        "family": "felidae",
-        "order": "carnivora",
-        "class": "mammalia"
+        "genus": ["lynx"],
+        "family": ["felidae"],
+        "order": ["carnivora"],
+        "class": ["mammalia"]
       },
       "dependents": [],
       "dependencies": []
@@ -215,10 +215,10 @@
       "type": "animal",
       "status": 0,
       "tags": {
-        "genus": "lynx",
-        "family": "felidae",
-        "order": "carnivora",
-        "class": "mammalia"
+        "genus": ["lynx"],
+        "family": ["felidae"],
+        "order": ["carnivora"],
+        "class": ["mammalia"]
       },
       "dependents": [],
       "dependencies": []
@@ -228,10 +228,10 @@
       "type": "animal",
       "status": 0,
       "tags": {
-        "genus": "ailurus",
-        "family": "ailuridae",
-        "order": "carnivora",
-        "class": "mammalia"
+        "genus": ["ailurus"],
+        "family": ["ailuridae"],
+        "order": ["carnivora"],
+        "class": ["mammalia"]
       },
       "dependents": [
         {
@@ -245,10 +245,10 @@
       "type": "animal",
       "status": 0,
       "tags": {
-        "genus": "ailuropoda",
-        "family": "ursidae",
-        "order": "carnivora",
-        "class": "mammalia"
+        "genus": ["ailuropoda"],
+        "family": ["ursidae"],
+        "order": ["carnivora"],
+        "class": ["mammalia"]
       },
       "dependents": [],
       "dependencies": []
@@ -258,10 +258,10 @@
       "type": "animal",
       "status": 0,
       "tags": {
-        "genus": "ursus",
-        "family": "ursidae",
-        "order": "carnivora",
-        "class": "mammalia"
+        "genus": ["ursus"],
+        "family": ["ursidae"],
+        "order": ["carnivora"],
+        "class": ["mammalia"]
       },
       "dependents": [],
       "dependencies": []
@@ -271,10 +271,10 @@
       "type": "animal",
       "status": 0,
       "tags": {
-        "genus": "ursus",
-        "family": "ursidae",
-        "order": "carnivora",
-        "class": "mammalia"
+        "genus": ["ursus"],
+        "family": ["ursidae"],
+        "order": ["carnivora"],
+        "class": ["mammalia"]
       },
       "dependents": [],
       "dependencies": []
@@ -284,10 +284,10 @@
       "type": "animal",
       "status": 0,
       "tags": {
-        "genus": "ursus",
-        "family": "ursidae",
-        "order": "carnivora",
-        "class": "mammalia"
+        "genus": ["ursus"],
+        "family": ["ursidae"],
+        "order": ["carnivora"],
+        "class": ["mammalia"]
       },
       "dependents": [],
       "dependencies": []
@@ -297,10 +297,10 @@
       "type": "animal",
       "status": 0,
       "tags": {
-        "genus": "ursus",
-        "family": "ursidae",
-        "order": "carnivora",
-        "class": "mammalia"
+        "genus": ["ursus"],
+        "family": ["ursidae"],
+        "order": ["carnivora"],
+        "class": ["mammalia"]
       },
       "dependents": [],
       "dependencies": []
@@ -310,10 +310,10 @@
       "type": "animal",
       "status": 0,
       "tags": {
-        "genus": "canis",
-        "family": "canidae",
-        "order": "carnivora",
-        "class": "mammalia"
+        "genus": ["canis"],
+        "family": ["canidae"],
+        "order": ["carnivora"],
+        "class": ["mammalia"]
       },
       "dependents": [],
       "dependencies": []
@@ -323,10 +323,10 @@
       "type": "animal",
       "status": 0,
       "tags": {
-        "genus": "canis",
-        "family": "canidae",
-        "order": "carnivora",
-        "class": "mammalia"
+        "genus": ["canis"],
+        "family": ["canidae"],
+        "order": ["carnivora"],
+        "class": ["mammalia"]
       },
       "dependents": [],
       "dependencies": []
@@ -336,10 +336,10 @@
       "type": "animal",
       "status": 0,
       "tags": {
-        "genus": "canis",
-        "family": "canidae",
-        "order": "carnivora",
-        "class": "mammalia"
+        "genus": ["canis"],
+        "family": ["canidae"],
+        "order": ["carnivora"],
+        "class": ["mammalia"]
       },
       "dependents": [],
       "dependencies": []
@@ -349,10 +349,10 @@
       "type": "animal",
       "status": 0,
       "tags": {
-        "genus": "vulpes",
-        "family": "canidae",
-        "order": "carnivora",
-        "class": "mammalia"
+        "genus": ["vulpes"],
+        "family": ["canidae"],
+        "order": ["carnivora"],
+        "class": ["mammalia"]
       },
       "dependents": [],
       "dependencies": []
@@ -362,10 +362,10 @@
       "type": "animal",
       "status": 0,
       "tags": {
-        "genus": "vulpes",
-        "family": "canidae",
-        "order": "carnivora",
-        "class": "mammalia"
+        "genus": ["vulpes"],
+        "family": ["canidae"],
+        "order": ["carnivora"],
+        "class": ["mammalia"]
       },
       "dependents": [],
       "dependencies": []
@@ -375,10 +375,10 @@
       "type": "animal",
       "status": 0,
       "tags": {
-        "genus": "vulpes",
-        "family": "canidae",
-        "order": "carnivora",
-        "class": "mammalia"
+        "genus": ["vulpes"],
+        "family": ["canidae"],
+        "order": ["carnivora"],
+        "class": ["mammalia"]
       },
       "dependents": [],
       "dependencies": []
@@ -388,10 +388,23 @@
       "type": "animal",
       "status": 0,
       "tags": {
-        "genus": "procyon",
-        "family": "procyonidae",
-        "order": "carnivora",
-        "class": "mammalia"
+        "genus": ["procyon"],
+        "family": ["procyonidae"],
+        "order": ["carnivora"],
+        "class": ["mammalia"]
+      },
+      "dependents": [],
+      "dependencies": []
+    },
+    "Chicken": {
+      "id": "Chicken",
+      "type": "animal",
+      "status": 0,
+      "tags": {
+        "genus": ["gallus"],
+        "family": ["phasianidae"],
+        "order": ["galliformes"],
+        "class": ["aves"]
       },
       "dependents": [],
       "dependencies": []

@@ -33,17 +33,18 @@ function setFilterReducer(state, action) {
 }
 
 export function getAvailableFilters(state) {
-  return Object.values(state.nodes).reduce((availableFilters, node) => {
+  const availableFilters = {};
+
+  Object.values(state.nodes).forEach((node) => {
     Object.keys(node.tags).forEach((tagId) => {
-      const tagValue = node.tags[tagId];
       if (!availableFilters[tagId]) {
-        /* eslint-disable no-param-reassign */
         availableFilters[tagId] = [];
       }
-      if (!availableFilters[tagId].includes(tagValue)) {
-        availableFilters[tagId].push(tagValue);
-      }
+      availableFilters[tagId].push(...node.tags[tagId]);
     });
-    return availableFilters;
+  }, {});
+
+  return Object.keys(availableFilters).reduce((res, filterKey) => {
+    return { ...res, [filterKey]: [...new Set(availableFilters[filterKey])] };
   }, {});
 }
