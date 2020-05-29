@@ -70,31 +70,43 @@ export function getNodesGroupedByTag(nodeDictionary, tagId) {
   if (tagId === 'node') {
     return nodeDictionary;
   }
-  const groupNodes = Object.values(nodeDictionary).reduce((nodes, node) => {
-    const tagValue = node.tags[tagId];
 
-    if (nodes[tagValue]) {
-      return nodes;
-    }
+  const nodeTagValues = Object.values(nodeDictionary).reduce((nodes, node) => {
+    return nodes.concat(...node.tags[tagId]);
+  }, []);
+  const newNodes = [...new Set(nodeTagValues)];
 
-    const relatedNodes = Object.values(nodeDictionary).filter((n) => n.tags[tagId] === tagValue);
-    const status = Math.max(...relatedNodes.map((n) => n.status));
+  const groupNodes = newNodes.reduce((nodes, nodeId) => {
+    const relatedNodes = Object.values(nodeDictionary).filter((node) => {
+      return node.tags[tagId].includes(nodeId);
+    });
+    const status = Math.max(...relatedNodes.map((node) => node.status));
     const dependents = new Set();
     const dependencies = new Set();
 
-    relatedNodes.forEach((n) => {
-      n.dependents.forEach((dependent) => {
-        dependents.add(nodeDictionary[dependent.id].tags[tagId]);
+    relatedNodes.forEach((node) => {
+      node.dependents.forEach((dependent) => {
+        if (!nodeDictionary[dependent.id]) {
+          return;
+        }
+        nodeDictionary[dependent.id].tags[tagId].forEach((tagValue) => {
+          dependents.add(tagValue);
+        });
       });
-      n.dependencies.forEach((dependency) => {
-        dependencies.add(nodeDictionary[dependency.id].tags[tagId]);
+      node.dependencies.forEach((dependency) => {
+        if (!nodeDictionary[dependency.id]) {
+          return;
+        }
+        nodeDictionary[dependency.id].tags[tagId].forEach((tagValue) => {
+          dependencies.add(tagValue);
+        });
       });
     });
 
     return {
       ...nodes,
-      [tagValue]: {
-        id: tagValue,
+      [nodeId]: {
+        id: nodeId,
         group: true,
         status,
         type: 'group',
