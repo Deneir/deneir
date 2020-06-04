@@ -10,6 +10,7 @@ li {
 .GraphContainer {
   flex: 2;
   display: flex;
+  position: relative;
   min-width: 500px;
 }
 .LegendContainer {

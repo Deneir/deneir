@@ -6,6 +6,9 @@
   ul {
     padding: 0;
   }
+  input {
+    max-width: calc(100% - 20px);
+  }
 }
 
 .title {

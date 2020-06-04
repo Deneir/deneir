@@ -10,7 +10,7 @@ export default graphFunctions;
 
 graphFunctions.initGraph = function initGraph(canvas, { data: { nodes, links }, actions }) {
   const settings = getConfig('canvasSettings');
-  const { width, height } = canvas.getBoundingClientRect();
+  const { width, height } = canvas.parentElement.getBoundingClientRect();
 
   let cameraPosition = d3.zoomIdentity
     .translate(width / 2, height / 2)
