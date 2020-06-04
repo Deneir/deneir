@@ -1,13 +1,7 @@
 .GeneralInfoPanel {
-  height:100vh;
+  height: 100vh;
   overflow: auto;
   width: 100%;
   padding: 15px;
   box-sizing: border-box;
-
-  :global(.medieval) & {
-    background-image: url('../assets/minotaur.png');
-    background-size:cover;
-    color: #fff;
-  }
 }

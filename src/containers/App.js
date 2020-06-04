@@ -20,7 +20,6 @@ import { selectNode } from '../actions/nodes';
 import styles from './App.module.scss';
 
 function App() {
-  const specialDisplay = document.location.hash === '#rpg';
   const hierarchy = getConfig('hierarchy');
   const dispatch = useDispatch();
 
@@ -58,7 +57,7 @@ function App() {
     return <p>Loading ...</p>;
   }
   return (
-    <div className={`${styles.app} ${specialDisplay && 'medieval'}`}>
+    <div className={`${styles.app}`}>
       <div className={styles.LegendContainer}>
         <Search nodes={groupedNodes} onSearch={(search) => dispatch(selectNode(search))} />
         <StatusLegend />

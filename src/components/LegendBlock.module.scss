@@ -6,19 +6,6 @@
   ul {
     padding: 0;
   }
-
-  :global(.medieval) & {
-    border-width: 3px;
-    border-radius: 2px;
-    border-style: solid;
-    border-left-color: #000;
-    border-top-color: #000;
-    border-bottom-color: #fff;
-    border-right-color: #fff;
-    background-image: url('../assets/legend-block.png');
-    background-size: cover;
-    color: #fff;
-  }
 }
 
 .title {

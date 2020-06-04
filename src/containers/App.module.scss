@@ -1,17 +1,7 @@
-@font-face {
-  font-family: 'medieval';
-  src: url('../assets/irish.ttf')
-}
-
 .app {
   display: flex;
   flex-direction: row;
   height: 100vh;
-
-  &:global(.medieval) {
-    font-family: medieval;
-    font-size: 18px;
-  }
 }
 li {
   list-style: none;
@@ -26,22 +16,11 @@ li {
   min-width: 250px;
   max-width: 250px;
   overflow-y: auto;
-
-  :global(.medieval) & {
-    background-image: url('../assets/marble.png');
-    background-size: cover;
-  }
 }
 .panel {
   min-width: 400px;
   background: #ece9e9;
   flex: 1;
-
-  :global(.medieval) & {
-    background-image: url('../assets/marble.png');
-    background-size: cover;
-    color: #fff;
-  }
 
   .titleSection > p {
     padding-left: 20px;
