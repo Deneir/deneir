@@ -26,6 +26,7 @@ function App() {
   const groupLevel = useSelector((state) => state.groupLevel);
   const filters = useSelector((state) => state.filters);
   const nodeDictionary = useSelector((state) => state.nodes);
+  const details = useSelector((state) => state.details);
   const filteredNodes = useSelector((state) => getFilteredNodes(state));
   const groupedNodes = getNodesGroupedByTag(filteredNodes, groupLevel);
   const availableFilters = getAvailableFilters({ nodes: nodeDictionary });
@@ -87,7 +88,9 @@ function App() {
         />
       </div>
       <section className={styles.panel}>
-        {selectedNodeId && <NodeDetails selectedNode={selectedNode} actions={actions} />}
+        {selectedNodeId && (
+          <NodeDetails selectedNode={selectedNode} details={details} actions={actions} />
+        )}
         {!selectedNodeId && <GeneralInfoPanel nodes={groupedNodes} actions={actions} />}
       </section>
     </div>

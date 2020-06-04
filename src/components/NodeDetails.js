@@ -5,7 +5,7 @@ import InstanceDetails from './InstanceDetails';
 import styles from './NodeDetails.module.scss';
 
 export default function NodeDetails(props) {
-  const { selectedNode, actions } = props;
+  const { selectedNode, details, actions } = props;
 
   return (
     <Fragment>
@@ -24,10 +24,10 @@ export default function NodeDetails(props) {
           );
         })}
       </div>
-      {selectedNode.details && (
+      {details && (
         <div className={styles.textBlock}>
           <h2>details</h2>
-          <AdvancedDetails details={selectedNode.details} />
+          <AdvancedDetails details={details} />
         </div>
       )}
       <div>
@@ -49,6 +49,7 @@ export default function NodeDetails(props) {
 NodeDetails.propTypes = {
   selectedNode: PropTypes.instanceOf(Object).isRequired,
   actions: PropTypes.instanceOf(Object).isRequired,
+  details: PropTypes.instanceOf(Object),
 };
 
 function AdvancedDetails(props) {
