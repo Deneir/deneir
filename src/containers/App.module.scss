@@ -19,19 +19,28 @@ li {
   overflow-y: auto;
 }
 .panel {
-  min-width: 400px;
+  min-width: 420px;
   background: #ece9e9;
   flex: 1;
+  padding: 20px;
+  height: 100vh;
+  overflow: auto;
+  box-sizing: border-box;
 
   .titleSection > p {
     padding-left: 20px;
   }
-
+  h1 {
+    font-size: 1.5em;
+  }
   h2 {
-    font-size: 19px;
+    font-size: 1.3em;
     border-top: 1px solid #ccc;
     padding-top: 20px;
-    padding-left: 20px;
+  }
+  h3 {
+    font-size: 1em;
+    color: #444;
   }
 
   .innerContent {

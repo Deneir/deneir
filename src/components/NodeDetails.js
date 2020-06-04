@@ -1,9 +1,10 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import NodeList from './NodeList';
+import InstanceDetails from './InstanceDetails';
 import styles from './NodeDetails.module.scss';
 
-export default function PanelContainer(props) {
+export default function NodeDetails(props) {
   const { selectedNode, actions } = props;
 
   return (
@@ -15,20 +16,28 @@ export default function PanelContainer(props) {
         </button>
       </div>
       <div className={styles.textBlock}>
-        {
-          Object.keys(selectedNode.tags).map((tagName) => {
-            return <p key={tagName}><b>{tagName}:</b> {selectedNode.tags[tagName]}</p>;
-          })
-        }
+        {Object.keys(selectedNode.tags).map((tagName) => {
+          return (
+            <p key={tagName}>
+              <b>{tagName}:</b> {selectedNode.tags[tagName]}
+            </p>
+          );
+        })}
       </div>
+      {selectedNode.details && (
+        <div className={styles.textBlock}>
+          <h2>details</h2>
+          <AdvancedDetails details={selectedNode.details} />
+        </div>
+      )}
       <div>
         <NodeList
-        title="Dependencies"
+          title="Dependencies"
           selectNode={(id) => actions.selectNode(id)}
           nodes={selectedNode.dependencies}
         />
         <NodeList
-        title="Dependents"
+          title="Dependents"
           selectNode={(id) => actions.selectNode(id)}
           nodes={selectedNode.dependents}
         />
@@ -37,7 +46,22 @@ export default function PanelContainer(props) {
   );
 }
 
-PanelContainer.propTypes = {
+NodeDetails.propTypes = {
   selectedNode: PropTypes.instanceOf(Object).isRequired,
   actions: PropTypes.instanceOf(Object).isRequired,
 };
+
+function AdvancedDetails(props) {
+  const { details } = props;
+  if (!Array.isArray(details)) {
+    return <pre>{JSON.stringify(details, null, 2)}</pre>;
+  }
+
+  if (details.length === 0) {
+    return <p>API returned 0 instances</p>;
+  }
+
+  return details.map((instance) => {
+    return <InstanceDetails key={instance.id} {...instance} />;
+  });
+}
