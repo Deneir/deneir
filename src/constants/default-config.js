@@ -55,4 +55,5 @@ export default {
       shape: 'circle',
     },
   },
+  detailsUrl: false,
 };

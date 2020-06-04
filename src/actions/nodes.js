@@ -11,7 +11,11 @@ import { getConfig } from '../services/read-config';
  */
 export function selectNode(nodeId) {
   return (dispatch) => {
-    dispatch(readNodeDetails(nodeId));
+    const detailsUrl = getConfig('detailsUrl');
+
+    if (detailsUrl) {
+      dispatch(readNodeDetails(nodeId));
+    }
 
     return dispatch({
       type: types.SELECT_NODE,
@@ -28,12 +32,12 @@ export function selectNode(nodeId) {
  * @return {Promise}
  */
 export default function readNodeDetails(nodeId) {
-  const statusUrl = getConfig('detailsUrl');
+  const detailsUrl = getConfig('detailsUrl');
 
   return (dispatch) => {
     dispatch({ type: types.GET_DETAILS_REQUEST });
 
-    return callApi('GET', `${statusUrl}?instance=${nodeId}`)
+    return callApi('GET', `${detailsUrl}?instance=${nodeId}`)
       .then(({ data = [] }) => dispatch({
         type: types.GET_DETAILS_SUCCESS,
         details: data,
