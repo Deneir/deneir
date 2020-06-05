@@ -6,7 +6,6 @@
     border: none;
     background: none;
     font-size: 25px;
-    margin-right: 10px;
     font-weight: bold;
     cursor: pointer;
   }
@@ -20,14 +19,6 @@
 }
 .closed {
   display: none;
-}
-.rawDetailsBlock {
-  background-color: #444;
-  color: #ccc;
-  width: 100%;
-  overflow: auto;
-  padding: 10px;
-  box-sizing: border-box;
 }
 
 .emptyListMessage {

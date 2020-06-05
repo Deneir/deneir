@@ -1,0 +1,40 @@
+.closed {
+  display: none;
+}
+.noItems {
+  font-style: italic;
+  color: #444;
+}
+.rawDetailsBlock {
+  background-color: #444;
+  color: #ccc;
+  width: 100%;
+  overflow: auto;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.arrayItemBlock {
+  margin: 10px 0;
+  padding-bottom: 10px;
+  border-bottom: 1px solid gray;
+}
+.HtmlBlock {
+  background-color: #444;
+  color: #ccc;
+  margin: 10px 0;
+  padding: 10px;
+  font-size: 0.8em;
+  h1 {
+    font-size: 1.2em;
+  }
+  h2 {
+    font-size: 1.1em;
+  }
+  h3 {
+    font-size: 1em;
+  }
+  h4 {
+    font-size: 0.9em;
+  }
+}

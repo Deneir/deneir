@@ -2,7 +2,6 @@ import React, { Fragment, useState } from 'react';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowDown, faArrowRight } from '@fortawesome/free-solid-svg-icons';
-import { statusCodesToLabels } from '../constants/status-codes';
 import styles from './NodeDetails.module.scss';
 
 export default function NodeList(props) {
@@ -22,7 +21,7 @@ export default function NodeList(props) {
           && nodes.map((item) => (
             <li key={item.id}>
               <button className={styles.nodeLink} onClick={() => selectNode(item.id)}>
-                {item.id} ({statusCodesToLabels[item.status]})
+                {item.id}
               </button>
             </li>
           ))}
