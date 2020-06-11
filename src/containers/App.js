@@ -4,6 +4,8 @@ import { getConfig } from '../services/read-config';
 
 import Graph from '../components/Graph/index';
 import StatusLegend from '../components/StatusLegend';
+import NeighbourLevelControl from '../components/NeighbourLevelControl';
+import NeighbourLevelControl2 from '../components/NeighbourLevelControl2';
 import Filter from '../components/Filter';
 import Search from '../components/Search';
 import Hierarchy from '../components/Hierarchy';
@@ -14,7 +16,7 @@ import { getFilteredNodes, getNodesGroupedByTag, getNodeDetails } from '../reduc
 import { getAvailableFilters } from '../reducers/filters';
 
 import readGraphData from '../actions/graph';
-import { setFilter, setGroupLevel } from '../actions/filters';
+import { setFilter, setGroupLevel, setNeighbourLevel } from '../actions/filters';
 import { selectNode } from '../actions/nodes';
 
 import styles from './App.module.scss';
@@ -24,10 +26,11 @@ function App() {
   const dispatch = useDispatch();
 
   const groupLevel = useSelector((state) => state.groupLevel);
+  const neighbourLevel = useSelector((state) => state.neighbourLevel);
   const filters = useSelector((state) => state.filters);
   const nodeDictionary = useSelector((state) => state.nodes);
   const details = useSelector((state) => state.details);
-  const filteredNodes = useSelector((state) => getFilteredNodes(state));
+  const filteredNodes = useSelector((state) => getFilteredNodes(state, neighbourLevel));
   const groupedNodes = getNodesGroupedByTag(filteredNodes, groupLevel);
   const availableFilters = getAvailableFilters({ nodes: nodeDictionary });
   const selectedNodeId = useSelector((state) => {
@@ -69,6 +72,14 @@ function App() {
             setGroupLevel={(newGroupLevel) => dispatch(setGroupLevel(newGroupLevel))}
           />
         )}
+        <NeighbourLevelControl
+          setNeighbourLevel={(value) => dispatch(setNeighbourLevel(value))}
+          neighbourLevel={neighbourLevel}
+        />
+        <NeighbourLevelControl2
+          setNeighbourLevel={(value) => dispatch(setNeighbourLevel(value))}
+          neighbourLevel={neighbourLevel}
+        />
         {Object.keys(availableFilters).map((filterId) => (
           <Filter
             key={filterId}

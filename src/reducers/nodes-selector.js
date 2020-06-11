@@ -1,9 +1,9 @@
-export function getFilteredNodes({ nodes, filters }) {
+export function getFilteredNodes({ nodes: graph, filters, neighbourLevel = 10 }) {
   if (!Object.keys(filters).length) {
-    return nodes;
+    return graph;
   }
 
-  return Object.values(nodes).reduce((filteredNodes, node) => {
+  const matchedNodesIds = Object.values(graph).reduce((filteredNodes, node) => {
     const doesNodeMatchFilters = Object.keys(filters).every((filter) => {
       if (!node.tags[filter]) {
         return false;
@@ -18,8 +18,39 @@ export function getFilteredNodes({ nodes, filters }) {
       return filteredNodes;
     }
 
-    return { ...filteredNodes, [node.id]: node };
-  }, {});
+    return [...filteredNodes, node.id];
+  }, []);
+
+  const searchedNodes = [];
+  function findNeighbourNodes(nodes, depth = 0) {
+    if (depth <= 0) {
+      return nodes;
+    }
+    const neighbourNodes = nodes.reduce((prev, node) => {
+      if (searchedNodes.includes(node)) {
+        return prev;
+      }
+      searchedNodes.push(node);
+      const neighbours = [
+        ...graph[node].dependencies.map((d) => d.id),
+        ...graph[node].dependents.map((d) => d.id),
+      ];
+      return [...prev, node, ...findNeighbourNodes(neighbours, depth - 1)];
+    }, []);
+
+    return [...new Set(neighbourNodes)];
+  }
+
+  console.time(`finding ${neighbourLevel}th level neighbours`);
+  const neighbourNodes = [...new Set(findNeighbourNodes(matchedNodesIds, neighbourLevel))];
+  console.timeEnd(`finding ${neighbourLevel}th level neighbours`);
+  console.log('found', neighbourNodes.length);
+
+  return Object.values(graph)
+    .filter((node) => neighbourNodes.includes(node.id))
+    .reduce((prev, node) => {
+      return { ...prev, [node.id]: node };
+    }, {});
 }
 
 export function graphFormatter(nodeDictionary) {

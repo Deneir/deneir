@@ -1,0 +1,14 @@
+.inputContainer {
+  padding: 5px;
+  line-height: 1.3em;
+}
+.numberInput[type='range'] {
+  width: 100%;
+}
+.numberInput[type='number'] {
+  width: 35px;
+}
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  opacity: 1;
+}

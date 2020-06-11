@@ -22,3 +22,6 @@ export function selectGroup(groupLevel, groupId) {
     value,
   };
 }
+export function setNeighbourLevel(neighbourLevel) {
+  return { type: types.SET_NEIGHBOUR_LEVEL, neighbourLevel };
+}

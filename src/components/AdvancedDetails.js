@@ -42,7 +42,7 @@ export default function AdvancedDetails(props) {
     );
   }
 
-  return <div>coucou</div>;
+  return <div>{details}</div>;
 }
 
 AdvancedDetails.propTypes = {
