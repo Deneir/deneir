@@ -31,7 +31,7 @@ export default function NodeDetails(props) {
       {details && (
         <div className={styles.textBlock}>
           <h2 onClick={() => setOpen(!open)}>
-            <FontAwesomeIcon icon={toggleIcon} /> details
+            <FontAwesomeIcon icon={toggleIcon} /> Details
           </h2>
           <div className={(!open && styles.closed) || ''}>
             <AdvancedDetails details={details} />
