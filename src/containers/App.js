@@ -5,7 +5,6 @@ import { getConfig } from '../services/read-config';
 import Graph from '../components/Graph/index';
 import StatusLegend from '../components/StatusLegend';
 import NeighbourLevelControl from '../components/NeighbourLevelControl';
-import NeighbourLevelControl2 from '../components/NeighbourLevelControl2';
 import Filter from '../components/Filter';
 import Search from '../components/Search';
 import Hierarchy from '../components/Hierarchy';
@@ -73,10 +72,6 @@ function App() {
           />
         )}
         <NeighbourLevelControl
-          setNeighbourLevel={(value) => dispatch(setNeighbourLevel(value))}
-          neighbourLevel={neighbourLevel}
-        />
-        <NeighbourLevelControl2
           setNeighbourLevel={(value) => dispatch(setNeighbourLevel(value))}
           neighbourLevel={neighbourLevel}
         />

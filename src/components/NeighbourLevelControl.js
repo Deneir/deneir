@@ -23,16 +23,16 @@ export default function NeighbourLevelControl(props) {
       initialOpen={false}
     >
       <div className={styles.inputContainer}>
-        {/* Show filtered nodes and their */}{' '}
+        Show filtered nodes and their{' '}
         <input
           className={styles.numberInput}
           onInput={(e) => handleLevelChange(e.target.value)}
           value={neighbourLevel}
-          type="range"
+          type="number"
           min="0"
           max="10"
         />
-        {/* {ordinalMarker} level neighbours */}
+        {ordinalMarker} level neighbours
       </div>
     </LegendBlock>
   );
