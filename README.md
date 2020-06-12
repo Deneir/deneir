@@ -1,30 +1,65 @@
-# Infrastructure Architecture
+# What is Deneir ?
 
-Micro services architecture, complex and implicit dependency graph, over 100 components.
+Deneir is an OpenSource Project using the Apache 2.0 License
 
-We have an API that exposes status and dependencies for our services.
+Deneir is the web frontend application that represents a graph of registered nodes and their dependency status.
 
-We want an application that shows how our infrastructure looks.
+Deneir relies on service registration to get node list
 
-Netflix does something sort of similar, but network oriented
-https://www.youtube.com/watch?v=jWpI8qzqNHk
+Deneir fetches from external APIs nodes, statuses and dependencies
 
-# Terminology
+Deneir is meant to be as agnostic as possible
+
+# Origin
+Synthesio has chosen a micro-services oriented architecture. In a micro-services architecture the modification pace become rapidly complex to follow. Deneir was developped as a side-project at Synthesio to cope with our continuous infrastructure changes.
+
+# Goals
+
+## compoments
+Have a live list of what is actually in production and the status of each component
+
+## functionnal dependencies
+know functionnal dependencies status of components (datasources, API, external resources...)
+
+## impact prediction
+answer rapidly this simple question : "if this functionnal work-unit goes south what are the consequences ?"
+
+## naming schemes with many components
+Naming schemes often come to a point where you can't remember the name of every single. Worse, when someone new comes in the team it rapidly becomes a nightmare to understand what is actually going on
+
+## schematics
+Operation
+In microservices- maintain a global up-to-date schema is next to impossible : microservices come and go
+
+## add Metadata to components
+Regroup alerts, or configure inhibitions you need metadata on your components
+
+## incident timeline
+Record snapshots of the graph, to allow graphical incident replay
+
+# Concepts and glossary
 
 ## Entity types
 
-### Entity types
-
-* work unit
+* work units (API, processing daemon)
 * kafka queue
 * data store (es, scylla, mysql)
 
-### Zoom level
+## Flexible Hierarchy
 
-* chain : feature meta group
-* service : code base
-* instance : set of config to deploy a service code base
-* process : thread of instance in a server
+Deneir does not have a rigid hiearchy per se. Deneir whishes to be as flexible and as agnostic as possible.
+
+Though to help you understand what has been done here. We provide an example of Synthesio's hierarchy :
+
+| tag | description |
+|-|-|
+| product | Software suite made by the company |
+| app |  Software constituting a product |
+| circuit |   Software functionnal flow (can have a version such as v1 v1.5 in the name) |
+| service |  Generic software code base (a.k.a. work-unit, api, micro-service,...) |
+| instance |  Specialized software code base based on a service |
+| process |  A system process running an instance or a service |
+| system |  Software technical flow (can be related to one or more circuit) |
 
 # End user distribution
 To use the project as an end user
@@ -43,17 +78,8 @@ For the moment we have chosen json, but we can add yml support if the info store
 
 This project uses two API routes :
 
-[https://gitlab.synthesio.com/synthesio/monopoly/blob/master/src/frag/apidoc.md](https://gitlab.synthesio.com/synthesio/monopoly/blob/master/src/frag/apidoc.md)
+[apidoc.md](apidoc.md)
 
-
-# hand written Infra map
-
-https://www.lucidchart.com/documents/edit/eb05650b-90f3-4c57-8031-a5dc8dc917da/0eqBfotfVGlV
-
-
-# Project management (jira)
-
-https://synthesio.atlassian.net/jira/software/projects/DEN/boards/186
 
 # Feature list
 ## graph features
@@ -75,26 +101,11 @@ https://synthesio.atlassian.net/jira/software/projects/DEN/boards/186
 * [ ] graph & status history
 * [ ] integrate Prometheus metrics (lag, rate, etc.)
 * [ ] pseudo entities
-* [ ] dependents and dependencies list with links
+* [x] dependents and dependencies list with links
 * [ ] see only dependents in Graph
 * [ ] add URL for instances
 * [ ] auto refresh for status update
-* [ ] Firefox compatibility
-
-
-## tooling & project features
-* easy install + `just tell me what to do` style doc
-* API contract documentation + examples
-* define what config file we need, with what info, to run the app
-* have a system that allows us to write the config file in json or yml (or maybe just yml, whatever)
-
-# Project guidelines
-
-* private repository for the first few iterations
-* all documentation and information about the project in the repository
-* define how the application will be deployed and used
-* spotless commit message history (we could use the angular commit convention cf. https://gist.github.com/stephenparish/9941e89d80e2bc58a153 )
-* describe interfaces and provide mocks
+* [x] Firefox compatibility
 
 # Documentation
 
