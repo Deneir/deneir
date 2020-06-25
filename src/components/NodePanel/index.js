@@ -2,8 +2,8 @@ import React, { Fragment, useState } from 'react';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes, faArrowDown, faArrowRight } from '@fortawesome/free-solid-svg-icons';
-import NodeList from './NodeList';
-import styles from './NodeDetails.module.scss';
+import NodeList from '../NodeList';
+import styles from './index.module.scss';
 import AdvancedDetails from './AdvancedDetails';
 
 export default function NodeDetails(props) {

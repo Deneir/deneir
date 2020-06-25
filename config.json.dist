@@ -1,6 +1,6 @@
 {
   "graphUrl": "graph",
-  "detailUrl": "instances",
+  "detailsUrl": "instances",
   "apiBaseUrl": "https://frag.int.synthesio.net",
   "authToken": "test"
 }

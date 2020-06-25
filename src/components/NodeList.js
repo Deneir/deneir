@@ -2,7 +2,7 @@ import React, { Fragment, useState } from 'react';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowDown, faArrowRight } from '@fortawesome/free-solid-svg-icons';
-import styles from './NodeDetails.module.scss';
+import styles from './NodeList.module.scss';
 
 export default function NodeList(props) {
   const {

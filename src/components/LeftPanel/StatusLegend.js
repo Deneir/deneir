@@ -1,5 +1,5 @@
 import React from 'react';
-import { getConfig } from '../services/read-config';
+import { getConfig } from '../../services/read-config';
 import styles from './StatusLegend.module.scss';
 import LegendBlock from './LegendBlock';
 

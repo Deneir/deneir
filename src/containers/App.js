@@ -1,14 +1,9 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getConfig } from '../services/read-config';
 
 import Graph from '../components/Graph/index';
-import StatusLegend from '../components/StatusLegend';
-import NeighbourLevelControl from '../components/NeighbourLevelControl';
-import Filter from '../components/Filter';
-import Search from '../components/Search';
-import Hierarchy from '../components/Hierarchy';
-import NodeDetails from '../components/NodeDetails';
+import LeftPanel from '../components/LeftPanel/index';
+import NodePanel from '../components/NodePanel/index';
 import GeneralInfoPanel from '../components/GeneralInfoPanel';
 
 import { getFilteredNodes, getNodesGroupedByTag, getNodeDetails } from '../reducers/nodes-selector';
@@ -21,7 +16,6 @@ import { selectNode } from '../actions/nodes';
 import styles from './App.module.scss';
 
 function App() {
-  const hierarchy = getConfig('hierarchy');
   const dispatch = useDispatch();
 
   const groupLevel = useSelector((state) => state.groupLevel);
@@ -54,6 +48,8 @@ function App() {
       dispatch(setFilter(filterId, value));
     },
     selectNode: (id) => dispatch(selectNode(id)),
+    setGroupLevel: (value) => dispatch(setGroupLevel(value)),
+    setNeighbourLevel: (value) => dispatch(setNeighbourLevel(value)),
   };
 
   if (!Object.keys(nodeDictionary).length) {
@@ -61,30 +57,14 @@ function App() {
   }
   return (
     <div className={`${styles.app}`}>
-      <div className={styles.LegendContainer}>
-        <Search nodes={groupedNodes} onSearch={(search) => dispatch(selectNode(search))} />
-        <StatusLegend />
-        {hierarchy && (
-          <Hierarchy
-            hierarchy={hierarchy}
-            groupLevel={groupLevel}
-            setGroupLevel={(newGroupLevel) => dispatch(setGroupLevel(newGroupLevel))}
-          />
-        )}
-        <NeighbourLevelControl
-          setNeighbourLevel={(value) => dispatch(setNeighbourLevel(value))}
-          neighbourLevel={neighbourLevel}
-        />
-        {Object.keys(availableFilters).map((filterId) => (
-          <Filter
-            key={filterId}
-            filters={filters[filterId]}
-            filterId={filterId}
-            values={availableFilters[filterId]}
-            onChange={actions.handleFilterChange}
-          />
-        ))}
-      </div>
+      <LeftPanel
+        actions={actions}
+        availableFilters={availableFilters}
+        groupedNodes={groupedNodes}
+        groupLevel={groupLevel}
+        neighbourLevel={neighbourLevel}
+        filters={filters}
+      />
       <div className={styles.GraphContainer}>
         <Graph
           nodes={groupedNodes}
@@ -95,7 +75,7 @@ function App() {
       </div>
       <section className={styles.panel}>
         {selectedNodeId && (
-          <NodeDetails selectedNode={selectedNode} details={details} actions={actions} />
+          <NodePanel selectedNode={selectedNode} details={details} actions={actions} />
         )}
         {!selectedNodeId && <GeneralInfoPanel nodes={groupedNodes} actions={actions} />}
       </section>
