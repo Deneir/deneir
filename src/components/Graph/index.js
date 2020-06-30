@@ -12,6 +12,7 @@ import { graphFormatter } from '../../reducers/nodes-selector';
 
 export default function Graph(props) {
   const canvasRef = useRef(null);
+  const selectNodeDelay = useRef(1200);
   const {
     nodes, groupLevel, filters,
   } = props;
@@ -38,7 +39,10 @@ export default function Graph(props) {
     if (!selectedNodeId) {
       return;
     }
-    graphFunctions.setCameraToNode(selectedNodeId);
+    setTimeout(() => {
+      graphFunctions.setCameraToNode(selectedNodeId);
+      selectNodeDelay.current = 0;
+    }, selectNodeDelay.current);
   }, [selectedNodeId]);
 
   useEffect(() => {
