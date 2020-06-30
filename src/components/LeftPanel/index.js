@@ -17,7 +17,7 @@ export default function LeftPanel(props) {
 
   return (
     <div className={styles.LegendContainer}>
-      <Search nodes={groupedNodes} onSearch={actions.selectNode} />
+      <Search nodes={groupedNodes} />
       <StatusLegend />
       {hierarchy && (
         <Hierarchy

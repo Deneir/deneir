@@ -5,7 +5,7 @@ import { statusCodesToLabels } from '../constants/status-codes';
 import NodeList from './NodeList';
 
 export default function GeneralInfoPanel(props) {
-  const { nodes, actions } = props;
+  const { nodes } = props;
 
   const statusCodes = Object.keys(statusCodesToLabels);
   const nodesByStatusCode = statusCodes.map((statusCode) => {
@@ -22,7 +22,6 @@ export default function GeneralInfoPanel(props) {
             key={label}
             defaultOpen={Number(statusCode) > 0}
             title={`${label} (${nodeCount})`}
-            selectNode={actions.selectNode}
             nodes={nodesByStatusCode[statusCode]}
           />
         );

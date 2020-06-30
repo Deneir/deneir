@@ -1,12 +1,16 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import {
+  useHistory,
+} from 'react-router-dom';
 import styles from './Search.module.scss';
 import LegendBlock from './LegendBlock';
 
-export default function Search({ nodes, onSearch }) {
+export default function Search({ nodes }) {
   const [searchTerm, setSearchTerm] = useState('');
   const [activeSuggestion, setActiveSuggestion] = useState(0);
   const [showSuggestions, setShowSuggestions] = useState(false);
+  const history = useHistory();
 
   const filteredSuggestions = (searchTerm && findNodeMatches(nodes, searchTerm)) || [];
 
@@ -17,7 +21,8 @@ export default function Search({ nodes, onSearch }) {
 
     setSearchTerm(search);
     setShowSuggestions(false);
-    onSearch(search);
+
+    history.push(`/node/${search}`);
   };
   const handleChange = (event) => {
     setActiveSuggestion(0);

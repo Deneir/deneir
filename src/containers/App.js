@@ -1,23 +1,24 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import {
+  Switch,
+  Route,
+} from 'react-router-dom';
 
 import Graph from '../components/Graph/index';
 import LeftPanel from '../components/LeftPanel/index';
 import NodePanel from '../components/NodePanel/index';
-import GeneralInfoPanel from '../components/GeneralInfoPanel';
 
-import { getFilteredNodes, getNodesGroupedByTag, getNodeDetails } from '../reducers/nodes-selector';
+import { getFilteredNodes, getNodesGroupedByTag } from '../reducers/nodes-selector';
 import { getAvailableFilters } from '../reducers/filters';
 
 import readGraphData from '../actions/graph';
 import { setFilter, setGroupLevel, setNeighbourLevel } from '../actions/filters';
-import { selectNode } from '../actions/nodes';
 
 import styles from './App.module.scss';
 
 function App() {
   const dispatch = useDispatch();
-
   const groupLevel = useSelector((state) => state.groupLevel);
   const neighbourLevel = useSelector((state) => state.neighbourLevel);
   const filters = useSelector((state) => state.filters);
@@ -26,18 +27,6 @@ function App() {
   const filteredNodes = useSelector((state) => getFilteredNodes(state, neighbourLevel));
   const groupedNodes = getNodesGroupedByTag(filteredNodes, groupLevel);
   const availableFilters = getAvailableFilters({ nodes: nodeDictionary });
-  const selectedNodeId = useSelector((state) => {
-    if (!state.selectedNode) {
-      return null;
-    }
-    return state.selectedNode;
-  });
-  const selectedNode = useSelector((state) => {
-    if (!state.selectedNode) {
-      return null;
-    }
-    return getNodeDetails(state.nodes, state.selectedNode);
-  });
 
   useEffect(() => {
     dispatch(readGraphData());
@@ -47,7 +36,6 @@ function App() {
     handleFilterChange: (filterId, value) => {
       dispatch(setFilter(filterId, value));
     },
-    selectNode: (id) => dispatch(selectNode(id)),
     setGroupLevel: (value) => dispatch(setGroupLevel(value)),
     setNeighbourLevel: (value) => dispatch(setNeighbourLevel(value)),
   };
@@ -55,31 +43,41 @@ function App() {
   if (!Object.keys(nodeDictionary).length) {
     return <p>Loading ...</p>;
   }
+
   return (
-    <div className={`${styles.app}`}>
-      <LeftPanel
-        actions={actions}
-        availableFilters={availableFilters}
-        groupedNodes={groupedNodes}
-        groupLevel={groupLevel}
-        neighbourLevel={neighbourLevel}
-        filters={filters}
-      />
-      <div className={styles.GraphContainer}>
-        <Graph
-          nodes={groupedNodes}
-          selectedNode={selectedNodeId}
+      <div className={`${styles.app}`}>
+        <LeftPanel
+          actions={actions}
+          availableFilters={availableFilters}
+          groupedNodes={groupedNodes}
           groupLevel={groupLevel}
+          neighbourLevel={neighbourLevel}
           filters={filters}
         />
+        <Switch>
+          <Route path="/node/:selectedNodeId">
+            <div className={styles.GraphContainer}>
+              <Graph
+                nodes={groupedNodes}
+                groupLevel={groupLevel}
+                filters={filters}
+              />
+            </div>
+            <section className={styles.panel}>
+              <NodePanel nodes={nodeDictionary} details={details} actions={actions} />
+            </section>
+          </Route>
+          <Route path="/">
+            <div className={styles.GraphContainer}>
+              <Graph
+                nodes={groupedNodes}
+                groupLevel={groupLevel}
+                filters={filters}
+              />
+            </div>
+          </Route>
+        </Switch>
       </div>
-      <section className={styles.panel}>
-        {selectedNodeId && (
-          <NodePanel selectedNode={selectedNode} details={details} actions={actions} />
-        )}
-        {!selectedNodeId && <GeneralInfoPanel nodes={groupedNodes} actions={actions} />}
-      </section>
-    </div>
   );
 }
 

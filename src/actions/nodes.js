@@ -3,35 +3,13 @@ import callApi from '../services/api-client';
 import { getConfig } from '../services/read-config';
 
 /**
- * Returns the node id
- *
- * @param {String} nodeId string
- *
- * @return {Object}
- */
-export function selectNode(nodeId) {
-  return (dispatch) => {
-    const detailsUrl = getConfig('detailsUrl');
-
-    if (detailsUrl) {
-      dispatch(readNodeDetails(nodeId));
-    }
-
-    return dispatch({
-      type: types.SELECT_NODE,
-      nodeId,
-    });
-  };
-}
-
-/**
  * Returns the status informations
  *
  * @param {String} nodeId id of the instance
  *
  * @return {Promise}
  */
-export default function readNodeDetails(nodeId) {
+export function readNodeDetails(nodeId) {
   const detailsUrl = getConfig('detailsUrl');
 
   return (dispatch) => {
