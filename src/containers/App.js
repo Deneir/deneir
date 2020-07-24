@@ -8,6 +8,7 @@ import {
 import Graph from '../components/Graph/index';
 import LeftPanel from '../components/LeftPanel/index';
 import NodePanel from '../components/NodePanel/index';
+import GeneralInfoPanel from '../components/GeneralInfoPanel';
 
 import { getFilteredNodes, getNodesGroupedByTag } from '../reducers/nodes-selector';
 import { getAvailableFilters } from '../reducers/filters';
@@ -75,6 +76,9 @@ function App() {
                 filters={filters}
               />
             </div>
+            <section className={styles.panel}>
+              <GeneralInfoPanel nodes={nodeDictionary} details={details} actions={actions} />
+            </section>
           </Route>
         </Switch>
       </div>
