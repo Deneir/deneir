@@ -14,9 +14,14 @@ export default function GeneralInfoPanel(props) {
 
   return (
     <div className={styles.GeneralInfoPanel}>
-      {Object.keys(statusCodesToLabels).map((statusCode) => {
+      {Object.keys(statusCodesToLabels).reverse().map((statusCode) => {
         const label = statusCodesToLabels[statusCode];
         const nodeCount = nodesByStatusCode[statusCode].length;
+
+        if (nodesByStatusCode[statusCode].length === 0) {
+          return null;
+        }
+
         return (
           <NodeList
             key={label}
