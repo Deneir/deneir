@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { faArrowDown, faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import RawDetails from './RawDetails';
+import StatusBubble from '../StatusBubble';
 import styles from './AdvancedDetails.module.scss';
-import { statusCodesToLabels } from '../../constants/status-codes';
-import { getConfig } from '../../services/read-config';
 
 export default function AdvancedDetails(props) {
   const { details } = props;
@@ -15,46 +16,47 @@ export default function AdvancedDetails(props) {
     return (
       <div>
         {details.map((item) => {
-          const statusCode = item.dependencies
-            && Math.max(...item.dependencies.map((d) => d.status.code));
-
-          return (
-            <div key={item.id} className={styles.arrayItemBlock}>
-              <h3>
-                {statusCode !== false && <StatusBubble statusCode={statusCode} />}
-                {' '}{item.title}</h3>
-              <p>
-                {item.id} {(item.url && <a href={item.url}>(url)</a>)}
-              </p>
-              {item.details &&
-              <RawDetails details={item.details} />}
-            </div>
-          );
+          return <InstanceDetails key={item.id} {...item} />;
         })}
       </div>
     );
   }
+  return 'Node details should be an array of objects';
 }
 
 AdvancedDetails.propTypes = {
   details: PropTypes.instanceOf(Object),
 };
 
-function StatusBubble(props) {
-  const { statusCode } = props;
-  const settings = getConfig('canvasSettings');
-  const { statusColors, statusStrokes } = settings;
-  const statusLabel = statusCodesToLabels[statusCode];
-  const statusColor = statusColors[statusLabel];
-  const statusStroke = statusStrokes[statusLabel];
+function InstanceDetails({
+  dependencies, url, id, title, details,
+}) {
+  const [open, setOpen] = useState(false);
+  const toggleIcon = (open && faArrowDown) || faArrowRight;
+  const statusCode = dependencies && Math.max(...dependencies.map((d) => d.status.code));
 
   return (
-    <svg height="20px" width="20px">
-      <circle fill={statusColor} stroke={statusStroke} strokeWidth="2" cx="10" cy="10" r="8" />
-    </svg>
+    <div>
+      <h3 class={styles.instanceTitle} onClick={() => setOpen(!open)}>
+        <FontAwesomeIcon icon={toggleIcon} />{' '}
+        {statusCode !== false && <StatusBubble statusCode={statusCode} />} {title}
+      </h3>
+      <div className={(!open && styles.closed) || ''}>
+        <div key={id} className={styles.arrayItemBlock}>
+          <p>
+            {id} {url && <a href={url}>(url)</a>}
+          </p>
+          {details && <RawDetails details={details} />}
+        </div>
+      </div>
+    </div>
   );
 }
 
-StatusBubble.propTypes = {
-  statusCode: PropTypes.number,
+InstanceDetails.propTypes = {
+  url: PropTypes.string,
+  id: PropTypes.string,
+  title: PropTypes.string,
+  dependencies: PropTypes.array,
+  details: PropTypes.object,
 };

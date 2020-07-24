@@ -55,7 +55,7 @@ function JsonBlock({ title, data }) {
 
   return (
     <div>
-      <b onClick={() => setOpen(!open)}>
+      <b className={styles.detailsBlockTitle} onClick={() => setOpen(!open)}>
         <FontAwesomeIcon icon={toggleIcon} /> {title}:
       </b>
       <div className={(!open && styles.closed) || ''}>
@@ -76,7 +76,7 @@ function HtmlBlock({ title, data }) {
 
   return (
     <div>
-      <b onClick={() => setOpen(!open)}>
+      <b className={styles.detailsBlockTitle} onClick={() => setOpen(!open)}>
         <FontAwesomeIcon icon={toggleIcon} /> {title}:
       </b>
       <div className={(!open && styles.closed) || ''}>

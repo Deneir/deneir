@@ -1,12 +1,9 @@
-import React, { Fragment, useState, useEffect } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
-import {
-  useParams,
-  Link,
-} from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTimes, faArrowDown, faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import NodeList from '../NodeList';
 import styles from './index.module.scss';
 import AdvancedDetails from './AdvancedDetails';
@@ -16,8 +13,6 @@ import { readNodeDetails } from '../../actions/nodes';
 export default function NodeDetails(props) {
   const dispatch = useDispatch();
   const { nodes, details } = props;
-  const [open, setOpen] = useState(false);
-  const toggleIcon = (open && faArrowDown) || faArrowRight;
   const { selectedNodeId } = useParams();
   const selectedNode = nodes[selectedNodeId];
 
@@ -52,22 +47,18 @@ export default function NodeDetails(props) {
       </div>
       {details && (
         <div className={styles.textBlock}>
-          <h2 onClick={() => setOpen(!open)}>
-            <FontAwesomeIcon icon={toggleIcon} /> Details
-          </h2>
-          <div className={(!open && styles.closed) || ''}>
-            <AdvancedDetails details={details} />
-          </div>
+          <h2>Instances</h2>
+          <AdvancedDetails details={details} />
         </div>
       )}
       <div>
         <NodeList
           title="Dependencies"
-          nodes={selectedNode.dependencies}
+          nodes={selectedNode.dependencies.map((n) => ({ ...n, status: nodes[n.id].status }))}
         />
         <NodeList
           title="Dependents"
-          nodes={selectedNode.dependents}
+          nodes={selectedNode.dependents.map((n) => ({ ...n, status: nodes[n.id].status }))}
         />
       </div>
     </Fragment>

@@ -5,6 +5,7 @@ import {
 } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowDown, faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import StatusBubble from './StatusBubble';
 import styles from './NodeList.module.scss';
 
 export default function NodeList(props) {
@@ -16,7 +17,7 @@ export default function NodeList(props) {
 
   return (
     <Fragment>
-      <h2 onClick={() => setOpen(!open)}>
+      <h2 className={styles.listTitle} onClick={() => setOpen(!open)}>
         <FontAwesomeIcon icon={toggleIcon} /> {title}
       </h2>
       <ul className={(!open && styles.closed) || ''}>
@@ -24,7 +25,7 @@ export default function NodeList(props) {
           && nodes.map((item) => (
             <li key={item.id}>
               <Link className={styles.nodeLink} to={`/node/${item.id}`}>
-                {item.id}
+                <StatusBubble statusCode={item.status} /> {item.id}
               </Link>
             </li>
           ))}
