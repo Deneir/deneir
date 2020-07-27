@@ -14,7 +14,8 @@ li {
   min-width: 500px;
 }
 .panel {
-  min-width: 420px;
+  position: relative;
+  min-width: 400px;
   background: #ece9e9;
   flex: 1;
   padding: 20px;
@@ -55,4 +56,30 @@ li {
   .listContent {
     background: #ece9e9;
   }
+
+  .closeButton {
+    border: none;
+    background: none;
+    font-size: 24px;
+    box-sizing: border-box;
+  }
+
+  transition-duration: 0.5s;
+  transition-property: min-width;
+
+  &.closed {
+    max-width: 72px;
+    min-width: 72px;
+    margin: 0;
+
+    div {
+      display: none;
+    }
+    .closeButton {
+      height: calc(100vh - 40px);
+      display: flex;
+      align-items: flex-start;
+    }
+  }
+
 }

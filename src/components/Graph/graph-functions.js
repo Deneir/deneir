@@ -82,6 +82,15 @@ graphFunctions.initGraph = function initGraph(canvas, { data: { nodes, links }, 
   function updateGraph(data) {
     drawAll(canvas, cameraPosition, data);
   }
+  function resizeCanvas() {
+    const { x, y, k } = cameraPosition;
+
+    const newCameraPosition = d3.zoomIdentity
+      .translate(x, y)
+      .scale(k);
+
+    d3.select(canvas).call(setCameraPosition, newCameraPosition);
+  }
   function setCameraToNode(selectedNode) {
     const { scale, duration } = settings.zoom;
     const nodeToZoom = nodes.find((a) => a.id === selectedNode);
@@ -131,6 +140,7 @@ graphFunctions.initGraph = function initGraph(canvas, { data: { nodes, links }, 
   }
 
   graphFunctions.updateGraph = updateGraph;
+  graphFunctions.resizeCanvas = resizeCanvas;
   graphFunctions.zoomFit = zoomFit;
   graphFunctions.setCameraToNode = setCameraToNode;
 };

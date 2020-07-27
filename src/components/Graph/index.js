@@ -14,7 +14,7 @@ export default function Graph(props) {
   const canvasRef = useRef(null);
   const selectNodeDelay = useRef(1200);
   const {
-    nodes, groupLevel, filters,
+    nodes, groupLevel, filters, forceRenderId,
   } = props;
   const dispatch = useDispatch();
   const history = useHistory();
@@ -31,8 +31,15 @@ export default function Graph(props) {
     };
     //  d3 setup
     const canvas = canvasRef.current;
+
     graphFunctions.initGraph(canvas, { data: graphFormatter(nodes), actions });
   }, [nodes, dispatch, groupLevel, history]);
+
+  useEffect(() => {
+    const data = graphFormatter(nodes);
+
+    graphFunctions.resizeCanvas(data);
+  }, [nodes, forceRenderId]);
 
   useEffect(() => {
     // select node zoom handler
@@ -59,6 +66,7 @@ Graph.propTypes = {
   selectedNode: PropTypes.string,
   filters: PropTypes.instanceOf(Object),
   groupLevel: PropTypes.string,
+  forceRenderId: PropTypes.number,
 };
 
 Graph.defaultProps = {

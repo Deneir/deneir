@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  Switch,
-  Route,
-} from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import Graph from '../components/Graph/index';
 import LeftPanel from '../components/LeftPanel/index';
 import NodePanel from '../components/NodePanel/index';
@@ -18,8 +18,10 @@ import { setFilter, setGroupLevel, setNeighbourLevel } from '../actions/filters'
 
 import styles from './App.module.scss';
 
-function App() {
+export default function App() {
   const dispatch = useDispatch();
+  const [isPanelOpen, setPanelOpen] = useState(true);
+  const [forceRenderId, setForceRenderId] = useState(null);
   const groupLevel = useSelector((state) => state.groupLevel);
   const neighbourLevel = useSelector((state) => state.neighbourLevel);
   const filters = useSelector((state) => state.filters);
@@ -45,44 +47,74 @@ function App() {
     return <p>Loading ...</p>;
   }
 
+  const handleOpenPanel = (isOpen) => {
+    setPanelOpen(isOpen);
+    setTimeout(() => {
+      setForceRenderId(Date.now());
+    }, 300);
+  };
+
   return (
-      <div className={`${styles.app}`}>
-        <LeftPanel
-          actions={actions}
-          availableFilters={availableFilters}
-          groupedNodes={groupedNodes}
-          groupLevel={groupLevel}
-          neighbourLevel={Number(neighbourLevel)}
-          filters={filters}
-        />
-        <Switch>
-          <Route path="/node/:selectedNodeId">
-            <div className={styles.GraphContainer}>
-              <Graph
-                nodes={groupedNodes}
-                groupLevel={groupLevel}
-                filters={filters}
-              />
-            </div>
-            <section className={styles.panel}>
-              <NodePanel nodes={nodeDictionary} details={details} actions={actions} />
-            </section>
-          </Route>
-          <Route path="/">
-            <div className={styles.GraphContainer}>
-              <Graph
-                nodes={groupedNodes}
-                groupLevel={groupLevel}
-                filters={filters}
-              />
-            </div>
-            <section className={styles.panel}>
-              <GeneralInfoPanel nodes={nodeDictionary} details={details} actions={actions} />
-            </section>
-          </Route>
-        </Switch>
-      </div>
+    <div className={styles.app}>
+      <LeftPanel
+        actions={actions}
+        availableFilters={availableFilters}
+        groupedNodes={groupedNodes}
+        groupLevel={groupLevel}
+        neighbourLevel={Number(neighbourLevel)}
+        filters={filters}
+      />
+      <Switch>
+        <Route path="/node/:selectedNodeId">
+          <div className={styles.GraphContainer}>
+            <Graph
+              nodes={groupedNodes}
+              groupLevel={groupLevel}
+              filters={filters}
+              forceRenderId={forceRenderId}
+            />
+          </div>
+          <RightPanel handleOpenPanel={handleOpenPanel} isPanelOpen={isPanelOpen}>
+            <NodePanel nodes={nodeDictionary} details={details} actions={actions} />
+          </RightPanel>
+        </Route>
+        <Route path="/">
+          <div className={styles.GraphContainer}>
+            <Graph
+              nodes={groupedNodes}
+              groupLevel={groupLevel}
+              filters={filters}
+              forceRenderId={forceRenderId}
+            />
+          </div>
+          <RightPanel handleOpenPanel={handleOpenPanel} isPanelOpen={isPanelOpen}>
+            <GeneralInfoPanel nodes={nodeDictionary} details={details} actions={actions} />
+          </RightPanel>
+        </Route>
+      </Switch>
+    </div>
   );
 }
 
-export default App;
+function RightPanel(props) {
+  const { children, handleOpenPanel, isPanelOpen } = props;
+  const rightPanelIcon = (isPanelOpen && faArrowRight) || faArrowLeft;
+  const RightPanelToggleButton = () => (
+    <button className={styles.closeButton} onClick={() => handleOpenPanel(!isPanelOpen)}>
+      <FontAwesomeIcon icon={rightPanelIcon} />
+    </button>
+  );
+  const closedPanelClass = (!isPanelOpen && styles.closed) || '';
+
+  return (
+    <section className={`${styles.panel} ${closedPanelClass}`}>
+      <RightPanelToggleButton />
+      {children}
+    </section>
+  );
+}
+RightPanel.propTypes = {
+  children: PropTypes.any,
+  handleOpenPanel: PropTypes.func,
+  isPanelOpen: PropTypes.bool,
+};
