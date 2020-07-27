@@ -52,7 +52,7 @@ function App() {
           availableFilters={availableFilters}
           groupedNodes={groupedNodes}
           groupLevel={groupLevel}
-          neighbourLevel={neighbourLevel}
+          neighbourLevel={Number(neighbourLevel)}
           filters={filters}
         />
         <Switch>

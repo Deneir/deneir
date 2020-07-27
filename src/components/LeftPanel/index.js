@@ -44,10 +44,10 @@ export default function LeftPanel(props) {
 }
 
 LeftPanel.propTypes = {
-  actions: PropTypes.instanceOf('object'),
-  groupedNodes: PropTypes.instanceOf('object'),
+  actions: PropTypes.object,
+  groupedNodes: PropTypes.object,
   groupLevel: PropTypes.string,
   neighbourLevel: PropTypes.number,
-  availableFilters: PropTypes.instanceOf('object'),
-  filters: PropTypes.instanceOf('object'),
+  availableFilters: PropTypes.object,
+  filters: PropTypes.object,
 };

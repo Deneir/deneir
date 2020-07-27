@@ -26,7 +26,7 @@ export default function NeighbourLevelControl(props) {
         Show filtered nodes and their{' '}
         <input
           className={styles.numberInput}
-          onInput={(e) => handleLevelChange(e.target.value)}
+          onChange={(e) => handleLevelChange(e.target.value)}
           value={neighbourLevel}
           type="number"
           min="0"

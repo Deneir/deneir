@@ -37,7 +37,7 @@ function InstanceDetails({
 
   return (
     <div>
-      <h3 class={styles.instanceTitle} onClick={() => setOpen(!open)}>
+      <h3 className={styles.instanceTitle} onClick={() => setOpen(!open)}>
         <FontAwesomeIcon icon={toggleIcon} />{' '}
         {statusCode !== false && <StatusBubble statusCode={statusCode} />} {title}
       </h3>

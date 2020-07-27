@@ -23,6 +23,6 @@ export default function LegendBlock(props) {
 
 LegendBlock.propTypes = {
   initialOpen: PropTypes.bool,
-  title: PropTypes.string.isRequired,
-  children: PropTypes.array.isRequired,
+  title: PropTypes.string,
+  children: PropTypes.any,
 };

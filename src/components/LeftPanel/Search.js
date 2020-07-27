@@ -87,7 +87,6 @@ export default function Search({ nodes }) {
 
 Search.propTypes = {
   nodes: PropTypes.instanceOf(Object).isRequired,
-  onSearch: PropTypes.func.isRequired,
 };
 
 function findNodeMatches(nodes, searchTerm) {
