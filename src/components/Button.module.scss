@@ -8,6 +8,7 @@
   border: 1px solid transparent;
   outline: none;
   box-sizing: border-box;
+  cursor:pointer;
   &:active, &:focus {
     border: 1px solid $font-darker-color;
   }

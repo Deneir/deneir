@@ -1,15 +1,11 @@
 @import '../../variables.scss';
 
-.header {
+.panelControls {
   display: flex;
   justify-content: space-between;
 
-  button {
-    border: none;
-    background: none;
-    font-size: 25px;
-    font-weight: bold;
-    cursor: pointer;
+  button svg {
+    padding-right: 4px;
   }
 }
 .detailsBlockTitle {
@@ -17,4 +13,10 @@
 }
 .closed {
   display: none;
+}
+.textBlock {
+  color: $font-lighter-color;
+}
+.tagName {
+  text-transform: capitalize;
 }

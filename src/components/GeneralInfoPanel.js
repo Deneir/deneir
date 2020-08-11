@@ -14,6 +14,7 @@ export default function GeneralInfoPanel(props) {
 
   return (
     <div className={styles.GeneralInfoPanel}>
+      <h2>Overview</h2>
       {Object.keys(statusCodesToLabels).reverse().map((statusCode) => {
         const label = statusCodesToLabels[statusCode];
         const nodeCount = nodesByStatusCode[statusCode].length;

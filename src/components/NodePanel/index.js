@@ -1,17 +1,19 @@
 import React, { Fragment, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useHistory } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faCaretLeft } from '@fortawesome/free-solid-svg-icons';
 import NodeList from '../NodeList';
 import styles from './index.module.scss';
 import AdvancedDetails from './AdvancedDetails';
 import { getConfig } from '../../services/read-config';
 import { readNodeDetails } from '../../actions/nodes';
+import Button from '../Button';
 
 export default function NodeDetails(props) {
   const dispatch = useDispatch();
+  const history = useHistory();
   const { nodes, details } = props;
   const { selectedNodeId } = useParams();
   const selectedNode = nodes[selectedNodeId];
@@ -30,24 +32,27 @@ export default function NodeDetails(props) {
 
   return (
     <Fragment>
-      <div className={styles.header}>
-        <h1>{selectedNode.id}</h1>
+      <div className={styles.panelControls}>
+        <Button type="button" onClick={history.goBack}>
+          <FontAwesomeIcon icon={faCaretLeft} /> Back
+        </Button>
         <Link type="button" to="/">
-          <FontAwesomeIcon icon={faTimes} />
+          <Button type="button">Clear</Button>
         </Link>
       </div>
+      <h2>{selectedNode.id}</h2>
       <div className={styles.textBlock}>
         {Object.keys(selectedNode.tags).map((tagName) => {
           return (
             <p key={tagName}>
-              <b>{tagName}:</b> {selectedNode.tags[tagName]}
+              <span className={styles.tagName}>{tagName}:</span> {selectedNode.tags[tagName]}
             </p>
           );
         })}
       </div>
       {details && (
         <div className={styles.textBlock}>
-          <h2>Instances</h2>
+          <h3>Instances</h3>
           <AdvancedDetails details={details} />
         </div>
       )}

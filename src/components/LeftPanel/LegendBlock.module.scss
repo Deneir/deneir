@@ -25,10 +25,9 @@
   text-transform: capitalize;
 }
 .contentPanel {
-  max-height: 0;
-  transition: max-height 0.5s ease-in-out;
-  overflow: auto;
+  display: none;
 }
 .open {
   max-height: 400px;
+  display: flex;
 }

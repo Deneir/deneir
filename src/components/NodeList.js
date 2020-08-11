@@ -17,9 +17,9 @@ export default function NodeList(props) {
 
   return (
     <Fragment>
-      <h2 className={styles.listTitle} onClick={() => setOpen(!open)}>
+      <h3 className={styles.listTitle} onClick={() => setOpen(!open)}>
         <FontAwesomeIcon icon={toggleIcon} /> {title}
-      </h2>
+      </h3>
       <ul className={(!open && styles.closed) || ''}>
         {nodes.length > 0
           && nodes.map((item) => (

@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { Switch, Route } from 'react-router-dom';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
 import Graph from '../components/Graph/index';
 import LeftPanel from '../components/LeftPanel/index';
+import RightPanel from '../components/RightPanel/index';
 import NodePanel from '../components/NodePanel/index';
 import GeneralInfoPanel from '../components/GeneralInfoPanel';
 
@@ -95,26 +93,3 @@ export default function App() {
     </div>
   );
 }
-
-function RightPanel(props) {
-  const { children, handleOpenPanel, isPanelOpen } = props;
-  const rightPanelIcon = (isPanelOpen && faTimes) || faBars;
-  const RightPanelToggleButton = () => (
-    <button className={styles.closeButton} onClick={() => handleOpenPanel(!isPanelOpen)}>
-      <FontAwesomeIcon icon={rightPanelIcon} />
-    </button>
-  );
-  const closedPanelClass = (!isPanelOpen && styles.closed) || '';
-
-  return (
-    <section className={`${styles.panel} ${closedPanelClass}`}>
-      <RightPanelToggleButton />
-      {children}
-    </section>
-  );
-}
-RightPanel.propTypes = {
-  children: PropTypes.any,
-  handleOpenPanel: PropTypes.func,
-  isPanelOpen: PropTypes.bool,
-};
