@@ -1,12 +1,45 @@
 @import '../variables.scss';
 
-.listTitle {
-  cursor: pointer;
+.nodeList {
+  margin-bottom: 7px;
+
+  h3 {
+    padding: 10px 20px;
+    font-weight: normal;
+    font-size: $font-size-base;
+    color: $font-lighter-color;
+    cursor: pointer;
+    margin: 0;
+    background-color: $background-darker-color;
+  }
+  ul {
+    padding: 0;
+    margin: 0;
+  }
+  li a {
+      padding: 3px 20px;
+      margin-top: 1px;
+      background-color: $background-darker-color;
+      width: 100%;
+      box-sizing: border-box;
+      display: block;
+      &:hover {
+        background-color: $background-default-color;
+      }
+    }
+
+
+  h3,
+  li {
+    border-left-width: 4px;
+    border-left-style: solid;
+    border-left-color: transparent;
+  }
 }
 
 .nodeLink {
-  color: blue;
-  text-decoration: underline;
+  color: $font-lighter-color;
+  text-decoration: none;
   border: none;
   background: none;
   cursor: pointer;

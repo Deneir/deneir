@@ -3,6 +3,7 @@
 .panelControls {
   display: flex;
   justify-content: space-between;
+  padding: 0 20px;
 
   button svg {
     padding-right: 4px;
@@ -16,6 +17,7 @@
 }
 .textBlock {
   color: $font-lighter-color;
+  padding: 0 20px;
 }
 .tagName {
   text-transform: capitalize;
