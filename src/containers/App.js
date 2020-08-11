@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Switch, Route } from 'react-router-dom';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
 import Graph from '../components/Graph/index';
 import LeftPanel from '../components/LeftPanel/index';
 import NodePanel from '../components/NodePanel/index';
@@ -98,7 +98,7 @@ export default function App() {
 
 function RightPanel(props) {
   const { children, handleOpenPanel, isPanelOpen } = props;
-  const rightPanelIcon = (isPanelOpen && faArrowRight) || faArrowLeft;
+  const rightPanelIcon = (isPanelOpen && faTimes) || faBars;
   const RightPanelToggleButton = () => (
     <button className={styles.closeButton} onClick={() => handleOpenPanel(!isPanelOpen)}>
       <FontAwesomeIcon icon={rightPanelIcon} />

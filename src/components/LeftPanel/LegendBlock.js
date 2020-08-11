@@ -1,19 +1,20 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowDown, faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { faCaretDown, faCaretRight } from '@fortawesome/free-solid-svg-icons';
 import styles from './LegendBlock.module.scss';
 
 export default function LegendBlock(props) {
   const { initialOpen = true, title, children } = props;
   const [isOpen, setOpen] = useState(initialOpen);
-  const toggleIcon = (isOpen && faArrowDown) || faArrowRight;
+  const toggleIcon = (isOpen && faCaretDown) || faCaretRight;
 
   return (
     <div className={styles.LegendBlock}>
       {title && (
         <div className={styles.title} onClick={() => setOpen(!isOpen)}>
-          <FontAwesomeIcon icon={toggleIcon} /> {title}
+          <span>{title}</span>
+          <FontAwesomeIcon icon={toggleIcon} />
         </div>
       )}
       <div className={`${styles.contentPanel} ${isOpen && styles.open}`}>{children}</div>

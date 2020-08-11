@@ -17,6 +17,7 @@ export default function LeftPanel(props) {
 
   return (
     <div className={styles.LegendContainer}>
+      <h1 className={styles.logo}>DENEIR</h1>
       <Search nodes={groupedNodes} />
       <StatusLegend />
       {hierarchy && (

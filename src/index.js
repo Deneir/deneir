@@ -5,7 +5,7 @@ import {
   BrowserRouter as Router,
 } from 'react-router-dom';
 import configureStore from './store/configure-store';
-import './index.css';
+import './index.scss';
 import App from './containers/App';
 import * as serviceWorker from './serviceWorker';
 import { readConfig } from './services/read-config';

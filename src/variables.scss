@@ -1,0 +1,21 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans");
+
+$font-family-base: "Open Sans", sans-serif;
+$font-size-base: 14px;
+$line-height-base: 20px;
+
+$gray1: #ececec;
+$gray2: #aaaaaa;
+$gray3: #888888;
+$gray4: #777777;
+$gray5: #444444;
+$gray6: #333333;
+
+$font-lighter-color: $gray1;
+$font-default-color: $gray2;
+$font-darker-color: $gray3;
+$font-super-dark-color: $gray6;
+
+$background-lighter-color: $gray4;
+$background-default-color: $gray5;
+$background-darker-color: $gray6;

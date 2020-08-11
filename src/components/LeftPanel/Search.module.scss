@@ -1,4 +1,39 @@
-.activeSuggestion {
-  background-color: #777;
-  color: #fff;
+@import '../../variables.scss';
+
+.searchContainer {
+  margin: 30px 15px 30px;
+}
+.searchBox {
+  display: flex;
+
+  input {
+    font-size: $font-size-base;
+    color: $font-super-dark-color;
+    background-color: $background-lighter-color;
+    padding: 7px 10px;
+    border: 1px solid transparent;
+    width: 158px;
+    outline: none;
+    box-sizing: border-box;
+    &:active,
+    &:focus {
+      border: 1px solid $font-default-color;
+    }
+  }
+}
+.suggestionsList {
+  margin: 15px 0 0;
+  padding: 0;
+  color: $font-default-color;
+
+  li {
+    padding: 3px;
+    margin: 1px 0 0;
+    cursor: pointer;
+
+    &:hover, &.activeSuggestion {
+      background-color: $background-lighter-color;
+      color: $font-lighter-color;
+    }
+  }
 }

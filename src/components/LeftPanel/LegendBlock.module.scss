@@ -1,7 +1,10 @@
+@import '../../variables.scss';
+
 .LegendBlock {
-  background-color: #ddd;
-  margin: 10px;
-  padding: 10px;
+  background-color: $background-darker-color;
+  margin: 10px 0;
+  padding: 0 20px;
+  color: $font-lighter-color;
 
   ul {
     padding: 0;
@@ -12,10 +15,14 @@
 }
 
 .title {
-  font-weight: bold;
+  font-size: 14px;
+  font-weight: normal;
   cursor: pointer;
-  border-bottom: 1px solid #bbb;
-  padding-bottom: 5px;
+  padding: 8px 0px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-transform: capitalize;
 }
 .contentPanel {
   max-height: 0;

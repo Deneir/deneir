@@ -1,0 +1,14 @@
+@import '../variables.scss';
+
+.button {
+  font-size: $font-size-base;
+  color: $font-darker-color;
+  background-color: $background-darker-color;
+  padding: 7px 10px;
+  border: 1px solid transparent;
+  outline: none;
+  box-sizing: border-box;
+  &:active, &:focus {
+    border: 1px solid $font-darker-color;
+  }
+}

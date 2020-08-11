@@ -4,7 +4,7 @@ import {
   Link,
 } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowDown, faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { faCaretDown, faCaretRight } from '@fortawesome/free-solid-svg-icons';
 import StatusBubble from './StatusBubble';
 import styles from './NodeList.module.scss';
 
@@ -13,7 +13,7 @@ export default function NodeList(props) {
     title, nodes, defaultOpen = true,
   } = props;
   const [open, setOpen] = useState(defaultOpen);
-  const toggleIcon = (open && faArrowDown) || faArrowRight;
+  const toggleIcon = (open && faCaretDown) || faCaretRight;
 
   return (
     <Fragment>

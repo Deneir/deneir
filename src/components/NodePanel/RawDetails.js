@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowDown, faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { faCaretDown, faCaretRight } from '@fortawesome/free-solid-svg-icons';
 import styles from './AdvancedDetails.module.scss';
 
 export default function AdvancedDetails(props) {
@@ -51,7 +51,7 @@ AdvancedDetails.propTypes = {
 
 function JsonBlock({ title, data }) {
   const [open, setOpen] = useState(false);
-  const toggleIcon = (open && faArrowDown) || faArrowRight;
+  const toggleIcon = (open && faCaretDown) || faCaretRight;
 
   return (
     <div>
@@ -72,7 +72,7 @@ JsonBlock.propTypes = {
 
 function HtmlBlock({ title, data }) {
   const [open, setOpen] = useState(false);
-  const toggleIcon = (open && faArrowDown) || faArrowRight;
+  const toggleIcon = (open && faCaretDown) || faCaretRight;
 
   return (
     <div>

@@ -1,3 +1,5 @@
+@import '../variables.scss';
+
 .app {
   display: flex;
   flex-direction: row;
@@ -16,7 +18,7 @@ li {
 .panel {
   position: relative;
   min-width: 400px;
-  background: #ece9e9;
+  background-color: $background-default-color;;
   flex: 1;
   padding: 20px;
   height: 100vh;
@@ -31,12 +33,12 @@ li {
   }
   h2 {
     font-size: 1.3em;
-    border-top: 1px solid #ccc;
+    color:$font-lighter-color;
     padding-top: 20px;
   }
   h3 {
     font-size: 1em;
-    color: #444;
+    color: $font-lighter-color;
   }
 
   .innerContent {

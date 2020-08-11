@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import {
-  useHistory,
-} from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
+import Button from '../Button';
 import styles from './Search.module.scss';
-import LegendBlock from './LegendBlock';
 
 export default function Search({ nodes }) {
   const [searchTerm, setSearchTerm] = useState('');
@@ -55,21 +53,23 @@ export default function Search({ nodes }) {
   };
 
   return (
-    <LegendBlock>
-      <input
-        type="text"
-        placeholder="Search"
-        value={searchTerm}
-        onChange={handleChange}
-        onKeyDown={handleKeyDown}
-        onBlur={handleBlur}
-        onFocus={handleFocus}
-      />
-      <button onClick={() => handleSubmit(searchTerm)} type="button">
-        Locate
-      </button>
+    <div className={styles.searchContainer}>
+      <div className={styles.searchBox}>
+        <input
+          type="text"
+          placeholder="Search"
+          value={searchTerm}
+          onChange={handleChange}
+          onKeyDown={handleKeyDown}
+          onBlur={handleBlur}
+          onFocus={handleFocus}
+        />
+        <Button onClick={() => handleSubmit(searchTerm)} type="button">
+          Locate
+        </Button>
+      </div>
       {showSuggestions && filteredSuggestions.length > 0 && (
-        <ul>
+        <ul className={styles.suggestionsList}>
           {filteredSuggestions.slice(0, 10).map((id, idx) => (
             <li
               key={id}
@@ -81,7 +81,7 @@ export default function Search({ nodes }) {
           ))}
         </ul>
       )}
-    </LegendBlock>
+    </div>
   );
 }
 

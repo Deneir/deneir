@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import LegendBlock from './LegendBlock';
+import styles from './Filter.module.scss';
 
 export default function Filter(props) {
   const {
@@ -9,10 +10,17 @@ export default function Filter(props) {
 
   return (
     <LegendBlock title={filterId} initialOpen={false}>
-      <ul>
+      <ul className={styles.filterList}>
         {values.map((value) => (
-          <li key={value}>
-            <input checked={filters.includes(value)} id={`${filterId}-${value}`} type="checkbox" value={value} onChange={() => onChange(filterId, value)} />
+          <li key={value} className={styles.filterOption}>
+            <input
+              className={styles.checkbox}
+              checked={filters.includes(value)}
+              id={`${filterId}-${value}`}
+              type="checkbox"
+              value={value}
+              onChange={() => onChange(filterId, value)}
+            />
             <label htmlFor={`${filterId}-${value}`}>{value}</label>
           </li>
         ))}

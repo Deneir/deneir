@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { faArrowDown, faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { faCaretDown, faCaretRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import RawDetails from './RawDetails';
 import StatusBubble from '../StatusBubble';
@@ -32,7 +32,7 @@ function InstanceDetails({
   dependencies, url, id, title, details,
 }) {
   const [open, setOpen] = useState(false);
-  const toggleIcon = (open && faArrowDown) || faArrowRight;
+  const toggleIcon = (open && faCaretDown) || faCaretRight;
   const statusCode = dependencies && Math.max(...dependencies.map((d) => d.status.code));
 
   return (

@@ -1,0 +1,17 @@
+@import '../../variables.scss';
+
+.filterList {
+  margin: 10px 0;
+}
+.filterOption {
+  display: flex;
+  align-items: center;
+
+  label {
+    padding-left: 10px;
+  }
+}
+
+.checkbox {
+  margin:0;
+}
