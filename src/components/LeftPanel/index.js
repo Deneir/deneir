@@ -6,6 +6,7 @@ import Filter from './Filter';
 import Search from './Search';
 import Hierarchy from './Hierarchy';
 import styles from './index.module.scss';
+import logo from './deneir-logo.svg';
 
 import { getConfig } from '../../services/read-config';
 
@@ -17,7 +18,7 @@ export default function LeftPanel(props) {
 
   return (
     <div className={styles.LegendContainer}>
-      <h1 className={styles.logo}>DENEIR</h1>
+      <h1 className={styles.logo}><img src={logo} alt="DENEIR" /></h1>
       <Search nodes={groupedNodes} />
       <StatusLegend />
       {hierarchy && (

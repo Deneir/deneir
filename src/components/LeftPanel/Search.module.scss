@@ -9,15 +9,17 @@
   input {
     font-size: $font-size-base;
     color: $font-super-dark-color;
-    background-color: $background-lighter-color;
+    background-color: transparent;
     padding: 7px 10px;
-    border: 1px solid transparent;
+    border: 1px solid $font-darker-color;
+    margin-right: 4px;
+    border-radius: 2px;
     width: 158px;
     outline: none;
     box-sizing: border-box;
     &:active,
     &:focus {
-      border: 1px solid $font-default-color;
+      border: solid 2px rgba(62, 149, 181, 0.8);
     }
   }
 }

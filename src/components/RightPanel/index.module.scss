@@ -27,25 +27,28 @@
     cursor: pointer;
     outline: none;
     border: 1px solid transparent;
+    border-radius: 2px;
 
     &:focus {
-      border: 1px solid $font-default-color;
+      box-shadow: 0 0 0 2px rgba(79, 192, 232, 0.5);
     }
   }
 
   transition-duration: 0.5s;
-  transition-property: min-width;
+  transition-property: all;
 
   &.closed {
     max-width: 72px;
     min-width: 72px;
     margin: 0;
-
+    .togglePanelContainer {
+      display:block;
+    }
     div {
+      width: 0;
       display: none;
     }
     .closeButton {
-      height: calc(100vh - 40px);
       display: flex;
       align-items: flex-start;
     }

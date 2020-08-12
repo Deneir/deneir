@@ -12,10 +12,10 @@ export default function LegendBlock(props) {
   return (
     <div className={styles.LegendBlock}>
       {title && (
-        <div className={styles.title} onClick={() => setOpen(!isOpen)}>
+        <button className={styles.title} onClick={() => setOpen(!isOpen)}>
           <span>{title}</span>
           <FontAwesomeIcon icon={toggleIcon} />
-        </div>
+        </button>
       )}
       <div className={`${styles.contentPanel} ${isOpen && styles.open}`}>{children}</div>
     </div>

@@ -3,7 +3,7 @@
 .LegendBlock {
   background-color: $background-darker-color;
   margin: 10px 0;
-  padding: 0 20px;
+  padding: 0 0px;
   color: $font-lighter-color;
 
   ul {
@@ -15,16 +15,30 @@
 }
 
 .title {
+  width: 100%;
+  background: none;
+  border: none;
+  border-radius: 2px;
+  color: $font-lighter-color;
   font-size: 14px;
   font-weight: normal;
   cursor: pointer;
-  padding: 8px 0px;
+  padding: 8px 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   text-transform: capitalize;
+  outline: none;
+
+  &:focus, &:active {
+    box-shadow: 0 0 0 2px rgba(79, 192, 232, 0.5);
+  }
+  span {
+    margin-right: 4px;
+  }
 }
 .contentPanel {
+  padding: 0px 20px;
   display: none;
 }
 .open {

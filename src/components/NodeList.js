@@ -19,27 +19,32 @@ export default function NodeList(props) {
 
   return (
     <div className={styles.nodeList}>
-      <h3 style={{ borderColor: statusColor }} onClick={() => setOpen(!open)}>
-        <FontAwesomeIcon icon={toggleIcon} /> {title}
-      </h3>
-      <ul className={(!open && styles.closed) || ''}>
-        {nodes.length > 0
-          && nodes.map((item) => {
-            const itemStatusLabel = statusCodesToLabels[item.status];
-            const itemStatusColor = statusColors[itemStatusLabel];
+      <button
+        className={styles.title}
+        style={{ borderColor: statusColor }}
+        onClick={() => setOpen(!open)}>
+        {title} ({nodes.length}) <FontAwesomeIcon icon={toggleIcon} />
+      </button>
+      <div>
+        <ul className={(!open && styles.closed) || ''}>
+          {nodes.length > 0
+            && nodes.map((item) => {
+              const itemStatusLabel = statusCodesToLabels[item.status];
+              const itemStatusColor = statusColors[itemStatusLabel];
 
-            return (
-              <li key={item.id} style={{ borderColor: itemStatusColor }}>
-                <Link className={styles.nodeLink} to={`/node/${item.id}`}>
-                  {item.id}
-                </Link>
-              </li>
-            );
-          })}
-        {nodes.length === 0 && (
-          <p className={styles.emptyListMessage}>there are 0 nodes in this list</p>
-        )}
-      </ul>
+              return (
+                <li key={item.id} style={{ borderColor: itemStatusColor }}>
+                  <Link className={styles.nodeLink} to={`/node/${item.id}`}>
+                    {item.id}
+                  </Link>
+                </li>
+              );
+            })}
+          {nodes.length === 0 && (
+            <li className={styles.emptyListMessage}>there are 0 nodes in this list</li>
+          )}
+        </ul>
+      </div>
     </div>
   );
 }

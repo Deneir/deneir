@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
-import { useParams, Link, useHistory } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretLeft } from '@fortawesome/free-solid-svg-icons';
 import NodeList from '../NodeList';
@@ -9,7 +9,7 @@ import styles from './index.module.scss';
 import AdvancedDetails from './AdvancedDetails';
 import { getConfig } from '../../services/read-config';
 import { readNodeDetails } from '../../actions/nodes';
-import Button from '../Button';
+import Button, { ButtonLink } from '../Button';
 
 export default function NodeDetails(props) {
   const dispatch = useDispatch();
@@ -36,9 +36,7 @@ export default function NodeDetails(props) {
         <Button type="button" onClick={history.goBack}>
           <FontAwesomeIcon icon={faCaretLeft} /> Back
         </Button>
-        <Link type="button" to="/">
-          <Button type="button">Clear</Button>
-        </Link>
+        <ButtonLink type="button" to="/">Clear</ButtonLink>
       </div>
       <h2>{selectedNode.id}</h2>
       <div className={styles.textBlock}>
