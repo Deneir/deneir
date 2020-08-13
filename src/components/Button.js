@@ -12,7 +12,7 @@ export default function Button(props) {
 }
 
 Button.propTypes = {
-  children: PropTypes.oneOfType([PropTypes.element, PropTypes.string]),
+  children: PropTypes.oneOfType([PropTypes.element, PropTypes.string, PropTypes.array]),
 };
 
 export function ButtonLink(props) {
@@ -24,5 +24,5 @@ export function ButtonLink(props) {
 }
 
 ButtonLink.propTypes = {
-  children: PropTypes.oneOfType([PropTypes.element, PropTypes.string]),
+  children: PropTypes.oneOfType([PropTypes.element, PropTypes.string, PropTypes.array]),
 };

@@ -1,43 +1,48 @@
+@import '../../variables.scss';
+
 .closed {
   display: none;
 }
-.noItems {
-  font-style: italic;
-  color: #444;
+.instanceDetails {
+  color: $font-lighter-color;
 }
-.rawDetailsBlock {
-  background-color: #444;
-  color: #ccc;
-  width: 100%;
-  overflow: auto;
-  padding: 10px;
-  box-sizing: border-box;
+.instanceDetailsContent {
+  padding: 10px 20px;
 }
 
-.arrayItemBlock {
-  margin: 10px 0;
-  padding-bottom: 10px;
-  border-bottom: 1px solid gray;
-}
-.HtmlBlock {
-  background-color: #444;
-  color: #ccc;
-  margin: 10px 0;
-  padding: 10px;
-  font-size: 0.8em;
-  h1 {
-    font-size: 1.2em;
-  }
-  h2 {
-    font-size: 1.1em;
-  }
-  h3 {
-    font-size: 1em;
-  }
-  h4 {
-    font-size: 0.9em;
-  }
-}
 .instanceTitle {
+  color: $font-lighter-color;
+  font-size: 12px;
+  text-align: left;
+  border: none;
   cursor: pointer;
+  background-color: transparent;
+  width: 100%;
+  display: flex;
+  padding: 3px 20px;
+  box-sizing: border-box;
+  outline: none;
+  justify-content: space-between;
+
+  &:focus {
+    box-shadow: 0 0 0 2px rgba(79, 192, 232, 0.5);
+  }
+  &:hover,
+  &:active {
+    background-color: $background-default-color;
+  }
+  span {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 80%;
+  }
+  a {
+    color: $font-lighter-color;
+    margin: 0 4px;
+    outline: none;
+    &:focus {
+      box-shadow: 0 0 0 2px rgba(79, 192, 232, 0.5);
+    }
+  }
 }

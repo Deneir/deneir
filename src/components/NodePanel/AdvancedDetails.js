@@ -3,49 +3,49 @@ import PropTypes from 'prop-types';
 import { faCaretDown, faCaretRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import RawDetails from './RawDetails';
-import StatusBubble from '../StatusBubble';
 import styles from './AdvancedDetails.module.scss';
+import StatusList from '../StatusList';
 
 export default function AdvancedDetails(props) {
   const { details } = props;
 
-  if (Array.isArray(details)) {
-    if (details.length === 0) {
-      return <div>no items</div>;
-    }
-    return (
-      <div>
-        {details.map((item) => {
-          return <InstanceDetails key={item.id} {...item} />;
-        })}
-      </div>
-    );
+  if (!Array.isArray(details)) {
+    return 'Node details should be an array of objects';
   }
-  return 'Node details should be an array of objects';
+
+  return (
+    <StatusList
+      title="Instances"
+      items={details.map((item) => {
+        const { dependencies } = item;
+
+        return {
+          ...item,
+          status: dependencies && Math.max(...dependencies.map((d) => d.status.code)),
+          content: <InstanceDetails key={item.id} {...item} />,
+        };
+      })}
+      defaultOpen={true}
+    />
+  );
 }
 
 AdvancedDetails.propTypes = {
-  details: PropTypes.instanceOf(Object),
+  details: PropTypes.array,
 };
 
-function InstanceDetails({
-  dependencies, url, id, title, details,
-}) {
+function InstanceDetails({ url, id, details }) {
   const [open, setOpen] = useState(false);
   const toggleIcon = (open && faCaretDown) || faCaretRight;
-  const statusCode = dependencies && Math.max(...dependencies.map((d) => d.status.code));
 
   return (
-    <div>
-      <h3 className={styles.instanceTitle} onClick={() => setOpen(!open)}>
-        <FontAwesomeIcon icon={toggleIcon} />{' '}
-        {statusCode !== false && <StatusBubble statusCode={statusCode} />} {title}
-      </h3>
-      <div className={(!open && styles.closed) || ''}>
-        <div key={id} className={styles.arrayItemBlock}>
-          <p>
-            {id} {url && <a href={url}>(url)</a>}
-          </p>
+    <div className={styles.instanceDetails}>
+      <button className={styles.instanceTitle} onClick={() => setOpen(!open)}>
+        <span title={id}>{id}</span> {url && <a href={url}>(url)</a>}
+        <FontAwesomeIcon icon={toggleIcon} />
+      </button>
+      <div className={`${styles.instanceDetailsContent} ${(!open && styles.closed) || ''}`}>
+        <div key={id}>
           {details && <RawDetails details={details} />}
         </div>
       </div>

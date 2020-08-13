@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="500" height="262" viewBox="0 0 500 262">
+    <defs>
+        <radialGradient id="ro404swfea" cx="49.367%" cy="49.79%" r="62.146%" fx="49.367%" fy="49.79%" gradientTransform="matrix(.66997 0 0 1 .163 0)">
+            <stop offset="0%" stop-color="#3E95B5"/>
+            <stop offset="4%" stop-color="#3E95B5" stop-opacity=".88"/>
+            <stop offset="12%" stop-color="#3E95B5" stop-opacity=".65"/>
+            <stop offset="21%" stop-color="#3E95B5" stop-opacity=".45"/>
+            <stop offset="30%" stop-color="#3E95B5" stop-opacity=".28"/>
+            <stop offset="40%" stop-color="#3E95B5" stop-opacity=".16"/>
+            <stop offset="51%" stop-color="#3E95B5" stop-opacity=".07"/>
+            <stop offset="63%" stop-color="#3E95B5" stop-opacity=".02"/>
+            <stop offset="79%" stop-color="#3E95B5" stop-opacity="0"/>
+        </radialGradient>
+    </defs>
+    <g fill="none" fill-rule="evenodd">
+        <path fill="#3E95B5" fill-rule="nonzero" d="M181.7 136.78H188.56V143.64000000000001H181.7z" opacity=".4"/>
+        <circle cx="131.08" cy="151.25" r="3.43" fill="#3E95B5" fill-rule="nonzero" opacity=".4"/>
+        <path fill="#3E95B5" d="M199.8 88.71L196.37 95.57 203.23 95.57 203.23 95.57z" opacity=".4"/>
+        <path fill="#3E95B5" fill-rule="nonzero" d="M286.91 187.6H293.77000000000004V194.46H286.91z" opacity=".4"/>
+        <circle cx="251.15" cy="113.69" r="3.43" fill="#3E95B5" fill-rule="nonzero" opacity=".4"/>
+        <path fill="#3E95B5" d="M351.63 119.23L348.2 126.09 355.06 126.09 355.06 126.09z" opacity=".8"/>
+        <path fill="#3E95B5" fill-rule="nonzero" d="M139.35 85.28H146.21V92.14H139.35z" opacity=".8"/>
+        <circle cx="355.06" cy="73.29" r="3.43" fill="#3E95B5" fill-rule="nonzero" opacity=".8"/>
+        <path fill="#3E95B5" d="M78.25 92.14L74.83 99 81.68 99 81.68 99z" opacity=".8"/>
+        <path fill="#3E95B5" fill-rule="nonzero" d="M493.14 92.14H500V99H493.14z" opacity=".4"/>
+        <circle cx="262.43" cy="57.19" r="3.43" fill="#3E95B5" fill-rule="nonzero" opacity=".4"/>
+        <path fill="#3E95B5" d="M3.43 143.83L0 150.68 6.86 150.68 6.86 150.68zM91.54 27.88L88.11 34.73 94.97 34.73 94.97 34.73z" opacity=".4"/>
+        <path fill="#3E95B5" fill-rule="nonzero" d="M191.18 0H198.04000000000002V6.86H191.18z" opacity=".4"/>
+        <circle cx="379.43" cy="27.09" r="3.43" fill="#3E95B5" fill-rule="nonzero" opacity=".4"/>
+        <path fill="#3E95B5" fill-rule="nonzero" d="M296.6 100.43H303.46000000000004V107.29H296.6z" opacity=".4"/>
+        <ellipse cx="215.855" cy="188.486" fill="url(#ro404swfea)" fill-rule="nonzero" opacity=".8" rx="90.69" ry="60.76" transform="rotate(-8.1 215.855 188.486)"/>
+        <circle cx="232.16" cy="207.68" r="24.36" fill="#131212" fill-rule="nonzero"/>
+        <path fill="#3A9BB5" d="M228.2 184.75c-7.4 0-9.31 1.9-9.31 9.3 0-7.4-1.9-9.3-9.3-9.3 7.4 0 9.3-1.91 9.3-9.31 0 7.4 1.91 9.31 9.31 9.31z"/>
+    </g>
+</svg>

@@ -36,7 +36,9 @@ export default function NodeDetails(props) {
         <Button type="button" onClick={history.goBack}>
           <FontAwesomeIcon icon={faCaretLeft} /> Back
         </Button>
-        <ButtonLink type="button" to="/">Clear</ButtonLink>
+        <ButtonLink type="button" to="/">
+          Clear
+        </ButtonLink>
       </div>
       <h2>{selectedNode.id}</h2>
       <div className={styles.textBlock}>
@@ -48,12 +50,7 @@ export default function NodeDetails(props) {
           );
         })}
       </div>
-      {details && (
-        <div className={styles.textBlock}>
-          <h3>Instances</h3>
-          <AdvancedDetails details={details} />
-        </div>
-      )}
+      {details && <AdvancedDetails details={details} />}
       <div>
         <NodeList
           title="Dependencies"

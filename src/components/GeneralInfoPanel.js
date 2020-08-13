@@ -17,7 +17,6 @@ export default function GeneralInfoPanel(props) {
       <h2>Overview</h2>
       {Object.keys(statusCodesToLabels).reverse().map((statusCode) => {
         const label = statusCodesToLabels[statusCode];
-        const nodeCount = nodesByStatusCode[statusCode].length;
 
         if (nodesByStatusCode[statusCode].length === 0) {
           return null;
@@ -27,7 +26,7 @@ export default function GeneralInfoPanel(props) {
           <NodeList
             key={label}
             defaultOpen={Number(statusCode) > 0}
-            title={`${label} (${nodeCount})`}
+            title={label}
             nodes={nodesByStatusCode[statusCode]}
           />
         );
