@@ -7,7 +7,7 @@ import LeftPanel from '../components/LeftPanel/index';
 import RightPanel from '../components/RightPanel/index';
 import NodePanel from '../components/NodePanel/index';
 import GeneralInfoPanel from '../components/GeneralInfoPanel';
-
+import LegendOverlay from '../components/LegendOverlay/index';
 import { getFilteredNodes, getNodesGroupedByTag } from '../reducers/nodes-selector';
 import { getAvailableFilters } from '../reducers/filters';
 
@@ -71,6 +71,7 @@ export default function App() {
               filters={filters}
               forceRenderId={forceRenderId}
             />
+            <LegendOverlay/>
           </div>
           <RightPanel handleOpenPanel={handleOpenPanel} isPanelOpen={isPanelOpen}>
             <NodePanel nodes={nodeDictionary} details={details} actions={actions} />
