@@ -5,6 +5,11 @@ export default function filters(state = {}, action) {
     case types.SELECT_GROUP:
     case types.SET_FILTER:
       return setFilterReducer(state, action);
+    case types.ADD_FILTER:
+      if (state[action.filter] && state[action.filter].includes(action.value)) {
+        return state;
+      }
+      return { ...state, [action.filter]: [...(state[action.filter] || []), action.value] };
     default:
       return state;
   }

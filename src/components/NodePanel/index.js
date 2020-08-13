@@ -9,6 +9,7 @@ import styles from './index.module.scss';
 import AdvancedDetails from './AdvancedDetails';
 import { getConfig } from '../../services/read-config';
 import { readNodeDetails } from '../../actions/nodes';
+import { addFilter } from '../../actions/filters';
 import Button, { ButtonLink } from '../Button';
 
 export default function NodeDetails(props) {
@@ -26,30 +27,40 @@ export default function NodeDetails(props) {
     }
   }, [dispatch, selectedNodeId]);
 
-  if (!selectedNode) {
-    return <div>oulala</div>;
-  }
-
   return (
     <Fragment>
       <div className={styles.panelControls}>
-        <Button type="button" onClick={history.goBack}>
+        <Button type="button" onClick={history.goBack} title="go back to previously selected node">
           <FontAwesomeIcon icon={faCaretLeft} /> Back
         </Button>
-        <ButtonLink type="button" to="/">
+        <ButtonLink type="button" to="/" title={`deselect ${selectedNode.id}`}>
           Clear
         </ButtonLink>
       </div>
       <h2>{selectedNode.id}</h2>
-      <div className={styles.textBlock}>
-        {Object.keys(selectedNode.tags).map((tagName) => {
-          return (
-            <p key={tagName}>
-              <span className={styles.tagName}>{tagName}:</span> {selectedNode.tags[tagName]}
-            </p>
-          );
-        })}
-      </div>
+      {Object.keys(selectedNode.tags).length && (
+        <div className={styles.tagsBlock}>
+          {Object.keys(selectedNode.tags).map((tagName) => {
+            return (
+              <p key={tagName}>
+                <span className={styles.tagName}>{tagName}</span>{' '}
+                {selectedNode.tags[tagName].map((tag) => {
+                  return (
+                    <button
+                      className={styles.tagButton}
+                      onClick={() => dispatch(addFilter(tagName, tag))}
+                      key={tag}
+                      title={`add "${tag}" to the "${tagName}" filter `}
+                    >
+                      {tag}
+                    </button>
+                  );
+                })}
+              </p>
+            );
+          })}
+        </div>
+      )}
       {details && <AdvancedDetails details={details} />}
       <div>
         <NodeList
