@@ -1,7 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import StatusLegend from './StatusLegend';
-import NeighbourLevelControl from './NeighbourLevelControl';
 import Filter from './Filter';
 import Search from './Search';
 import Hierarchy from './Hierarchy';
@@ -13,14 +11,13 @@ import { getConfig } from '../../services/read-config';
 export default function LeftPanel(props) {
   const hierarchy = getConfig('hierarchy');
   const {
-    actions, groupedNodes, groupLevel, neighbourLevel, availableFilters, filters,
+    actions, groupedNodes, groupLevel, availableFilters, filters,
   } = props;
 
   return (
-    <div className={styles.LegendContainer}>
+    <div className={styles.LeftPanelContainer}>
       <h1 className={styles.logo}><img src={logo} alt="DENEIR" /></h1>
       <Search nodes={groupedNodes} />
-      <StatusLegend />
       {hierarchy && (
         <Hierarchy
           hierarchy={hierarchy}
@@ -28,10 +25,6 @@ export default function LeftPanel(props) {
           setGroupLevel={actions.setGroupLevel}
         />
       )}
-      <NeighbourLevelControl
-        setNeighbourLevel={actions.setNeighbourLevel}
-        neighbourLevel={neighbourLevel}
-      />
       {Object.keys(availableFilters).map((filterId) => (
         <Filter
           key={filterId}

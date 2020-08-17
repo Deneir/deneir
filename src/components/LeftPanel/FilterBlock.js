@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretDown, faCaretRight } from '@fortawesome/free-solid-svg-icons';
-import styles from './LegendBlock.module.scss';
+import styles from './FilterBlock.module.scss';
 
-export default function LegendBlock(props) {
+export default function FilterBlock(props) {
   const { initialOpen = true, title, children } = props;
   const [isOpen, setOpen] = useState(initialOpen);
   const toggleIcon = (isOpen && faCaretDown) || faCaretRight;
@@ -22,7 +22,7 @@ export default function LegendBlock(props) {
   );
 }
 
-LegendBlock.propTypes = {
+FilterBlock.propTypes = {
   initialOpen: PropTypes.bool,
   title: PropTypes.string,
   children: PropTypes.any,

@@ -1,3 +1,22 @@
+@import "../../variables.scss";
+
 .wrapper {
-  
+  bottom: 0;
+
+  position: absolute;
+  background-color: $background-darker-color;
+  color: $font-lighter-color;
+  margin: 0 2px;
+  padding: 10px 20px;
+  width: calc(100% - 4px);
+  box-sizing: border-box;
+
+  .pullTab {
+    background-color: $background-darker-color;
+    position: absolute;
+    left: 0;
+    top: -39px;
+    padding: 10px 20px;
+  }
+
 }

@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import LegendBlock from './LegendBlock';
+import FilterBlock from './FilterBlock';
 
 export default function Hierarchy(props) {
   const { hierarchy, setGroupLevel, groupLevel } = props;
   const hierarchyOptions = [...hierarchy, 'node'];
 
   return (
-    <LegendBlock title="hierarchy">
+    <FilterBlock title="hierarchy">
       <ul>
         {hierarchyOptions.map((groupLevelOption) => (
           <li key={groupLevelOption}>
@@ -23,7 +23,7 @@ export default function Hierarchy(props) {
           </li>
         ))}
       </ul>
-    </LegendBlock>
+    </FilterBlock>
   );
 }
 

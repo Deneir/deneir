@@ -1,6 +1,5 @@
 import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
-import LegendBlock from './LegendBlock';
 import styles from './NeighbourLevelControl.module.scss';
 
 export default function NeighbourLevelControl(props) {
@@ -18,23 +17,18 @@ export default function NeighbourLevelControl(props) {
   const ordinalMarker = ordinalMarkers[neighbourLevel] || 'th';
 
   return (
-    <LegendBlock
-      title={`Show ${neighbourLevel}${ordinalMarker} lvl neighbours`}
-      initialOpen={false}
-    >
-      <div className={styles.inputContainer}>
-        Show filtered nodes and their{' '}
-        <input
-          className={styles.numberInput}
-          onChange={(e) => handleLevelChange(e.target.value)}
-          value={neighbourLevel}
-          type="number"
-          min="0"
-          max="10"
-        />
-        {ordinalMarker} level neighbours
-      </div>
-    </LegendBlock>
+    <div className={styles.neighbourLevelControl}>
+      Show filtered nodes and their{' '}
+      <input
+        className={styles.numberInput}
+        onChange={(e) => handleLevelChange(e.target.value)}
+        value={neighbourLevel}
+        type="number"
+        min="0"
+        max="10"
+      />
+      {ordinalMarker} level neighbours
+    </div>
   );
 }
 

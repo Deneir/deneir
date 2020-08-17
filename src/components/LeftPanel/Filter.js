@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import LegendBlock from './LegendBlock';
+import FilterBlock from './FilterBlock';
 import styles from './Filter.module.scss';
 
 export default function Filter(props) {
@@ -9,7 +9,7 @@ export default function Filter(props) {
   } = props;
 
   return (
-    <LegendBlock title={filterId} initialOpen={false}>
+    <FilterBlock title={filterId} initialOpen={false}>
       <ul className={styles.filterList}>
         {values.map((value) => (
           <li key={value} className={styles.filterOption}>
@@ -25,7 +25,7 @@ export default function Filter(props) {
           </li>
         ))}
       </ul>
-    </LegendBlock>
+    </FilterBlock>
   );
 }
 
