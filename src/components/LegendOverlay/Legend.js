@@ -1,4 +1,5 @@
 import React from 'react';
+import EntityShape from '../EntityShape/index';
 import { getConfig } from '../../services/read-config';
 import styles from './Legend.module.scss';
 
@@ -27,12 +28,16 @@ export default function StatusLegend() {
       <div>
         <h3>Type</h3>
         <ul className={styles.legend}>
-          {Object.keys(entityTypes).map((status) => (
-            <li key={status}>
-              <span className={styles.shapeMarker}></span>
-              <span className={styles.label}>{status}</span>
-            </li>
-          ))}
+          {Object.keys(entityTypes).map((type) => {
+            const { name, shape } = entityTypes[type];
+
+            return (
+              <li key={type}>
+                <EntityShape name={name} shape={shape} />
+                <span className={styles.label}>{type} </span>
+              </li>
+            );
+          })}
         </ul>
       </div>
     </div>
