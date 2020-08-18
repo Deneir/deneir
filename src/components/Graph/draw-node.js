@@ -29,6 +29,8 @@ function renderShape(shape, context, props) {
     database,
     hexagon,
     pentagon,
+    heptagon,
+    octogon,
     rectangle,
     square,
     triangle,
@@ -96,6 +98,24 @@ function hexagon(context, { x, y, radius }) {
     y,
     radius,
     sides: 6,
+    size: radius * 1.1,
+  });
+}
+function heptagon(context, { x, y, radius }) {
+  drawPolygon(context, {
+    x,
+    y,
+    radius,
+    sides: 7,
+    size: radius * 1.1,
+  });
+}
+function octogon(context, { x, y, radius }) {
+  drawPolygon(context, {
+    x,
+    y,
+    radius,
+    sides: 8,
     size: radius * 1.1,
   });
 }
