@@ -3,9 +3,10 @@
 .neighbourLevelControl {
   position: absolute;
   right: 0;
-  top: -39px;
+  top: -40px;
   padding: 10px 20px;
   font-size: 12px;
+  text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.6), -1px -1px 0px rgba(0, 0, 0, 0.6);
 }
 .numberInput[type='number'] {
   width: 15px;

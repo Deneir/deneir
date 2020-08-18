@@ -13,19 +13,21 @@ export default function LegendOverlay(props) {
   const toggleIcon = (isOpen && faCaretDown) || faCaretUp;
 
   return (
-    <div className={styles.wrapper}>
+    <div className={`${styles.wrapper} ${!isOpen && styles.closed}`}>
       <div className={styles.pullTab}>
         <button className={styles.title} onClick={() => setOpen(!isOpen)}>
           <span>Legend</span>
           <FontAwesomeIcon icon={toggleIcon} />
         </button>
       </div>
-      <NeighbourLevelControl
-        className={styles.neighbourLevelControl}
-        setNeighbourLevel={actions.setNeighbourLevel}
-        neighbourLevel={neighbourLevel}
-      />
-    <Legend />
+      <div className={styles.content}>
+        <NeighbourLevelControl
+          className={styles.neighbourLevelControl}
+          setNeighbourLevel={actions.setNeighbourLevel}
+          neighbourLevel={neighbourLevel}
+        />
+        <Legend />
+      </div>
     </div>
   );
 }

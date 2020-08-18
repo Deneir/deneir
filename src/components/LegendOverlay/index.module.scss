@@ -7,14 +7,27 @@
   background-color: $background-darker-color;
   color: $font-lighter-color;
   margin: 0 2px;
-  padding: 10px 20px;
   width: calc(100% - 4px);
   box-sizing: border-box;
 
+  .content {
+    padding: 10px 20px;
+    transition-property: all;
+    transition-duration: 600ms;
+    transition-timing-function: linear;
+  }
+  &.closed .content {
+    height: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    overflow:hidden;
+  }
+
   .pullTab {
+    display: block;
     position: absolute;
     left: 0;
-    top: -38px;
+    top: -39px;
     button {
       padding: 10px 20px;
       background-color: $background-darker-color;
