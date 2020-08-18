@@ -14,9 +14,9 @@
     border: 1px solid $font-darker-color;
     margin-right: 4px;
     border-radius: 2px;
-    width: 158px;
     outline: none;
     box-sizing: border-box;
+    max-width: 140px;
     &:active,
     &:focus {
       border: solid 2px rgba(62, 149, 181, 0.8);
