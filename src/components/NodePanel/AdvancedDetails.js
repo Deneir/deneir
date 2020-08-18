@@ -31,7 +31,18 @@ export default function AdvancedDetails(props) {
 }
 
 AdvancedDetails.propTypes = {
-  details: PropTypes.array,
+  details: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      dependencies: PropTypes.arrayOf(
+        PropTypes.shape({
+          status: PropTypes.shape({
+            code: PropTypes.number.isRequired,
+          }).isRequired,
+        }),
+      ),
+    }),
+  ).isRequired,
 };
 
 function InstanceDetails({ url, id, details }) {
@@ -45,9 +56,7 @@ function InstanceDetails({ url, id, details }) {
         <FontAwesomeIcon icon={toggleIcon} />
       </button>
       <div className={`${styles.instanceDetailsContent} ${(!open && styles.closed) || ''}`}>
-        <div key={id}>
-          {details && <RawDetails details={details} />}
-        </div>
+        <div key={id}>{details && <RawDetails details={details} />}</div>
       </div>
     </div>
   );
@@ -57,6 +66,5 @@ InstanceDetails.propTypes = {
   url: PropTypes.string,
   id: PropTypes.string,
   title: PropTypes.string,
-  dependencies: PropTypes.array,
   details: PropTypes.object,
 };

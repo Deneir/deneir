@@ -10,12 +10,15 @@ export default function RawDetails(props) {
   return (
     <div>
       {Object.keys(details).map((key) => {
+        // objects and arrays are shown as raw json
         if (typeof details[key] === 'object') {
           return <JsonBlock key={key} title={key} data={details[key]} />;
         }
+        // strings are either show as an html block if they're big
         if (details[key].length > 300) {
           return <HtmlBlock key={key} title={key} data={details[key]} />;
         }
+        // or as a simple text property if they're short enough
         return (
           <div key={key}>
             <b>{key}:</b> {details[key]}
