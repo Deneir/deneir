@@ -38,7 +38,7 @@ export default function NodeDetails(props) {
         </ButtonLink>
       </div>
       <h2>{selectedNode.id}</h2>
-      {Object.keys(selectedNode.tags).length && (
+      {Boolean(Object.keys(selectedNode.tags).length) && (
         <div className={styles.tagsBlock}>
           {Object.keys(selectedNode.tags).map((tagName) => {
             return (

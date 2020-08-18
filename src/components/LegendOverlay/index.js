@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretDown, faCaretUp } from '@fortawesome/free-solid-svg-icons';
 import NeighbourLevelControl from './NeighbourLevelControl';
+import Legend from './Legend';
+
 import styles from './index.module.scss';
 
 export default function LegendOverlay(props) {
@@ -23,7 +25,7 @@ export default function LegendOverlay(props) {
         setNeighbourLevel={actions.setNeighbourLevel}
         neighbourLevel={neighbourLevel}
       />
-      coucou
+    <Legend />
     </div>
   );
 }

@@ -1,27 +1,20 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Switch, Route } from "react-router-dom";
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Switch, Route } from 'react-router-dom';
 
-import Graph from "../components/Graph/index";
-import LeftPanel from "../components/LeftPanel/index";
-import RightPanel from "../components/RightPanel/index";
-import NodePanel from "../components/NodePanel/index";
-import GeneralInfoPanel from "../components/GeneralInfoPanel";
-import LegendOverlay from "../components/LegendOverlay/index";
-import {
-  getFilteredNodes,
-  getNodesGroupedByTag,
-} from "../reducers/nodes-selector";
-import { getAvailableFilters } from "../reducers/filters";
+import Graph from '../components/Graph/index';
+import LeftPanel from '../components/LeftPanel/index';
+import RightPanel from '../components/RightPanel/index';
+import NodePanel from '../components/NodePanel/index';
+import GeneralInfoPanel from '../components/GeneralInfoPanel';
+import LegendOverlay from '../components/LegendOverlay/index';
+import { getFilteredNodes, getNodesGroupedByTag } from '../reducers/nodes-selector';
+import { getAvailableFilters } from '../reducers/filters';
 
-import readGraphData from "../actions/graph";
-import {
-  setFilter,
-  setGroupLevel,
-  setNeighbourLevel,
-} from "../actions/filters";
+import readGraphData from '../actions/graph';
+import { setFilter, setGroupLevel, setNeighbourLevel } from '../actions/filters';
 
-import styles from "./App.module.scss";
+import styles from './App.module.scss';
 
 export default function App() {
   const dispatch = useDispatch();
@@ -32,9 +25,7 @@ export default function App() {
   const filters = useSelector((state) => state.filters);
   const nodeDictionary = useSelector((state) => state.nodes);
   const details = useSelector((state) => state.details);
-  const filteredNodes = useSelector((state) =>
-    getFilteredNodes(state, neighbourLevel)
-  );
+  const filteredNodes = useSelector((state) => getFilteredNodes(state, neighbourLevel));
   const groupedNodes = getNodesGroupedByTag(filteredNodes, groupLevel);
   const availableFilters = getAvailableFilters({ nodes: nodeDictionary });
 
@@ -79,17 +70,10 @@ export default function App() {
               filters={filters}
               forceRenderId={forceRenderId}
             />
-            <LegendOverlay />
+            <LegendOverlay actions={actions} neighbourLevel={Number(neighbourLevel)} />
           </div>
-          <RightPanel
-            handleOpenPanel={handleOpenPanel}
-            isPanelOpen={isPanelOpen}
-          >
-            <NodePanel
-              nodes={nodeDictionary}
-              details={details}
-              actions={actions}
-            />
+          <RightPanel handleOpenPanel={handleOpenPanel} isPanelOpen={isPanelOpen}>
+            <NodePanel nodes={nodeDictionary} details={details} actions={actions} />
           </RightPanel>
         </Route>
         <Route path="/">
@@ -100,20 +84,10 @@ export default function App() {
               filters={filters}
               forceRenderId={forceRenderId}
             />
-            <LegendOverlay
-              actions={actions}
-              neighbourLevel={Number(neighbourLevel)}
-            />
+            <LegendOverlay actions={actions} neighbourLevel={Number(neighbourLevel)} />
           </div>
-          <RightPanel
-            handleOpenPanel={handleOpenPanel}
-            isPanelOpen={isPanelOpen}
-          >
-            <GeneralInfoPanel
-              nodes={nodeDictionary}
-              details={details}
-              actions={actions}
-            />
+          <RightPanel handleOpenPanel={handleOpenPanel} isPanelOpen={isPanelOpen}>
+            <GeneralInfoPanel nodes={nodeDictionary} details={details} actions={actions} />
           </RightPanel>
         </Route>
       </Switch>

@@ -1,0 +1,41 @@
+.legendWrapper {
+  display: flex;
+  flex-direction: row;
+
+  h3 {
+    font-size: 12px;
+    font-weight: normal;
+  }
+}
+.legend {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-content: center;
+  padding: 0;
+  margin: 0;
+
+  li {
+    display: flex;
+    align-items: center;
+    margin: 2px 15px 2px 0px;
+    height: 16px;
+    font-size: 12px;
+    max-width: 50%;
+    min-width: 80px;
+    .statusColorMarker {
+      width: 4px;
+      height: 12px;
+      margin-right: 10px;
+    }
+    .shapeMarker {
+      width: 12px;
+      height: 12px;
+      margin-right: 10px;
+      background-color: blue;
+    }
+    .label {
+    }
+  }
+}

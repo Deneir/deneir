@@ -27,7 +27,7 @@ export default function NeighbourLevelControl(props) {
         min="0"
         max="10"
       />
-      {ordinalMarker} level neighbours
+    <span className={styles.ordinalMarker}>{ordinalMarker}</span> level neighbours
     </div>
   );
 }

@@ -12,11 +12,24 @@
   box-sizing: border-box;
 
   .pullTab {
-    background-color: $background-darker-color;
     position: absolute;
     left: 0;
-    top: -39px;
-    padding: 10px 20px;
+    top: -38px;
+    button {
+      padding: 10px 20px;
+      background-color: $background-darker-color;
+      border: none;
+      outline: none;
+      color: $font-lighter-color;
+      font-size: 14px;
+      display: flex;
+      width: 120px;
+      justify-content: space-between;
+      align-items: center;
+      &:focus {
+        box-shadow: 0 0 0 2px rgba(79, 192, 232, 0.5);
+      }
+    }
   }
 
 }
