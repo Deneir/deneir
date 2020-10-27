@@ -2,12 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Switch, Route } from 'react-router-dom';
 
-import Graph from '../components/Graph/index';
 import LeftPanel from '../components/LeftPanel/index';
 import RightPanel from '../components/RightPanel/index';
 import NodePanel from '../components/NodePanel/index';
 import GeneralInfoPanel from '../components/GeneralInfoPanel';
-import LegendOverlay from '../components/LegendOverlay/index';
 import { getFilteredNodes, getNodesGroupedByTag } from '../reducers/nodes-selector';
 import { getAvailableFilters } from '../reducers/filters';
 
@@ -17,6 +15,7 @@ import {
 } from '../actions/filters';
 
 import styles from './App.module.scss';
+import { GraphWrapper } from './GraphWrapper';
 
 export default function App() {
   const dispatch = useDispatch();
@@ -68,29 +67,27 @@ export default function App() {
       />
       <Switch>
         <Route path="/node/:selectedNodeId">
-          <div className={styles.GraphContainer}>
-            <Graph
-              nodes={groupedNodes}
-              groupLevel={groupLevel}
-              filters={filters}
-              forceRenderId={forceRenderId}
-            />
-            <LegendOverlay actions={actions} neighbourLevel={Number(neighbourLevel)} />
-          </div>
+          <GraphWrapper
+            nodes={groupedNodes}
+            groupLevel={groupLevel}
+            filters={filters}
+            forceRenderId={forceRenderId}
+            actions={actions}
+            neighbourLevel={neighbourLevel}
+          />
           <RightPanel handleOpenPanel={handleOpenPanel} isPanelOpen={isPanelOpen}>
             <NodePanel nodes={nodeDictionary} details={details} actions={actions} />
           </RightPanel>
         </Route>
         <Route path="/">
-          <div className={styles.GraphContainer}>
-            <Graph
-              nodes={groupedNodes}
-              groupLevel={groupLevel}
-              filters={filters}
-              forceRenderId={forceRenderId}
-            />
-            <LegendOverlay actions={actions} neighbourLevel={Number(neighbourLevel)} />
-          </div>
+          <GraphWrapper
+            nodes={groupedNodes}
+            groupLevel={groupLevel}
+            filters={filters}
+            forceRenderId={forceRenderId}
+            actions={actions}
+            neighbourLevel={neighbourLevel}
+          />
           <RightPanel handleOpenPanel={handleOpenPanel} isPanelOpen={isPanelOpen}>
             <GeneralInfoPanel nodes={nodeDictionary} details={details} actions={actions} />
           </RightPanel>
