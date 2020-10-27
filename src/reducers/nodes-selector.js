@@ -33,17 +33,17 @@ export function getFilteredNodes({ nodes, filters, neighbourLevel = 0 }) {
     }, {});
 }
 
-function findNeighbourNodes(allNodes, nodeIds, neighbourLevel = 0) {
-  const searchedNodes = [];
+export function findNeighbourNodes(allNodes, nodeIds, neighbourLevel = 0) {
+  const searchedNodes = {};
   function findNeighbours(nodes, depth = 0) {
     if (depth <= 0) {
       return nodes;
     }
     const neighbourNodes = nodes.reduce((prev, node) => {
-      if (searchedNodes.includes(node)) {
+      if (searchedNodes[node] && searchedNodes[node] > depth) {
         return prev;
       }
-      searchedNodes.push(node);
+      searchedNodes[node] = depth;;
       const neighbours = [
         ...allNodes[node].dependencies.map((d) => d.id),
         ...allNodes[node].dependents.map((d) => d.id),
@@ -55,7 +55,7 @@ function findNeighbourNodes(allNodes, nodeIds, neighbourLevel = 0) {
   }
 
   console.time(`finding ${neighbourLevel}th level neighbours`);
-  const neighbourNodes = [...new Set(findNeighbours(nodeIds, neighbourLevel))];
+  const neighbourNodes = findNeighbours(nodeIds, neighbourLevel);
   console.timeEnd(`finding ${neighbourLevel}th level neighbours`);
   console.log('found', neighbourNodes.length);
 
