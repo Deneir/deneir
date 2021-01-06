@@ -93,6 +93,10 @@ graphFunctions.initGraph = function initGraph(canvas, { data: { nodes, links }, 
     const { scale, duration } = settings.zoom;
     const nodeToZoom = nodes.find((a) => a.id === selectedNode);
 
+    if (!nodeToZoom) {
+      return;
+    }
+
     d3.select(canvas)
       .transition()
       .duration(duration)
