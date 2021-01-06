@@ -56,4 +56,6 @@ export default {
     },
   },
   detailsUrl: false,
+  pollingInterval: 5 * 60 * 1000,
+  enablePolling: false,
 };

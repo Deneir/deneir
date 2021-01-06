@@ -13,7 +13,7 @@ export default function readGraphData() {
   return (dispatch) => {
     dispatch({ type: types.GET_GRAPH_REQUEST });
 
-    return callApi('GET', getConfig('graphUrl'))
+    callApi('GET', getConfig('graphUrl'))
       .then(({ data = {} }) => {
         // code to replace once the api uses the correct format
         return dispatch({
@@ -22,5 +22,9 @@ export default function readGraphData() {
         });
       })
       .catch((error) => dispatch({ type: types.GET_GRAPH_FAILURE, error }));
+
+    return getConfig('enablePolling') && setTimeout(() => {
+      dispatch(readGraphData());
+    }, getConfig('pollingInterval'));
   };
 }

@@ -48,9 +48,9 @@ export default function Graph(props) {
     }
     setTimeout(() => {
       graphFunctions.setCameraToNode(selectedNodeId);
-      selectNodeDelay.current = 0;
+      selectNodeDelay.current = 500;
     }, selectNodeDelay.current);
-  }, [selectedNodeId]);
+  }, [selectedNodeId, nodes]);
 
   useEffect(() => {
     setTimeout(() => {
