@@ -4,6 +4,7 @@ import Filter from './Filter';
 import Search from './Search';
 import Hierarchy from './Hierarchy';
 import styles from './index.module.scss';
+import Button from '../Button';
 import logo from './deneir-logo.svg';
 
 import { getConfig } from '../../services/read-config';
@@ -16,7 +17,9 @@ export default function LeftPanel(props) {
 
   return (
     <div className={styles.LeftPanelContainer}>
-      <h1 className={styles.logo}><img src={logo} alt="DENEIR" /></h1>
+      <h1 className={styles.logo}>
+        <img src={logo} alt="DENEIR" />
+      </h1>
       <Search nodes={groupedNodes} />
       {hierarchy && (
         <Hierarchy
@@ -34,6 +37,11 @@ export default function LeftPanel(props) {
           onChange={actions.handleFilterChange}
         />
       ))}
+      {Object.keys(filters).length > 0 && (
+        <div className={styles.clearFilterWrapper}>
+          <Button type="button" onClick={actions.handleResetFilters}>Clear filters</Button>
+        </div>
+      )}
     </div>
   );
 }

@@ -12,7 +12,9 @@ import { getFilteredNodes, getNodesGroupedByTag } from '../reducers/nodes-select
 import { getAvailableFilters } from '../reducers/filters';
 
 import readGraphData from '../actions/graph';
-import { setFilter, setGroupLevel, setNeighbourLevel } from '../actions/filters';
+import {
+  setFilter, resetFilters, setGroupLevel, setNeighbourLevel,
+} from '../actions/filters';
 
 import styles from './App.module.scss';
 
@@ -36,6 +38,9 @@ export default function App() {
   const actions = {
     handleFilterChange: (filterId, value) => {
       dispatch(setFilter(filterId, value));
+    },
+    handleResetFilters: () => {
+      dispatch(resetFilters());
     },
     setGroupLevel: (value) => dispatch(setGroupLevel(value)),
     setNeighbourLevel: (value) => dispatch(setNeighbourLevel(value)),

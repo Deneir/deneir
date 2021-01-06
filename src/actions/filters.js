@@ -4,6 +4,9 @@ import { getConfig } from '../services/read-config';
 export function setFilter(filter, value) {
   return { type: types.SET_FILTER, filter, value };
 }
+export function resetFilters() {
+  return { type: types.RESET_FILTERS };
+}
 export function addFilter(filter, value) {
   return { type: types.ADD_FILTER, filter, value };
 }
