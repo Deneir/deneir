@@ -1,10 +1,9 @@
-import * as d3 from 'd3';
 import { getConfig } from '../../services/read-config';
 
 /**
  * Find a node from a click
  * only nodes that we have send an event
- * d3.event.x is the same as d3.mouse
+ * event.x is the same as d3.mouse
  * consistent-return is disabled because it breaks the behavior
  * if anything is returned beside undefined
  *
@@ -14,11 +13,11 @@ import { getConfig } from '../../services/read-config';
  * @return {Object} the clicked node
  */
 
-export default function getNodeFromCanvasClick(transform, nodes) {
-  const layerX = (d3.event.sourceEvent && d3.event.sourceEvent.layerX) || d3.event.layerX;
-  const layerY = (d3.event.sourceEvent && d3.event.sourceEvent.layerY) || d3.event.layerY;
-  const x = d3.event ? transform.invertX(layerX) : null;
-  const y = d3.event ? transform.invertY(layerY) : null;
+export default function getNodeFromCanvasClick(event, transform, nodes) {
+  const layerX = (event.sourceEvent && event.sourceEvent.layerX) || event.layerX;
+  const layerY = (event.sourceEvent && event.sourceEvent.layerY) || event.layerY;
+  const x = event ? transform.invertX(layerX) : null;
+  const y = event ? transform.invertY(layerY) : null;
   const { nodes: nodesConfig } = getConfig('canvasSettings');
   const { radius } = nodesConfig;
 

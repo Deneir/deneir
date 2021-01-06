@@ -1,20 +1,19 @@
-import { event } from 'd3';
-
 // After a new pointer becomes active
-export function onDragStart(simulation, transform) {
+/* eslint-disable no-param-reassign */
+export function onDragStart(event, simulation, transform) {
   if (!event.active) simulation.alphaTarget(0.3).restart();
   event.subject.fx = transform.invertX(event.x);
   event.subject.fy = transform.invertY(event.y);
 }
 
 // After an active pointer moves
-export function onDrag(transform) {
+export function onDrag(event, transform) {
   event.subject.fx = transform.invertX(event.x);
   event.subject.fy = transform.invertY(event.y);
 }
 
 // After an active pointer becomes inactive
-export function onDragEnd(simulation) {
+export function onDragEnd(event, simulation) {
   if (!event.active) {
     simulation.alphaTarget(0);
   }

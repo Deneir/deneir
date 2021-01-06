@@ -43,7 +43,7 @@ export function findNeighbourNodes(allNodes, nodeIds, neighbourLevel = 0) {
       if (searchedNodes[node] && searchedNodes[node] > depth) {
         return prev;
       }
-      searchedNodes[node] = depth;;
+      searchedNodes[node] = depth;
       const neighbours = [
         ...allNodes[node].dependencies.map((d) => d.id),
         ...allNodes[node].dependents.map((d) => d.id),
@@ -54,10 +54,7 @@ export function findNeighbourNodes(allNodes, nodeIds, neighbourLevel = 0) {
     return [...new Set(neighbourNodes)];
   }
 
-  console.time(`finding ${neighbourLevel}th level neighbours`);
   const neighbourNodes = findNeighbours(nodeIds, neighbourLevel);
-  console.timeEnd(`finding ${neighbourLevel}th level neighbours`);
-  console.log('found', neighbourNodes.length);
 
   return neighbourNodes;
 }

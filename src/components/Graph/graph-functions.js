@@ -41,8 +41,8 @@ graphFunctions.initGraph = function initGraph(canvas, { data: { nodes, links }, 
     drawAll(canvas, cameraPosition, { nodes, links });
   });
 
-  d3.select(canvas).on('click', () => {
-    const node = getNodeFromCanvasClick(cameraPosition, nodes);
+  d3.select(canvas).on('click', (event) => {
+    const node = getNodeFromCanvasClick(event, cameraPosition, nodes);
 
     if (node && node.id) {
       actions.clickNode(node.id);
@@ -52,15 +52,15 @@ graphFunctions.initGraph = function initGraph(canvas, { data: { nodes, links }, 
   const zoom = d3
     .zoom()
     .scaleExtent([settings.minimumScale, settings.maximumScale])
-    .on('zoom', () => {
-      cameraPosition = d3.event.transform;
+    .on('zoom', (event) => {
+      cameraPosition = event.transform;
       updateGraph({ nodes, links });
     });
   const setCameraPosition = zoom.transform;
   const drag = d3
     .drag()
-    .subject(() => {
-      const node = getNodeFromCanvasClick(cameraPosition, nodes);
+    .subject((event) => {
+      const node = getNodeFromCanvasClick(event, cameraPosition, nodes);
 
       if (!node) {
         return undefined;
@@ -70,9 +70,9 @@ graphFunctions.initGraph = function initGraph(canvas, { data: { nodes, links }, 
       node.y = cameraPosition.applyY(node.y);
       return node;
     })
-    .on('start', () => onDragStart(simulation, cameraPosition))
-    .on('drag', () => onDrag(cameraPosition))
-    .on('end', () => onDragEnd(simulation));
+    .on('start', (event) => onDragStart(event, simulation, cameraPosition))
+    .on('drag', (event) => onDrag(event, cameraPosition))
+    .on('end', (event) => onDragEnd(event, simulation));
 
   d3.select(canvas)
     .call(drag)
@@ -85,9 +85,7 @@ graphFunctions.initGraph = function initGraph(canvas, { data: { nodes, links }, 
   function resizeCanvas() {
     const { x, y, k } = cameraPosition;
 
-    const newCameraPosition = d3.zoomIdentity
-      .translate(x, y)
-      .scale(k);
+    const newCameraPosition = d3.zoomIdentity.translate(x, y).scale(k);
 
     d3.select(canvas).call(setCameraPosition, newCameraPosition);
   }
