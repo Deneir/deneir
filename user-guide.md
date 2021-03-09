@@ -23,11 +23,13 @@ Each instance agent regularly checks their dependencies health and assign a stat
 * `3` emergency: resource is dead
 * `4` unknown: resource is in unknown status (timeout for instance)
 
-### Status API
+### Details API
+
+The details endpoint, if provided, is called when a user clicks on a node to open the details panel.
 
 TODO: provide payload example with detailed explanation
 
-## Deployment
+## Install & Deployment
 
 ### Ready to use version
 
@@ -50,16 +52,30 @@ The minimum required configuration to run Deneir is as follows:
 {
   "apiBaseUrl": "https://your-base-url.cool",
   "graphUrl": "graph",
-  "statusUrl": "instances",
+  "detailsUrl": "instances",
   "authToken": "your-auth-token"
 }
 ```
 
 * `apiBaseUrl`: the base url of your API
 * `graphUrl`: the endpoint that exposes your graph
-* `statusUrl`: the endpoint that exposes the statuses of your graph
+* `detailsUrl`: the endpoint that exposes the details of the nodes of your graph
 
-Deneir will make API calls like this `https://your-base-url.cool/graph`
+Deneir will make API calls like this :
+* `https://your-base-url.cool/graph`
+* `https://your-base-url.cool/details?instance=instanceId
+
+## Enable graph status polling
+
+You can enable and configure polling to get status updates from your graph API. To do so, simply add the `enablePolling` option in your configuration, and change the `pollingInterval` to a time that is appropriate for your system.
+
+*example:*
+```json
+{
+  "pollingInterval": 5 * 60 * 1000,
+  "enablePolling": true,
+}
+```
 
 ## Configuring services types display
 
@@ -69,7 +85,7 @@ To have a different display for each type of service, you must create an `entity
 ```json
 {
   "graphUrl": "graph",
-  "statusUrl": "instances",
+  "detailsUrl": "instances",
   "apiBaseUrl": "https://your-base-url.cool",
   "authToken": "your-auth-token",
   "entityTypes": {
@@ -146,7 +162,7 @@ To make changes to the design of Deneir, you must create an `canvasSettings` key
 ```json
 {
   "graphUrl": "graph",
-  "statusUrl": "instances",
+  "detailsUrl": "instances",
   "apiBaseUrl": "https://your-base-url.cool",
   "authToken": "your-auth-token",
   "canvasSettings": {
