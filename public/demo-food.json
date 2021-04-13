@@ -1,0 +1,299 @@
+{
+  "data": {
+    "Kimchi Jjigae": {
+      "id": "Kimchi Jjigae",
+      "type": "dish",
+      "tags": {},
+      "dependencies": [
+        {
+          "id": "Kimchi"
+        },
+        {
+          "id": "Gochugaru"
+        },
+        {
+          "id": "Garlic"
+        },
+        {
+          "id": "Oil"
+        },
+        {
+          "id": "Tofu"
+        },
+        {
+          "id": "Scallions"
+        },
+        {
+          "id": "Salt"
+        },
+        {
+          "id": "Soy sauce"
+        }
+      ],
+      "dependents": []
+    },
+    "Kimchi": {
+      "id": "Kimchi",
+      "type": "side-dish",
+      "status": 0,
+      "tags": {},
+      "dependents": [
+        {
+          "id": "Kimchi Jjigae"
+        }
+      ],
+      "dependencies": [
+        {
+          "id": "Napa Cabbage"
+        },
+        {
+          "id": "Rice flour"
+        },
+        {
+          "id": "Salt"
+        },
+        {
+          "id": "Soy sauce"
+        },
+        {
+          "id": "Garlic"
+        },
+        {
+          "id": "Vegetable stock"
+        },
+        {
+          "id": "Gochugaru"
+        },
+        {
+          "id": "Onion"
+        },
+        {
+          "id": "Ginger"
+        }
+      ],
+      "dependencies": []
+    },
+    "Gochugaru": {
+      "id": "Gochugaru",
+      "type": "ingredient",
+      "status": 3,
+      "tags": {},
+      "dependents": [
+        {
+          "id": "Kimchi Jjigae"
+        },
+        {
+          "id": "Kimchi"
+        }
+      ],
+      "dependencies": []
+    },
+    "Garlic": {
+      "id": "Garlic",
+      "type": "ingredient",
+      "status": 0,
+      "tags": {},
+      "dependents": [
+        {
+          "id": "Kimchi Jjigae"
+        },
+        {
+          "id": "Kimchi"
+        },
+        {
+          "id": "Mapo Tofu"
+        }
+      ],
+      "dependencies": []
+    },
+    "Oil": {
+      "id": "Oil",
+      "type": "ingredient",
+      "status": 0,
+      "tags": {},
+      "dependents": [
+        {
+          "id": "Kimchi Jjigae"
+        },
+        {
+          "id": "Mapo Tofu"
+        }
+      ],
+      "dependencies": []
+    },
+    "Tofu": {
+      "id": "Tofu",
+      "type": "ingredient",
+      "status": 0,
+      "tags": {},
+      "dependents": [
+        {
+          "id": "Kimchi Jjigae"
+        },
+        {
+          "id": "Mapo Tofu"
+        }
+      ],
+      "dependencies": []
+    },
+    "Scallions": {
+      "id": "Scallions",
+      "type": "ingredient",
+      "status": 3,
+      "tags": {},
+      "dependents": [
+        {
+          "id": "Kimchi Jjigae"
+        },
+        {
+          "id": "Kimchi"
+        },
+        {
+          "id": "Mapo Tofu"
+        }
+      ],
+      "dependencies": []
+    },
+    "Salt": {
+      "id": "Salt",
+      "type": "ingredient",
+      "status": 0,
+      "tags": {},
+      "dependents": [
+        {
+          "id": "Kimchi Jjigae",
+          "id": "Kimchi"
+        }
+      ],
+      "dependencies": []
+    },
+    "Soy sauce": {
+      "id": "Soy sauce",
+      "type": "ingredient",
+      "status": 0,
+      "tags": {},
+      "dependents": [
+        {
+          "id": "Kimchi Jjigae"
+        },
+        {
+          "id": "Mapo Tofu"
+        }
+      ],
+      "dependencies": []
+    },
+    "Rice flour": {
+      "id": "Rice flour",
+      "type": "ingredient",
+      "status": 3,
+      "tags": {},
+      "dependents": [
+        {
+          "id": "Kimchi"
+        }
+      ],
+      "dependencies": []
+    },
+    "Napa Cabbage": {
+      "id": "Napa Cabbage",
+      "type": "ingredient",
+      "status": 3,
+      "tags": {},
+      "dependents": [
+        {
+          "id": "Kimchi"
+        }
+      ],
+      "dependencies": []
+    },
+    "Vegetable stock": {
+      "id": "Vegetable stock",
+      "type": "ingredient",
+      "status": 0,
+      "tags": {},
+      "dependents": [
+        {
+          "id": "Kimchi"
+        }
+      ],
+      "dependencies": []
+    },
+    "Onion": {
+      "id": "Onion",
+      "type": "ingredient",
+      "status": 1,
+      "tags": {},
+      "dependents": [
+        {
+          "id": "Kimchi"
+        }
+      ],
+      "dependencies": []
+    },
+    "Szechuan peppercorn": {
+      "id": "Szechuan peppercorn",
+      "type": "ingredient",
+      "status": 2,
+      "tags": {},
+      "dependents": [
+        {
+          "id": "Mapo Tofu"
+        }
+      ],
+      "dependencies": []
+    },
+    "Ginger": {
+      "id": "Ginger",
+      "type": "ingredient",
+      "status": 0,
+      "tags": {},
+      "dependents": [
+        {
+          "id": "Mapo Tofu"
+        },
+        {
+          "id": "Kimchi"
+        }
+      ],
+      "dependencies": []
+    },
+    "Doubanjiang": {
+      "id": "Doubanjiang",
+      "type": "ingredient",
+      "status": 0,
+      "tags": {},
+      "dependents": [
+        {
+          "id": "Mapo Tofu"
+        }
+      ],
+      "dependencies": []
+    },
+    "Mapo Tofu": {
+      "id": "Mapo Tofu",
+      "type": "dish",
+      "tags": {},
+      "dependents": [],
+      "dependencies": [
+        {
+          "id": "Ginger"
+        },
+        {
+          "id": "Garlic"
+        },
+        {
+          "id": "Soy sauce"
+        },
+        {
+          "id": "Soy sauce"
+        },
+        {
+          "id": "Scallions"
+        },
+        {
+          "id": "Doubanjiang"
+        }
+      ]
+    }
+  }
+}

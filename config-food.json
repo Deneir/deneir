@@ -1,0 +1,21 @@
+{
+  "graphUrl": "graph",
+  "graphUrl": "demo-food.json",
+  "apiBaseUrl": "http://localhost:3000",
+  "detailsUrl": "instances",
+  "authToken": "test",
+  "entityTypes": {
+    "dish": {
+      "name": "dish",
+      "shape": "circle"
+    },
+    "side-dish": {
+      "name": "side-dish",
+      "shape": "pentagon"
+    },
+    "ingredient": {
+      "name": "http",
+      "shape": "triangle"
+    }
+  }
+}
