@@ -1,0 +1,17 @@
+@import '../../variables.scss';
+
+.LeftPanelContainer {
+  min-width: 250px;
+  max-width: 250px;
+  overflow-y: auto;
+  background-color: $background-default-color;
+}
+.logo {
+  font-size: 21px;
+  color: $font-default-color;
+  font-weight: normal;
+  padding-left: 15px;
+}
+.clearFilterWrapper {
+  text-align: center;
+}

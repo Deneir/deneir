@@ -1,0 +1,21 @@
+@import '../variables.scss';
+
+.nodeLink {
+  color: $font-lighter-color;
+  text-decoration: none;
+  border: none;
+  background: none;
+  cursor: pointer;
+  width: 100%;
+  display: inline-block;
+  padding: 3px 20px;
+  box-sizing: border-box;
+  outline: none;
+  &:focus {
+    box-shadow: 0 0 0 2px rgba(79, 192, 232, 0.5);
+  }
+  &:hover,
+  &:active {
+    background-color: $background-default-color;
+  }
+}

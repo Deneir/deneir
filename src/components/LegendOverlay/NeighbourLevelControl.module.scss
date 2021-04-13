@@ -1,0 +1,32 @@
+@import "../../variables.scss";
+
+.neighbourLevelControl {
+  position: absolute;
+  right: 0;
+  top: -40px;
+  padding: 10px 20px;
+  font-size: 12px;
+  text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.6), -1px -1px 0px rgba(0, 0, 0, 0.6);
+}
+.numberInput[type='number'] {
+  width: 15px;
+  padding: 2px 7px;
+  background-color: $background-lighter-color;
+  border: none;
+  outline: none;
+  &:focus {
+    box-shadow: 0 0 0 2px rgba(79, 192, 232, 0.5);
+  }
+  &::-webkit-inner-spin-button {
+    display: none;
+  }
+}
+.ordinalMarker {
+  margin-left: 2px;
+  width: 15px;
+  display: inline-block;
+}
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  opacity: 1;
+}

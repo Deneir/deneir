@@ -1,0 +1,12 @@
+.GraphContainer {
+  flex: 2;
+  display: flex;
+  position: relative;
+  min-width: 500px;
+
+  .warningMessageFilters{
+    color:#FFF;
+    position: fixed;
+    margin-left: 24px;
+  }
+}

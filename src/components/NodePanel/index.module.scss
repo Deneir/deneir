@@ -1,0 +1,42 @@
+@import '../../variables.scss';
+
+.panelControls {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px;
+
+  button svg {
+    padding-right: 4px;
+  }
+}
+.detailsBlockTitle {
+  cursor: pointer;
+}
+.closed {
+  display: none;
+}
+.tagsBlock {
+  color: $font-lighter-color;
+  padding: 0 20px;
+  border-top: 2px solid $background-darker-color;
+}
+.tagName {
+  text-transform: capitalize;
+  width: 70px;
+  display: inline-block;
+}
+.tagButton {
+  border: none;
+  outline: none;
+  color: $font-lighter-color;
+  text-decoration: underline;
+  background-color: transparent;
+  cursor: pointer;
+  border-radius: 2px;
+  &:focus {
+    box-shadow: 0 0 0 2px rgba(79, 192, 232, 0.5);
+  }
+  &:active {
+    box-shadow: 0 0 0 2px rgba(79, 192, 232, 0.5);
+  }
+}

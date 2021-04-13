@@ -1,0 +1,52 @@
+@import '../../variables.scss';
+
+.closed {
+  display: none;
+}
+.detailsBlockTitle {
+  color: $font-lighter-color;
+  background-color: transparent;
+  outline: none;
+  border: none;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 10px;
+  span {
+    width: 180px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+  &:focus {
+    box-shadow: 0 0 0 2px rgba(79, 192, 232, 0.5);
+  }
+}
+.rawDetailsBlock {
+  background-color: $background-default-color;
+  width: 100%;
+  overflow: auto;
+  padding: 10px;
+  font-size: 10px;
+  box-sizing: border-box;
+}
+.HtmlBlock {
+  background-color: $background-default-color;
+  color: $font-lighter-color;
+  margin: 10px 0;
+  padding: 10px;
+  font-size: 0.8em;
+  h1 {
+    font-size: 1.2em;
+  }
+  h2 {
+    font-size: 1.1em;
+  }
+  h3 {
+    font-size: 1em;
+  }
+  h4 {
+    font-size: 0.9em;
+  }
+}

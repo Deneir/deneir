@@ -1,0 +1,63 @@
+@import '../../variables.scss';
+
+.panel {
+  position: relative;
+  min-width: 400px;
+  background-color: $background-default-color;;
+  flex: 1;
+  padding: 20px 0;
+  height: 100vh;
+  overflow: auto;
+  box-sizing: border-box;
+
+  .togglePanelContainer {
+    display: flex;
+    justify-content: flex-end;
+    padding: 0 20px 0;
+    margin-bottom: 20px;
+  }
+  .closeButton {
+    padding: 2px 5px;
+    display: flex;
+    align-items: center;
+    background: none;
+    font-size: 1.2em;
+    box-sizing: border-box;
+    color: $font-default-color;
+    cursor: pointer;
+    outline: none;
+    border: 1px solid transparent;
+    border-radius: 2px;
+
+    &:focus {
+      box-shadow: 0 0 0 2px rgba(79, 192, 232, 0.5);
+    }
+  }
+
+  transition-duration: 0.5s;
+  transition-property: all;
+
+  &.closed {
+    max-width: 72px;
+    min-width: 72px;
+    margin: 0;
+    .togglePanelContainer {
+      display:block;
+    }
+    div, h2 {
+      width: 0;
+      display: none;
+    }
+    .closeButton {
+      display: flex;
+      align-items: flex-start;
+    }
+  }
+
+  h2 {
+    font-size: 1.4em;
+    font-weight: normal;
+    margin: 16px 20px;
+    color: $font-lighter-color;
+  }
+}

@@ -1,0 +1,23 @@
+@import '../../variables.scss';
+
+.filterList {
+  margin: 10px 0;
+}
+.filterOption {
+  display: flex;
+  align-items: center;
+
+  label {
+    padding-left: 10px;
+  }
+  .checkbox {
+    border: solid 2px transparent;
+    border-radius: 2px;
+    &:active,
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 0 2px rgba(79, 192, 232, 0.5);
+    }
+    margin:0;
+  }
+}

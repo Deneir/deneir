@@ -1,0 +1,41 @@
+@import '../../variables.scss';
+
+.searchContainer {
+  margin: 30px 15px 30px;
+}
+.searchBox {
+  display: flex;
+
+  input {
+    font-size: $font-size-base;
+    color: $font-lighter-color;
+    background-color: transparent;
+    padding: 7px 10px;
+    border: 1px solid $font-darker-color;
+    margin-right: 4px;
+    border-radius: 2px;
+    outline: none;
+    box-sizing: border-box;
+    max-width: 140px;
+    &:active,
+    &:focus {
+      border: solid 2px rgba(62, 149, 181, 0.8);
+    }
+  }
+}
+.suggestionsList {
+  margin: 15px 0 0;
+  padding: 0;
+  color: $font-default-color;
+
+  li {
+    padding: 3px;
+    margin: 1px 0 0;
+    cursor: pointer;
+
+    &:hover, &.activeSuggestion {
+      background-color: $background-lighter-color;
+      color: $font-lighter-color;
+    }
+  }
+}

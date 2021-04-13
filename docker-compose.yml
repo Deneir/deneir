@@ -1,0 +1,7 @@
+services:
+  deneir:
+    build: .
+    ports:
+      - "5000:5000"
+#    volumes:
+#      - ./config.json:/app/build/config.json

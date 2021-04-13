@@ -1,0 +1,6 @@
+{
+  "graphUrl": "/demo.json",
+  "detailsUrl": "",
+  "apiBaseUrl": "http://localhost:5000",
+  "authToken": "test"
+}

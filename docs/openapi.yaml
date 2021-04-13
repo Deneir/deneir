@@ -1,0 +1,317 @@
+openapi: 3.0.1
+info:
+  title: Deneir Graph API
+  description: 'This is a sample of the API used by Deneir to populate the graph. You can find out more about Deneir
+    on Github [https://github.com/deneir](https://github.com/deneir) or on [irc.freenode.net, #deneir].'
+  termsOfService: https://github.com/deneir/deneir/terms.md
+  license:
+    name: MIT
+    url: 'https://opensource.org/licenses/MIT'
+  version: 1.0.0
+externalDocs:
+  description: Find out more about Deneir
+  url: https://github.com/deneir
+tags:
+- name: graph
+  description: all graph entries
+  externalDocs:
+    description: Find out more
+    url: https://github.com/deneir
+paths:
+  /graph:
+    get:
+      tags:
+      - graph
+      summary: Get graph nodes
+      description: retrieve graph nodes
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    additionalProperties:
+                      $ref: "#/components/schemas/Node"
+  /details:
+    get:
+      tags:
+      - details
+      summary: Get detailed informations about nodes
+      description: |
+        Retrieve additional information about graph nodes.
+        You can filter results to select only one particular node, by using the node id parameter.
+        If no parameter is provided, the route will return detailed informations for all existing nodes.
+
+        Deneir will request this endpoint each time we select a node and display the returned information for this node.
+      parameters:
+        - name: node_id
+          required: false
+          style: form
+          explode: false
+          description: |
+            optional parameter you can use to filter on a particular node.
+            the value is the id of a graph node entry, which can be found in the graph route response.
+          in: query
+          schema:
+            type: string
+          example: cheese
+      responses:
+        200:
+          description: |
+            Will return an array of free form objects which can be of any structure for Deneir to display.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      additionalProperties:
+                      $ref: "#/components/schemas/Detail"
+              examples:
+                "infrastructure example":
+                  $ref: '#/components/examples/infrastructureExample'
+                "animals example":
+                  $ref: '#/components/examples/animalsExample'
+components:
+  parameters:
+    NodeID:
+      name: node_id
+      required: true
+      in: path
+      description: identifier of the node
+      example: 1234
+      schema:
+        type: string
+  examples:
+    infrastructureExample:
+      value:
+        data:
+          - id: petstore
+            title: Pet Store API
+            instance: petstore01
+            dependencies:
+              - id: mysql
+              - status:
+                  code: 0
+                  label: "ok"
+                  checked_at: "2021-03-25T14:17:17.436950323+01:00"
+            details:
+              identity:
+                service: petstore
+                version: 1.0.0-b5bcf0541
+                host: api01.internal.example.net
+                pid: 32043
+                uptime:
+                  elapsed_seconds: 23557.375300922,
+                  start_time: "2021-03-26T03:12:11.185971508+01:00"
+                build:
+                  commit: b5bcf05419348c3d89b5fbf00f509ef2a6ce9944
+                  date: "2021-03-23T16:47:41+0100"
+                  host: r01.gitlab.internal.example.net
+                  user: 999
+              dependencies:
+                - key: zoostorage
+                  type: mysql
+                  metadata:
+                    version: "5.7.32-35-57-log"
+                  read: true
+                  write: true
+                  status:
+                    code: 0
+                    label: "ok"
+                    checked_at: "2021-03-25T14:17:17.436950323+01:00"
+                - key: consul
+                  description: server to use for service registration
+                  type: consul
+                  metadata:
+                    url: http://127.0.0.1:8500
+                  read: false
+                  write: true
+                  status:
+                    code: 0
+                    label: "ok"
+                    checked_at: "2021-03-25T14:17:17.436950323+01:00"
+              configuration:
+                - key: consul.session-renew
+                  raw: 1s
+                  provider: default
+                - key: consul.session-timeout
+                  raw: 10s
+                  provider: default
+                - key: consul.timeout
+                  raw: 30s
+                  provider: default
+                - key: consul.url
+                  raw: http://127.0.0.1:8500
+                  provider: env
+                - key: zoostorage.address
+                  raw: zoostorage.internal:3306
+                  provider: env
+                - key: zoostorage.collation
+                  raw: utf8mb4_unicode_ci
+                  provider: default
+                - key: zoostorage.conn-max-lifetime
+                  raw: 30s
+                  provider: default
+                - key: zoostorage.database
+                  raw: zoostorage
+                  provider: env
+                - key: zoostorage.location
+                  raw: UTC
+                  provider: default
+              changelog: "<h1>Change Log</h1>\n\n<p>All notable changes to this project will be documented in this file.</p>\n\n<p>The format is based on <a href=\"http://keepachangelog.com/\">Keep a Changelog</a>\nand this project adheres to <a href=\"http://semver.org/\">Semantic Versioning</a>.</p>\n\n<h2>1.0.0 - 2021-03-26</h2>\n\n<h3>Added</h3>\n\n<ul>\n<li>Initial commit</li>\n</ul>\n"
+              readme: "<h1>PetStore</h1>\n\n<h2>Description</h2>\n\n<p>Pet Store management API.</p>\n"
+            url: http://192.168.0.1:9000
+
+    animalsExample:
+      value:
+        data:
+          - id: Lion
+            title: King of the jungle
+            instance: zoo01
+            details:
+              arrival_date: 2009
+            url: https://en.wikipedia.org/wiki/Lion
+          - id: Tiger
+            title: King
+            instance: zoo01
+            details:
+              arrival_date: 2012
+            url: https://en.wikipedia.org/wiki/Tiger
+  schemas:
+    Node:
+      title: Graph node entry
+      type: object
+      required:
+        - id
+      properties:
+        id:
+          type: string
+          example: cheese
+          description: |
+            identification of the node, can be an id or a name
+        type:
+          type: string
+          example: api
+          description: |
+            node type, example: api, elasticsearch, mysql, scylladb, cheese, cake
+        tags:
+          type: object
+          description: |
+            list of tags, will be used to filter nodes in Deneir
+          additionalProperties:
+            description: Array of tag values
+            type: array
+            items:
+              type: string
+          example:
+            system:
+              - debian
+              - freebsd
+            legacy:
+              - false
+        status:
+          type: number
+          enum: [0, 1, 2, 3, 4]
+          description: |
+            status of the node
+
+            Value   | Description
+            --------|------------
+            0       | StatusOK is when resource is up and running
+            1       | StatusWarnings is when resource has some errors
+            2       | StatusCritical is when resource has many errors
+            3       | StatusEmergency is when resource is dead
+            4       | StatusUnknown is when resource is in unknown status (timeout for instance)
+          example: 0
+        dependents:
+          type: array
+          description: |
+            list of other nodes in the graph which have this node as a dependency
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+                description: identification of the node, can be an id or a name
+                example: raclette
+              type:
+                enum: ["r", "w", "rw"]
+                type: string
+                description: |
+                  what is the flow direction when using this node
+                  Value   | Description
+                  --------|------------
+                  r       | Read: we only read information from this node
+                  w       | Write: we only write information to this node
+                  rw      | Read and Write: we can read and write information from/to this node
+                example: r
+        dependencies:
+          type: array
+          description: |
+            list of dependencies used by this node, a dependency is another node in the graph
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+                description: identification of the node, can be an id or a name
+                example: milk
+              type:
+                enum: ["r", "w", "rw"]
+                type: string
+                description: |
+                  what is the flow direction when using this node
+                  Value   | Description
+                  --------|------------
+                  r       | Read: we only read information from this node
+                  w       | Write: we only write information to this node
+                  rw      | Read and Write: we can read and write information from/to this node
+                example: w
+    Detail:
+      title: Detailed node response
+      type: object
+      required:
+        - id
+        - title
+        - instance
+      properties:
+        id:
+          type: string
+          example: cheese
+          description: |
+            identification of the node, can be an id or a name
+        title:
+          type: string
+          example: cheese API
+          description: |
+            purpose of the node, used to contains more details than the node name
+        instance:
+          type: string
+          example: cheese01
+          description: |
+            name of the node
+        details:
+          type: object
+          description: |
+            list of free form objects which can be of any structure for Deneir to display when selecting a node.
+          additionalProperties:
+            type: object
+          example:
+            system:
+              - debian
+              - ubuntu
+            legacy:
+              - false
+        url:
+          type: string
+          example: https://en.wikipedia.org/wiki/Cheese
+          description: |
+            an url to directly access the node or something related to this node

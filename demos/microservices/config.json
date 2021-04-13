@@ -1,0 +1,45 @@
+{
+  "graphUrl": "graph.json",
+  "detailsUrl": "",
+  "apiBaseUrl": "https://deneir.github.io/microservices",
+  "detailsUrl": "details.json",
+  "authToken": "test",
+  "entityTypes": {
+    "default": {
+      "name": "default",
+      "shape": "circle"
+    },
+    "service": {
+      "name": "service",
+      "shape": "circle"
+    },
+    "http": {
+      "name": "http",
+      "shape": "square"
+    },
+    "consul": {
+      "name": "consul",
+      "shape": "rectangle"
+    },
+    "mysql": {
+      "name": "mysql",
+      "shape": "database"
+    },
+    "kafka": {
+      "name": "kafka",
+      "shape": "triangle"
+    },
+    "scylladb": {
+      "name": "scylladb",
+      "shape": "database"
+    },
+    "redis": {
+      "name": "redis",
+      "shape": "database"
+    },
+    "elasticsearch": {
+      "name": "elasticsearch",
+      "shape": "database"
+    }
+  }
+}

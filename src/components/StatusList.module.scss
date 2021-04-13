@@ -1,0 +1,55 @@
+@import '../variables.scss';
+
+.nodeList {
+  margin-bottom: 7px;
+
+  .title {
+    padding: 10px 20px;
+    font-weight: normal;
+    font-size: $font-size-base;
+    color: $font-lighter-color;
+    cursor: pointer;
+    margin: 0;
+    background-color: $background-darker-color;
+    border: none;
+    outline: none;
+    border-left: 4px solid transparent;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    &:focus {
+      box-shadow: 0 0 0 2px rgba(79, 192, 232, 0.5);
+    }
+  }
+  ul {
+    padding: 0;
+    margin: 0;
+  }
+  li {
+      margin-top: 2px;
+      background-color: $background-darker-color;
+      width: 100%;
+      box-sizing: border-box;
+      display: block;
+    }
+
+  h3,
+  li {
+    border-left-width: 4px;
+    border-left-style: solid;
+    border-left-color: transparent;
+
+    &.emptyListMessage {
+      margin-top: 2px;
+      padding: 8px 20px 15px;
+      background-color: $background-darker-color;
+      box-sizing: border-box;
+      display: block;
+      color: $font-darker-color;
+    }
+  }
+}
+
+.closed {
+  display: none;
+}

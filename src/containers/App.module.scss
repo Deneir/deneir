@@ -1,0 +1,10 @@
+@import '../variables.scss';
+
+.app {
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+}
+li {
+  list-style: none;
+}

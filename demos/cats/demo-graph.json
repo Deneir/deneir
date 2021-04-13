@@ -1,0 +1,413 @@
+{
+  "data": {
+    "Lion": {
+      "id": "Lion",
+      "type": "animal",
+      "status": 0,
+      "tags": {
+        "genus": ["panthera"],
+        "family": ["felidae"],
+        "order": ["carnivora"],
+        "class": ["mammalia"]
+      },
+      "dependents": [
+        {
+          "id": "Tiger"
+        }
+      ],
+      "dependencies": []
+    },
+    "Tiger": {
+      "id": "Tiger",
+      "type": "animal",
+      "status": 1,
+      "tags": {
+        "genus": ["panthera"],
+        "family": ["felidae"],
+        "order": ["carnivora"],
+        "class": ["mammalia"]
+      },
+      "dependents": [],
+      "dependencies": [
+        {
+          "id": "Lion"
+        }
+      ]
+    },
+    "Jaguar": {
+      "id": "Jaguar",
+      "type": "animal",
+      "status": 0,
+      "tags": {
+        "genus": ["panthera"],
+        "family": ["felidae"],
+        "order": ["carnivora"],
+        "class": ["mammalia"]
+      },
+      "dependents": [],
+      "dependencies": []
+    },
+    "Leopard": {
+      "id": "Leopard",
+      "type": "animal",
+      "status": 3,
+      "tags": {
+        "genus": ["panthera"],
+        "family": ["felidae"],
+        "order": ["carnivora"],
+        "class": ["mammalia"]
+      },
+      "dependents": [],
+      "dependencies": []
+    },
+    "Domestic cat": {
+      "id": "Domestic cat",
+      "type": "animal",
+      "status": 0,
+      "tags": {
+        "genus": ["felis"],
+        "family": ["felidae"],
+        "order": ["carnivora"],
+        "class": ["mammalia"]
+      },
+      "dependents": [],
+      "dependencies": []
+    },
+    "European wildcat": {
+      "id": "European wildcat",
+      "type": "animal",
+      "status": 1,
+      "tags": {
+        "genus": ["felis"],
+        "family": ["felidae"],
+        "order": ["carnivora"],
+        "class": ["mammalia"]
+      },
+      "dependents": [],
+      "dependencies": []
+    },
+    "Jungle cat": {
+      "id": "Jungle cat",
+      "type": "animal",
+      "status": 0,
+      "tags": {
+        "genus": ["felis"],
+        "family": ["felidae"],
+        "order": ["carnivora"],
+        "class": ["mammalia"]
+      },
+      "dependents": [],
+      "dependencies": []
+    },
+    "African wildcat": {
+      "id": "African wildcat",
+      "type": "animal",
+      "status": 0,
+      "tags": {
+        "genus": ["felis"],
+        "family": ["felidae"],
+        "order": ["carnivora"],
+        "class": ["mammalia"]
+      },
+      "dependents": [],
+      "dependencies": []
+    },
+    "Black-footed cat": {
+      "id": "Black-footed cat",
+      "type": "animal",
+      "status": 0,
+      "tags": {
+        "genus": ["felis"],
+        "family": ["felidae"],
+        "order": ["carnivora"],
+        "class": ["mammalia"]
+      },
+      "dependents": [],
+      "dependencies": []
+    },
+    "Sand cat": {
+      "id": "Sand cat",
+      "type": "animal",
+      "status": 0,
+      "tags": {
+        "genus": ["felis"],
+        "family": ["felidae"],
+        "order": ["carnivora"],
+        "class": ["mammalia"]
+      },
+      "dependents": [
+        {
+          "id": "Chinese mountain cat"
+        }
+      ],
+      "dependencies": [
+        {
+          "id": "Bobcat"
+        }
+      ]
+    },
+    "Chinese mountain cat": {
+      "id": "Chinese mountain cat",
+      "type": "animal",
+      "status": 0,
+      "tags": {
+        "genus": ["felis"],
+        "family": ["felidae"],
+        "order": ["carnivora"],
+        "class": ["mammalia"]
+      },
+      "dependents": [],
+      "dependencies": [
+        {
+          "id": "Sand cat"
+        }
+      ]
+    },
+    "Bobcat": {
+      "id": "Bobcat",
+      "type": "animal",
+      "status": 2,
+      "tags": {
+        "genus": ["lynx"],
+        "family": ["felidae"],
+        "order": ["carnivora"],
+        "class": ["mammalia"]
+      },
+      "dependents": [
+        {
+          "id": "Sand cat"
+        }
+      ],
+      "dependencies": [
+        {
+          "id": "Red panda"
+        }
+      ]
+    },
+    "Eurasian lynx": {
+      "id": "Eurasian lynx",
+      "type": "animal",
+      "status": 0,
+      "tags": {
+        "genus": ["lynx"],
+        "family": ["felidae"],
+        "order": ["carnivora"],
+        "class": ["mammalia"]
+      },
+      "dependents": [],
+      "dependencies": []
+    },
+    "Canada lynx": {
+      "id": "Canada lynx",
+      "type": "animal",
+      "status": 0,
+      "tags": {
+        "genus": ["lynx"],
+        "family": ["felidae"],
+        "order": ["carnivora"],
+        "class": ["mammalia"]
+      },
+      "dependents": [],
+      "dependencies": []
+    },
+    "Iberian lynx": {
+      "id": "Iberian lynx",
+      "type": "animal",
+      "status": 0,
+      "tags": {
+        "genus": ["lynx"],
+        "family": ["felidae"],
+        "order": ["carnivora"],
+        "class": ["mammalia"]
+      },
+      "dependents": [],
+      "dependencies": []
+    },
+    "Red panda": {
+      "id": "Red panda",
+      "type": "animal",
+      "status": 0,
+      "tags": {
+        "genus": ["ailurus"],
+        "family": ["ailuridae"],
+        "order": ["carnivora"],
+        "class": ["mammalia"]
+      },
+      "dependents": [
+        {
+          "id": "Bobcat"
+        }
+      ],
+      "dependencies": []
+    },
+    "Giant panda": {
+      "id": "Giant panda",
+      "type": "animal",
+      "status": 0,
+      "tags": {
+        "genus": ["ailuropoda"],
+        "family": ["ursidae"],
+        "order": ["carnivora"],
+        "class": ["mammalia"]
+      },
+      "dependents": [],
+      "dependencies": []
+    },
+    "American black bear": {
+      "id": "American black bear",
+      "type": "animal",
+      "status": 0,
+      "tags": {
+        "genus": ["ursus"],
+        "family": ["ursidae"],
+        "order": ["carnivora"],
+        "class": ["mammalia"]
+      },
+      "dependents": [],
+      "dependencies": []
+    },
+    "American black bear": {
+      "id": "American black bear",
+      "type": "animal",
+      "status": 0,
+      "tags": {
+        "genus": ["ursus"],
+        "family": ["ursidae"],
+        "order": ["carnivora"],
+        "class": ["mammalia"]
+      },
+      "dependents": [],
+      "dependencies": []
+    },
+    "Brown bear": {
+      "id": "Brown bear",
+      "type": "animal",
+      "status": 0,
+      "tags": {
+        "genus": ["ursus"],
+        "family": ["ursidae"],
+        "order": ["carnivora"],
+        "class": ["mammalia"]
+      },
+      "dependents": [],
+      "dependencies": []
+    },
+    "Polar bear": {
+      "id": "Polar bear",
+      "type": "animal",
+      "status": 0,
+      "tags": {
+        "genus": ["ursus"],
+        "family": ["ursidae"],
+        "order": ["carnivora"],
+        "class": ["mammalia"]
+      },
+      "dependents": [],
+      "dependencies": []
+    },
+    "Gray wolf": {
+      "id": "Gray wolf",
+      "type": "animal",
+      "status": 0,
+      "tags": {
+        "genus": ["canis"],
+        "family": ["canidae"],
+        "order": ["carnivora"],
+        "class": ["mammalia"]
+      },
+      "dependents": [],
+      "dependencies": []
+    },
+    "Coyote": {
+      "id": "Coyote",
+      "type": "animal",
+      "status": 0,
+      "tags": {
+        "genus": ["canis"],
+        "family": ["canidae"],
+        "order": ["carnivora"],
+        "class": ["mammalia"]
+      },
+      "dependents": [],
+      "dependencies": []
+    },
+    "Egyptian jackal": {
+      "id": "Egyptian jackal",
+      "type": "animal",
+      "status": 0,
+      "tags": {
+        "genus": ["canis"],
+        "family": ["canidae"],
+        "order": ["carnivora"],
+        "class": ["mammalia"]
+      },
+      "dependents": [],
+      "dependencies": []
+    },
+    "Red fox": {
+      "id": "Red fox",
+      "type": "animal",
+      "status": 0,
+      "tags": {
+        "genus": ["vulpes"],
+        "family": ["canidae"],
+        "order": ["carnivora"],
+        "class": ["mammalia"]
+      },
+      "dependents": [],
+      "dependencies": []
+    },
+    "Arctic fox": {
+      "id": "Arctic fox",
+      "type": "animal",
+      "status": 0,
+      "tags": {
+        "genus": ["vulpes"],
+        "family": ["canidae"],
+        "order": ["carnivora"],
+        "class": ["mammalia"]
+      },
+      "dependents": [],
+      "dependencies": []
+    },
+    "Fennec fox": {
+      "id": "Fennec fox",
+      "type": "animal",
+      "status": 0,
+      "tags": {
+        "genus": ["vulpes"],
+        "family": ["canidae"],
+        "order": ["carnivora"],
+        "class": ["mammalia"]
+      },
+      "dependents": [],
+      "dependencies": []
+    },
+    "Raccoon": {
+      "id": "Raccoon",
+      "type": "animal",
+      "status": 0,
+      "tags": {
+        "genus": ["procyon"],
+        "family": ["procyonidae"],
+        "order": ["carnivora"],
+        "class": ["mammalia"]
+      },
+      "dependents": [],
+      "dependencies": []
+    },
+    "Chicken": {
+      "id": "Chicken",
+      "type": "animal",
+      "status": 0,
+      "tags": {
+        "genus": ["gallus"],
+        "family": ["phasianidae"],
+        "order": ["galliformes"],
+        "class": ["aves"]
+      },
+      "dependents": [],
+      "dependencies": []
+    }
+  }
+}
