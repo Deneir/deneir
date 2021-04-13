@@ -1,112 +1,97 @@
-# What is Deneir ?
+![Image of Deneir](docs/assets/deneir_card.png)
 
-Deneir is an OpenSource Project using the Apache 2.0 License
+Deneir is an open source graph visualization tool. Graph visualization is a way of representing data modeled in terms of nodes and edges (objects and relationships).
 
-Deneir is the web frontend application that represents a graph of registered nodes and their dependency status.
+Deneir can be used to represent complex graphs with features like search or custom node classification.
 
-Deneir relies on service registration to get node list
+Deneir's datasource could be an [API or a file](#API-Specification)
 
-Deneir fetches from external APIs nodes, statuses and dependencies
-
-Deneir is meant to be as agnostic as possible
-
-# Origin
-Synthesio has chosen a micro-services oriented architecture. In a micro-services architecture the modification pace become rapidly complex to follow. Deneir was developped as a side-project at Synthesio to cope with our continuous infrastructure changes.
-
-# Goals
-
-## compoments
-Have a live list of what is actually in production and the status of each component
-
-## functionnal dependencies
-know functionnal dependencies status of components (datasources, API, external resources...)
-
-## impact prediction
-answer rapidly this simple question : "if this functionnal work-unit goes south what are the consequences ?"
-
-## naming schemes with many components
-Naming schemes often come to a point where you can't remember the name of every single. Worse, when someone new comes in the team it rapidly becomes a nightmare to understand what is actually going on
-
-## schematics
-Operation
-In microservices- maintain a global up-to-date schema is next to impossible : microservices come and go
-
-## add Metadata to components
-Regroup alerts, or configure inhibitions you need metadata on your components
-
-## incident timeline
-Record snapshots of the graph, to allow graphical incident replay
-
-# Concepts and glossary
-
-## Entity types
-
-* work units (API, processing daemon)
-* kafka queue
-* data store (es, scylla, mysql)
-
-## Flexible Hierarchy
-
-Deneir does not have a rigid hiearchy per se. Deneir whishes to be as flexible and as agnostic as possible.
-
-Though to help you understand what has been done here. We provide an example of Synthesio's hierarchy :
-
-| tag | description |
-|-|-|
-| product | Software suite made by the company |
-| app |  Software constituting a product |
-| circuit |   Software functionnal flow (can have a version such as v1 v1.5 in the name) |
-| service |  Generic software code base (a.k.a. work-unit, api, micro-service,...) |
-| instance |  Specialized software code base based on a service |
-| process |  A system process running an instance or a service |
-| system |  Software technical flow (can be related to one or more circuit) |
-
-# End user distribution
-To use the project as an end user
-
-* download the `dist` zip
-* unzip it in the deploy folder
-* create a `config.json` file from `config.json.dist`
-* complete the info in `config.json` according to your setup
-* open the `index.html` in your browser
-
-## config file format
-
-For the moment we have chosen json, but we can add yml support if the info stored in the config file grows.
-
-# API
-
-This project uses two API routes :
-
-[apidoc.md](apidoc.md)
+This tool has been built at Synthesio to get the big picture on our microservice architecture and also have a real time dependancies status.
+In a fast-growing environment where microservices and interconnections between them grow exponentially, it helps people to vizualize impacts when a microservice changes, or for monitoring purposes.
 
 
-# Feature list
-## graph features
-* [x] instance level view with dependencies
-* [x] zoom feature (to be defined more clearly)
-* [x] status at process level
-* [x] instance detail (list of processes of the instance, with their status)
-* [x] status at instance level
-* [x] color coding by service
-* [x] status at chain level
-* [x] text search to find and filter entities
-* [x] entity type (datastore / Kafka queue/work unit with different shape)
-  * [x] circles, squares and databases shapes
-  * [ ] hexagons, triangles and whatnot
-* [ ] hide nodes & save hidden nodes settings
-* [ ] image export (whole canvas)
-* [ ] chain grouping (needs API update)
-* [ ] in/out dependency links (needs API update)
-* [ ] graph & status history
-* [ ] integrate Prometheus metrics (lag, rate, etc.)
-* [ ] pseudo entities
-* [x] dependents and dependencies list with links
-* [ ] see only dependents in Graph
-* [ ] add URL for instances
-* [ ] auto refresh for status update
-* [x] Firefox compatibility
+## Features
 
-# Documentation
+- Beautiful KISS UI
+- Custom node classification
+- Search and Filters
+- Show external information on a node
 
-- You can change the settings in `config.json.dist`. If this file is changed, you need to update the config in the deploy config.
+
+## Use cases & Demos
+
+All demos: [here](https://deneir.github.io/)
+
+
+### Microservice dependencies
+
+Deneir can be used to monitor a microservices plaftorm, to visualize services status and their dependencies status (internal or external).
+
+At Synthesio, each microservice registers in a global Consul instance. Doing so, a microservice also exports urls to its dependencies status, configuration, changelog, tags, metrics link and also documentation.
+A golang daemon internally named `frag` connects to `consul` and for reading the url list. `frag` asynchronously fetch the content of all these urls and consolidate all routes into a  json tree pollable by `Deneir`.
+Then you get an almost live map of Synthesio's microservice infrastructure. Which was the first use case for `Deneir`.
+
+
+![Deneir for microservice](docs/assets/deneir_microservice.png)
+![Deneir for microservice (details)](docs/assets/deneir_microservice_details.png)
+
+[=> Live Demo <=](https://deneir.github.io/microservice/)
+[Demo files](https://github.com/deneir/deneir/tree/main/demos/microservices/)
+
+
+
+### Cats
+
+Using tags for taxonomy allows you to list all cats for a specific family or visualize family inheritance.
+
+![Deneir for cats](docs/assets/deneir_cats.png)
+
+[=> Live Demo <=](https://deneir.github.io/cats/)
+[Demo files](https://github.com/deneir/deneir/tree/main/demos/cats/)
+
+
+### Cooking recipes
+
+![Deneir for cooking recipes](docs/assets/deneir_food.png)
+
+[=> Live Demo <=](https://deneir.github.io/food/)
+[Demo files](https://github.com/deneir/deneir/tree/main/demos/food/)
+
+
+### Add your use case here
+
+Feel free to submit a PR with your use case and feedback.
+
+
+## Getting started
+
+We provide a docker-compose file to build and test deneir:
+* `docker-compose up -d --build`
+* A demo config is created by default but you can create a config.json file with your needs (cf "Advanced configuration")
+* Open in your browser [http://localhost:5000](http://localhost:5000)
+
+
+## Advanced configuration
+
+See [Configuration](docs/configuration.md)
+
+
+## API Specification
+
+See [API](docs/api.md) and [Openapi file](docs/openapi.yaml)
+
+
+## Building and contributing
+
+* `npm install && npm run build`
+* follow the steps described in "Getting started", using the contents of the `build` folder
+
+## Future
+
+We intend to get implement a few features such as:
+- graph persistent storage
+- differential states
+- historize states based on keyframe+diffs (like in video formats)
+- compress storage
+- allow events replay (if you have an incident you can replay at the speed you like what happened to see where an incident started for instance)
+- incident impact simulator (if I break this node of the graph what can I expect)

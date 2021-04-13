@@ -1,0 +1,20 @@
+{
+  "graphUrl": "food.json",
+  "apiBaseUrl": "https://deneir.github.io/food",
+  "detailsUrl": "",
+  "authToken": "test",
+  "entityTypes": {
+    "dish": {
+      "name": "dish",
+      "shape": "circle"
+    },
+    "side-dish": {
+      "name": "side-dish",
+      "shape": "pentagon"
+    },
+    "ingredient": {
+      "name": "http",
+      "shape": "triangle"
+    }
+  }
+}

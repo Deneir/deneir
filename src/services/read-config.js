@@ -20,7 +20,7 @@ export function getConfig(key) {
 }
 
 export function readConfig() {
-  return fetch('/config.json')
+  return fetch('config.json')
     .then((response) => response.json())
     .then((res) => {
       config = mergeDeep(defaultConfig, res);

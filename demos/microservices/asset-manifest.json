@@ -1,0 +1,30 @@
+{
+  "files": {
+    "main.css": "https://deneir.github.io/microservices/static/css/main.6f9d1c39.chunk.css",
+    "main.js": "https://deneir.github.io/microservices/static/js/main.643ff8ba.chunk.js",
+    "main.js.map": "https://deneir.github.io/microservices/static/js/main.643ff8ba.chunk.js.map",
+    "runtime-main.js": "https://deneir.github.io/microservices/static/js/runtime-main.98d896d6.js",
+    "runtime-main.js.map": "https://deneir.github.io/microservices/static/js/runtime-main.98d896d6.js.map",
+    "static/js/2.64ee0e41.chunk.js": "https://deneir.github.io/microservices/static/js/2.64ee0e41.chunk.js",
+    "static/js/2.64ee0e41.chunk.js.map": "https://deneir.github.io/microservices/static/js/2.64ee0e41.chunk.js.map",
+    "index.html": "https://deneir.github.io/microservices/index.html",
+    "static/css/main.6f9d1c39.chunk.css.map": "https://deneir.github.io/microservices/static/css/main.6f9d1c39.chunk.css.map",
+    "static/js/2.64ee0e41.chunk.js.LICENSE.txt": "https://deneir.github.io/microservices/static/js/2.64ee0e41.chunk.js.LICENSE.txt",
+    "static/media/circle.2527e24e.svg": "https://deneir.github.io/microservices/static/media/circle.2527e24e.svg",
+    "static/media/database.76ba0568.svg": "https://deneir.github.io/microservices/static/media/database.76ba0568.svg",
+    "static/media/deneir-logo.2b6a0327.svg": "https://deneir.github.io/microservices/static/media/deneir-logo.2b6a0327.svg",
+    "static/media/heptagon.b751daf9.svg": "https://deneir.github.io/microservices/static/media/heptagon.b751daf9.svg",
+    "static/media/hexagon.62124f4d.svg": "https://deneir.github.io/microservices/static/media/hexagon.62124f4d.svg",
+    "static/media/octogon.f10b87a5.svg": "https://deneir.github.io/microservices/static/media/octogon.f10b87a5.svg",
+    "static/media/pentagon.278e132a.svg": "https://deneir.github.io/microservices/static/media/pentagon.278e132a.svg",
+    "static/media/rectangle.b4b9d755.svg": "https://deneir.github.io/microservices/static/media/rectangle.b4b9d755.svg",
+    "static/media/square.f2b1fe08.svg": "https://deneir.github.io/microservices/static/media/square.f2b1fe08.svg",
+    "static/media/triangle.ee2a511f.svg": "https://deneir.github.io/microservices/static/media/triangle.ee2a511f.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.98d896d6.js",
+    "static/js/2.64ee0e41.chunk.js",
+    "static/css/main.6f9d1c39.chunk.css",
+    "static/js/main.643ff8ba.chunk.js"
+  ]
+}
