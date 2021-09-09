@@ -20,7 +20,7 @@ In a fast-growing environment where microservices and interconnections between t
 
 ## Use cases & Demos
 
-All demos: [here](https://deneir.github.io/)
+All demos: [here](https://deneir.github.io/demos/)
 
 
 ### Microservice dependencies
@@ -35,8 +35,8 @@ Then you get an almost live map of Synthesio's microservice infrastructure. Whic
 ![Deneir for microservice](docs/assets/deneir_microservice.png)
 ![Deneir for microservice (details)](docs/assets/deneir_microservice_details.png)
 
-[=> Live Demo <=](https://deneir.github.io/microservice/)
-[Demo files](https://github.com/deneir/deneir/tree/main/demos/microservices/)
+[=> Live Demo <=](https://deneir.github.io/demos/microservices/)
+[Demo files](https://github.com/deneir/deneir.github.io/tree/main/demos/microservices/)
 
 
 
@@ -46,16 +46,16 @@ Using tags for taxonomy allows you to list all cats for a specific family or vis
 
 ![Deneir for cats](docs/assets/deneir_cats.png)
 
-[=> Live Demo <=](https://deneir.github.io/cats/)
-[Demo files](https://github.com/deneir/deneir/tree/main/demos/cats/)
+[=> Live Demo <=](https://deneir.github.io/demos/cats/)
+[Demo files](https://github.com/deneir/deneir.github.io/tree/main/demos/cats/)
 
 
 ### Cooking recipes
 
 ![Deneir for cooking recipes](docs/assets/deneir_food.png)
 
-[=> Live Demo <=](https://deneir.github.io/food/)
-[Demo files](https://github.com/deneir/deneir/tree/main/demos/food/)
+[=> Live Demo <=](https://deneir.github.io/demos/food/)
+[Demo files](https://github.com/deneir/deneir.github.io/tree/main/demos/food/)
 
 
 ### Add your use case here
