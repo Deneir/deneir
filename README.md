@@ -86,6 +86,18 @@ See [API](docs/api.md) and [Openapi file](docs/openapi.yaml)
 * `npm install && npm run build`
 * follow the steps described in "Getting started", using the contents of the `build` folder
 
+## Architecture and tech stack
+
+Deneir is built using `react` and `redux`, its graph is built with `D3` and its CSS is built with `Sass`.
+Routing is handled on the front end with `react-router`.
+
+The app is composed of 5 main components:
+* [`App`](src/containers/App.js) root container of the application, handles initial loading of the data & mounts the rest of the UI.
+* [`LeftPanel`](src/components/LeftPanel/index.js) handles search, filtering and hierarchy navigation.
+* [`GraphWrapper`](src/containers/GraphWrapper.js) wraps the D3 code that makes up the graph to make it play nice with react.
+* [`NodePanel`](src/components/NodePanel/index.js) displayed when a node is selected, lists all available details on the node and its in and outgoing links.
+* [`GeneralInfoPanel`](src/components/GeneralInfoPanel.js) Overview panel, makes a list of nodes grouped by status severity.
+
 ## Future
 
 We intend to get implement a few features such as:
