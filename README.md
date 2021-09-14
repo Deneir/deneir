@@ -10,6 +10,12 @@ This tool has been built at Synthesio to get the big picture on our microservice
 In a fast-growing environment where microservices and interconnections between them grow exponentially, it helps people to vizualize impacts when a microservice changes, or for monitoring purposes.
 
 
+## We're open to collaboration!
+
+You want to join the and discuss with the team to participate in the project? 
+Just use this link to join our [Slack community](https://join.slack.com/t/deneir/shared_invite/zt-vcu8bo93-9u6Qu11agUmmJy3OJZ1lpA)
+
+
 ## Features
 
 - Beautiful KISS UI
